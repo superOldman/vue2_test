@@ -8,7 +8,6 @@
 
 <script>
 import Bus from '../bus';
-import EventBus from '../EventBus';
 export default {
     data(){
         return{
@@ -24,6 +23,9 @@ export default {
         this.get();
         this.get2();
     },
+    activated() {
+        console.log("activated调用了");
+    },
     methods:{
         get(){
             Bus.$on('message', (msg)=>{
@@ -32,8 +34,10 @@ export default {
         },
         get2(){
             console.log('get2')
-            EventBus.on('message',(msg)=>{
+            console.log(this.$$EventBus)
+            this.$$EventBus.on('message',(msg)=>{
                 this.message2 = msg;
+                console.log(msg)
             })
         }
     }

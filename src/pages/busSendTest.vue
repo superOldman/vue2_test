@@ -9,7 +9,6 @@
 
 <script>
 import Bus from '../bus';
-import EventBus from '../EventBus';
 export default {
     data(){
         return{
@@ -24,11 +23,13 @@ export default {
             Bus.$emit('message', this.busPage)
         },
         send2(){
-             EventBus.fire('message', this.busPage)
+            // EventBus.fire('message', this.busPage)
+            this.$$EventBus.fire('message', this.busPage)
+
         }
     },
     destroyed(){
-        Bus.$emit('message', this.busPage)
+        // Bus.$emit('message', this.busPage)
     }
 }
 </script>
