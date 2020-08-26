@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "path": "/home",
+            "name": "home",
+            "component": "home"
+        },
+        {
+            "path": "/vfor_test",
+            "name": "vfor_test",
+            "component": "vfor_test"
+        },
+        {
+            "path": "/busSendTest",
+            "name": "busSendTest",
+            "component": "busSendTest"
+        },
+        {
+            "path": "/busGetTest",
+            "name": "busGetTest",
+            "component": "busGetTest"
+        }
+    ]
+}

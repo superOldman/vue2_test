@@ -1,18 +1,25 @@
 <template>
   <layout>
-    <keep-alive>
+    <!-- <keep-alive> -->
       <router-view></router-view>
-    </keep-alive>
+    <!-- </keep-alive> -->
   </layout>
 </template>
 
 <script>
 import layout from "../components/layout.vue";
+
+
 export default {
   components: {
     layout
   },
-
+  created(){
+  },
+  methods: {
+    
+    
+  }
 };
 </script>
 

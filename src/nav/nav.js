@@ -23,7 +23,8 @@ const nav = [
         path: '/busGetTest',
         name: 'busGetTest',
         component: busGetTest
-    },]
+    },
+]
 
 
 export default nav
