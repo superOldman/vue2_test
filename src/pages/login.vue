@@ -6,49 +6,42 @@
 </template>
 
 <script>
-
 import ajax from "../services/api";
 
 export default {
-
   created() {
     this.setList();
   },
-  mounted(){
-
-    
-  },
+  mounted() {},
   methods: {
     async setList() {
       const result = await ajax.getRouter();
       const children = result.data;
+      sessionStorage.setItem("router", JSON.stringify(children));
       children.forEach(e => {
         let cp = e.component;
-        console.log(`./${cp}.vue`)
-        e.component = () => require(`./${cp}.vue`);
+        e.component = () => import(`./${cp}.vue`);
       });
 
-      let arr = [{
+      let arr = [
+        {
           path: "/home",
           name: "wrap",
-          component: () => require("./wrap.vue"),
+          component: () => import("./wrap.vue"),
           children
-        }]
-      
-      console.log(children);
-      console.log(arr);
-      this.$router.addRoutes(arr);
-      console.log(this.$router);
-      console.log(this.$route);
+        }
+      ];
 
+      if (this.$router.options.routes.length <= 2) {
+        this.$router.options.routes.push(arr[0]);
+        this.$router.addRoutes(arr);
+      }
     },
     turnHome() {
-      console.log(123)
-      this.$router.push('/home');
+      this.$router.push("/home");
     }
   }
 };
 </script>
-
 <style>
 </style>
