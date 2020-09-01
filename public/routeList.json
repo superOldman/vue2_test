@@ -19,6 +19,11 @@
             "path": "/busGetTest",
             "name": "busGetTest",
             "component": "busGetTest"
+        },
+        {
+            "path": "/computeTest",
+            "name": "computeTest",
+            "component": "computeTest"
         }
     ]
 }
