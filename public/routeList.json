@@ -24,6 +24,11 @@
             "path": "/computeTest",
             "name": "computeTest",
             "component": "computeTest"
+        },
+        {
+            "path": "/directiveTest",
+            "name": "directiveTest",
+            "component": "directiveTest"
         }
     ]
 }

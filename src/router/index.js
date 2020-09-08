@@ -21,17 +21,25 @@ const router = new Router({
             path: '/login',
             name: 'login',
             component: login,
+            meta: {
+                title: '登录',
+                keepAlive: false
+            }
         },
     ]
 })
 
 router.beforeEach((to, from, next) => {
     let json = sessionStorage.getItem('router');
+
+    if (to.meta.title) {
+        document.title = to.meta.title;
+    }
     if (json) {
         json = JSON.parse(json);
         json.forEach(e => {
             let cp = e.component;
-            console.log(`./${cp}.vue`);
+            // console.log(`./${cp}.vue`);
             e.component = () => import(`../pages/${cp}.vue`);
         });
 

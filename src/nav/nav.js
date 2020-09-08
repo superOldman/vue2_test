@@ -27,7 +27,12 @@ const nav = [
     {
         path: '/computeTest',
         name: 'computeTest',
+    },
+    {
+        path: '/directiveTest',
+        name: 'directiveTest',
     }
+
 ]
 
 

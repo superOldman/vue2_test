@@ -2,7 +2,7 @@
   <div class="wrap">
     <aside class="aside">
       <div v-for="(item,index) in nav" :key="index">
-        <div class="navBtn" @click="$router.push({ name: item.name })">{{item.name}}</div>
+        <div class="navBtn" @click="$router.push({ name: item.name, params:{ id: 123} })">{{item.name}}</div>
       </div>
     </aside>
     <div class="main">
