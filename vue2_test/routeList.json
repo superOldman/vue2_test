@@ -1,0 +1,34 @@
+{
+    "data": [
+        {
+            "path": "/home",
+            "name": "home",
+            "component": "home"
+        },
+        {
+            "path": "/vfor_test",
+            "name": "vfor_test",
+            "component": "vfor_test"
+        },
+        {
+            "path": "/busSendTest",
+            "name": "busSendTest",
+            "component": "busSendTest"
+        },
+        {
+            "path": "/busGetTest",
+            "name": "busGetTest",
+            "component": "busGetTest"
+        },
+        {
+            "path": "/computeTest",
+            "name": "computeTest",
+            "component": "computeTest"
+        },
+        {
+            "path": "/directiveTest",
+            "name": "directiveTest",
+            "component": "directiveTest"
+        }
+    ]
+}

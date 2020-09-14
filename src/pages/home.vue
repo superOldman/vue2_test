@@ -1,6 +1,12 @@
 <template>
   <div>
     <h1 class="sty">home</h1>
+
+
+
+    <div >
+      <div>主页数据：{{homeData}}</div>
+    </div>
     <child ref="child" :title="block.title" ></child>
     <!--<div v-show="divshow" ref="show">zai</div>-->
     <!-- <button ref="btn" style="width:200px" @click="homeclick">11111</button> -->
@@ -10,14 +16,15 @@
     <button @click="b2 = !b2">hide-show</button>
     <block :t="t" :c="c" v-if="b1"></block>
     <block :t="t" :c="c" v-show="b2"></block> -->
-    <!-- <block></block> -->
+    <block @homeFn2="homeFn" ></block>
   </div>
 </template> 
 <script>
 
 // import child from "../components/child.vue";
 // import block from "../components/block.vue";
-const child = ()=> import("../components/child.vue");
+const block = () => import("../components/block.vue");
+const child = () => import("../components/child.vue");
 export default {
   data() {
     return {
@@ -31,6 +38,8 @@ export default {
       c: "bbbbbbb",
       b1: true,
       b2: true,
+      homeData: '我是主页数据',
+      homeData2: '我是主页数据2'
     };
   },
   components: {
@@ -38,15 +47,16 @@ export default {
   //  require(['../../component/historyTab/historyTab.vue'], resolve)
   // }
     child,
-    // block
+    block
   },
   mounted(){
   },
   created() {
     // 创建全局方法
-    this.$root.$on("test", function() {
-      console.log("test");
+    this.$root.$on("test", () => {
+      this.homeData += '修改了'
     });
+
   },
   methods: {
     fnc(params) {
@@ -56,8 +66,9 @@ export default {
       this.divshow = !this.divshow;
       console.log(params);
     },
-    homeclick() {
-
+    homeFn(e, f) {
+      console.log('homeFN调用', e, f,  )
+      console.log(this.homeData2)
     }
   }
 };

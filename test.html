@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let pwd = 'sdfadsfnj副科级女的妇女分开电脑';
+        md5(pwd)
+        console.log(md5(pwd))
+
+        const arr = [1, 2, 3, 4, 5]
+        const arr2 = [5, 6, 7, 8, 9]
+
+        // arr.map((e) => {
+        //     console.log(e)
+        // }) 
+        let assemble = [];
+
+        // 取交集
+        assemble = arr.filter((e) => {
+            return arr2.includes(e)
+        })
+        console.log(assemble);
+
+        // 取并集
+        assemble = arr.concat(arr2.filter((e) => {
+            return !arr.includes(e)
+        }));
+        console.log(assemble)
+        
+        assemble = Array.from(new Set([...arr, ...arr2]))
+        console.log(assemble)
+
+
+    </script>
+</body>
+
+</html>
