@@ -12,12 +12,19 @@
 </template>
 
 <script>
-import nav from "../nav/nav";
 export default {
   data() {
     return {
-      nav
+      nav: {}
     };
+  },
+  mounted() {
+    this.getNav()
+  },
+  methods: {
+    getNav() {
+      this.nav = JSON.parse( sessionStorage.getItem("router"))
+    }
   }
 };
 </script>

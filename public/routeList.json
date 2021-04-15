@@ -29,6 +29,21 @@
             "path": "/directiveTest",
             "name": "directiveTest",
             "component": "directiveTest"
+        },
+        {
+            "path": "/betterScroll",
+            "name": "betterScroll",
+            "component": "betterScroll/index"
+        },
+        {
+            "path": "/copyDemo",
+            "name": "copyDemo",
+            "component": "directiveTest/copyDemo"
+        },
+        {
+            "path": "/pinyin",
+            "name": "pinyin",
+            "component": "pinyin/index"
         }
     ]
 }

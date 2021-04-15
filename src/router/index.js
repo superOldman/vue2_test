@@ -39,10 +39,9 @@ router.beforeEach((to, from, next) => {
         json = JSON.parse(json);
         json.forEach(e => {
             let cp = e.component;
-            // console.log(`./${cp}.vue`);
             e.component = () => import(`../pages/${cp}.vue`);
         });
-
+        console.log(json)
         let arr = [
             {
                 path: "/home",

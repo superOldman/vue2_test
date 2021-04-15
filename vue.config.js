@@ -19,6 +19,7 @@ const cdn = {
 
     css: []
 }
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
     // 打包输出文件夹
@@ -32,8 +33,13 @@ module.exports = {
         port: 8888,
         open: false
     },
-
+    lintOnSave: false,
     chainWebpack: config => {
+        var a = config.module.rule('svg')
+        console.log(config)
+        console.log(a)
+
+
         // 配置cdn引入
         config.plugin('html').tap(args => {
             args[0].cdn = cdn

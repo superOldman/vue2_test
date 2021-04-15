@@ -12,11 +12,13 @@ export default {
   created() {
     this.setList();
   },
-  mounted() {},
+  mounted() { },
   methods: {
     async setList() {
       const result = await ajax.getRouter();
       const children = result.data;
+
+      console.log('child', children)
       sessionStorage.setItem("router", JSON.stringify(children));
       children.forEach(e => {
         let cp = e.component;
