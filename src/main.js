@@ -12,7 +12,8 @@ Vue.prototype.$$EventBus = EventBus;
 
 Vue.use(Directives)
 
-Vue.config.devtools = true
+// Vue.config.devtools = true
+
 // 全局自定义指令
 Vue.directive('focus', {
   // 当被绑定的元素插入到 DOM 中时……

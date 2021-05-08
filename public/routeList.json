@@ -44,6 +44,16 @@
             "path": "/pinyin",
             "name": "pinyin",
             "component": "pinyin/index"
+        },
+        {
+            "path": "/uploadTest",
+            "name": "uploadTest",
+            "component": "uploadtest"
+        },
+        {
+            "path": "/downloadExcal",
+            "name": "downloadExcal",
+            "component": "downloadExcal"
         }
     ]
 }

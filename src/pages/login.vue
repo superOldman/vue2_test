@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4>login</h4>
-    <button @click="turnHome">跳转</button>
+    <el-button @click="turnHome">加载路由</el-button>
   </div>
 </template>
 

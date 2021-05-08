@@ -9,7 +9,8 @@ const cdn = {
 
     // 通过cdn方式使用
     js: [
-        'https://cdn.bootcss.com/vue/2.6.11/vue.runtime.min.js',
+        'https://cdn.jsdelivr.net/npm/vue/dist/vue.js',
+        // 'https://cdn.bootcss.com/vue/2.6.11/vue.runtime.min.js',
         'https://cdn.bootcss.com/vue-router/3.1.2/vue-router.min.js',
         // 'https://cdn.bootcss.com/vuex/3.1.2/vuex.min.js',
         'https://cdn.bootcss.com/axios/0.19.2/axios.min.js',
@@ -31,7 +32,18 @@ module.exports = {
     devServer: {
         host: '0.0.0.0',
         port: 8888,
-        open: false
+        open: false,
+        // 配置代理
+        // proxy: {
+        //     '/index.php': {
+        //         target: 'https://prezhentui.71360.com', // pre环境
+        //         // target: 'https://tyunzhentui.71360.com', // 生产环境
+        //         changeOrigin: true,
+        //         pathRewrite: {
+        //             '^/index.php': ''
+        //         }
+        //     }
+        // }
     },
     lintOnSave: false,
     chainWebpack: config => {
@@ -48,7 +60,8 @@ module.exports = {
     },
 
     configureWebpack: config => {
-        console.log('打包配置config',config)
+        config.devtool = 'source-map'
+            console.log('打包配置config', config)
         // 忽略打包配置
         config.externals = cdn.externals
     }
