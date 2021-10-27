@@ -19,11 +19,11 @@ export default {
     };
   },
   mounted() {
-    this.getNav()
+    this.getNav();
   },
   methods: {
     getNav() {
-      this.nav = JSON.parse( sessionStorage.getItem("router"))
+      this.nav = JSON.parse( sessionStorage.getItem('router'));
     }
   }
 };
@@ -36,14 +36,16 @@ export default {
 .aside{
   width: 200px;
   padding: 10px;
-  border-right: 1px solid #ccc; 
+  border-right: 1px solid #ccc;
 }
 .main{
   padding: 20px;
+    width: 100%;
+
 }
 .navBtn{
   border-bottom: 1px solid darkcyan;
-  cursor: pointer; 
+  cursor: pointer;
   margin-bottom: 10px;
   line-height: 40px;
 }

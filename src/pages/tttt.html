@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const pending = 'pending'
+        const resolved = 'resolved'
+        const rejected = 'rejected'
+
+        function Mypromise(fn) {
+            const that = this
+            this.status = pending
+            this.params = null
+            this.resolveFunctions = []
+            this.rejectFunctions = []
+
+            function resolve(params) {
+                if (that.status === pending) {
+                    that.status = resolved
+                    that.params = params
+                    that.resolveFunctions.map(e =>  e(that.params) )
+                }
+            }
+            function reject(params) {
+                if (that.status === pending) {
+                    that.status = rejected
+                    that.params = params
+                    that.rejectFunctions.map(e =>  e(that.params) )
+                }
+            }
+
+            try {
+                fn(resolve, reject)
+            } catch (error) {
+                reject(error)
+            }
+
+        }
+
+
+        Mypromise.prototype.then = function (onresolve, onreject) {
+            if (this.status === pending) {
+                this.resolveFunctions.push(onresolve)
+                this.rejectFunctions.push(onreject)
+            }
+            if (this.status === resolved) {
+                onresolve(this.params)
+            }
+            if (this.status === rejected) {
+                onreject(this.params)
+            }
+        }
+
+        var a = new Mypromise((res, rej) => {
+            console.log('setTimeout')
+            setTimeout(() => {
+                res('promise返回的结果')
+            }, 1000)
+        })
+
+        setTimeout(() => {
+            a.then(e => {
+                console.log(e)
+            })
+        }, 2000)
+
+
+    </script>
+</body>
+
+</html>

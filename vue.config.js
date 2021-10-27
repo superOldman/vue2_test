@@ -22,6 +22,9 @@ const cdn = {
 }
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const chalk = require('chalk');
+
 module.exports = {
     // 打包输出文件夹
     outputDir: 'vue2_test',
@@ -48,8 +51,8 @@ module.exports = {
     lintOnSave: false,
     chainWebpack: config => {
         var a = config.module.rule('svg')
-        console.log(config)
-        console.log(a)
+        // console.log(config)
+        // console.log(a)
 
 
         // 配置cdn引入
@@ -58,11 +61,18 @@ module.exports = {
             return args
         })
     },
-
     configureWebpack: config => {
         config.devtool = 'source-map'
-            console.log('打包配置config', config)
+        // console.log('打包配置config', config)
         // 忽略打包配置
         config.externals = cdn.externals
+
+        config.plugins = [
+            ...config.plugins,
+            new ProgressBarPlugin({
+                format: ' build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+                clear: false
+            })
+        ]
     }
 }

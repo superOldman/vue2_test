@@ -54,6 +54,13 @@ export default {
   watch: {
     percentageShow(bool) {
       if (!bool) this.percentage = 0;
+    },
+    test: {
+      deep: true,
+      immediate: true,
+      handler() {
+
+      }
     }
   },
   mounted() {

@@ -54,6 +54,31 @@
             "path": "/downloadExcal",
             "name": "downloadExcal",
             "component": "downloadExcal"
+        },
+        {
+            "path": "/canvasTest",
+            "name": "canvasTest",
+            "component": "canvasTest"
+        },
+        {
+            "path": "/drop_shadow",
+            "name": "drop_shadow",
+            "component": "cssDemo/drop_shadow"
+        },
+        {
+            "path": "/transition",
+            "name": "transition",
+            "component": "transitionTest/transition"
+        },
+        {
+            "path": "/componentTest",
+            "name": "componentTest",
+            "component": "componentTest/componentFn"
+        },
+        {
+            "path": "/emojiTest",
+            "name": "emojiTest",
+            "component": "emojiTest/index"
         }
     ]
 }

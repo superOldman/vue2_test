@@ -1,6 +1,6 @@
 <template>
   <div class="arrowsWrap">
-    <div :class="{'arrow':show}" v-for="i in 5" :key="i">
+    <div :class="{'arrow':show}" v-for="i in barNumber" :key="i">
       <div class="top"></div>
       <div class="bot"></div>
     </div>
@@ -10,20 +10,26 @@
 <script>
 export default {
   name: 'arrows',
-  data() {
-      return {
-          show: true
-      }
+  props: {
+    barNumber: {
+      type: Number,
+      default: 5
+    }
   },
-  mounted(){
-      this.run()
+  data() {
+    return {
+      show: true
+    }
+  },
+  mounted() {
+    this.run()
   },
   methods: {
     run() {
-      setTimeout(()=>{
-          this.show = !this.show
-          this.run()
-      },500)
+      setTimeout(() => {
+        this.show = !this.show
+        this.run()
+      }, 500)
     }
   }
 }
@@ -32,24 +38,25 @@ export default {
 .arrowsWrap {
   display: flex;
 }
-.arrowsWrap>div{
-    margin: 0 5px;
+.arrowsWrap > div {
+  margin: 0 5px;
 }
 .arrow {
-  
   opacity: 0;
 }
 .top,
 .bot {
-  width: 5px;
+  width: 1px;
   height: 12px;
   background-color: bisque;
 }
 .top {
-  transform: rotateZ(-23deg) translateY(1px);
+  transform: rotateZ(-65deg) translateY(9px);
+  /* transform: rotateZ(-23deg) translateY(1px); */
 }
 .bot {
-  transform: rotateZ(23deg) translateY(-1px);
+  transform: rotateZ(65deg) translateY(-9px);
+  /* transform: rotateZ(23deg) translateY(-1px); */
 }
 .arrow:nth-child(1) {
   animation-name: my-animation;

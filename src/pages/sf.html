@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var addTwoNumbers = function (l1, l2) {
+    //   const an = String(Number(l1.reverse().join('')) + Number(l2.reverse().join('')))
+    //   const arr = []
+    //   for (let i = an.length - 1; i >= 0; i--) {
+    //     arr.push(Number(an[i]))
+    //   }
+    //   return arr
+    // };
+    // // const arr = new Array(an.length)
+    // // arr.forEach((e,i)=>{
+
+    // // })
+
+    // console.log(addTwoNumbers([9, 9, 9, 9, 9, 9, 9], [9, 9, 9, 9]))
+
+    /**
+ * @param {string} s
+ * @return {number}
+ */
+    // var lengthOfLongestSubstring = function (s) {
+    //   let len = s.length
+    //   const arr = []
+    //   let maxLen = 0
+    //   for (let i = 0; i < len; i++) {
+    //     const index = arr.indexOf(s[i])
+    //     if (index !== -1) {
+    //       maxLen < arr.length && (maxLen = arr.length)
+    //       arr.splice(0, index+1)
+    //     }
+    //     arr.push(s[i])
+
+    //   }
+    //   return Math.max(maxLen,arr.length)
+    // };
+    // console.log(lengthOfLongestSubstring(" "))
+
+    /**
+     * @param {string} s
+     * @return {string}
+     */
+    // var longestPalindrome = function (s) {
+    //   let arr = []
+    //   let maxLenStr = ''
+    //   for (let i = 0; i < s.length; i++) {
+    //     const index = arr.indexOf(s[i])
+    //     if (index === -1) {
+    //       arr.push(s[i])
+    //       if (maxLenStr.length === 0) {
+    //         maxLenStr = s[i]
+    //       }
+    //     }
+    //     else {
+    //       if (arr.every(e => e === s[i])) {
+    //         arr.push(s[i])
+    //         maxLenStr.length < arr.length && (maxLenStr = arr.join(''))
+    //       }
+    //       else {
+    //         arr.push(s[i])
+    //         const newArr = arr.filter((e, i) => i >= index)
+    //         maxLenStr.length < newArr.length && (maxLenStr = newArr.join(''))
+    //       }
+    //     }
+    //   }
+    //   return maxLenStr
+    // }
+    // console.log(longestPalindrome("babad"))
+
+    var C = function () { this.foo = 'bar'; this.baz = 'bim'; };
+    C.prototype.bop = 'bip';
+    iterate(new C());
+    function iterate(obj) {
+      console.log(obj)
+      const arr = []
+      for(let key in obj){
+        if(obj.hasOwnProperty(key)){
+          arr.push(`${key}: ${obj[key]}`)
+        }
+      }
+      console.log(arr)
+      return arr
+    }
+  </script>
+</body>
+
+</html>
