@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0e5942"],{"94a2":function(e,n,t){"use strict";t.r(n);var c=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("el-button",{on:{click:e.clickHandler}},[e._v("去除焦点色")])},a=[],o={name:"removeFocus",components:{},props:{},data:function(){return{}},methods:{clickHandler:function(e){var n=e.target;"SPAN"==n.nodeName&&(n=e.target.parentNode),n.blur()}}},r=o,u=t("2877"),l=Object(u["a"])(r,c,a,!1,null,"75c6d6a0",null);n["default"]=l.exports}}]);
-//# sourceMappingURL=chunk-2d0e5942.c4fcd3af.js.map
