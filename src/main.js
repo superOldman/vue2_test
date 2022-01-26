@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router/index';
-import EventBus from './EventBus';
+import router from './router/index'
+import EventBus from './EventBus'
 import Directives from './directives'
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/index.css'
+
+import '@/styles/index.less'
 // import 
 Vue.config.productionTip = false
 // Vue.prototype.$$EventBus = new EventBus();

@@ -22,7 +22,7 @@ export default {
     }
   },
   mounted() {
-    this.run()
+    // this.run()
   },
   methods: {
     run() {

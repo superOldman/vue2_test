@@ -6,6 +6,16 @@
             "component": "home"
         },
         {
+            "path": "/arithmetic",
+            "name": "arithmetic",
+            "component": "arithmetic/index"
+        },
+        {
+            "path": "/smallTools",
+            "name": "smallTools",
+            "component": "smallTools/index"
+        },
+        {
             "path": "/vfor_test",
             "name": "vfor_test",
             "component": "vfor_test"
@@ -58,12 +68,42 @@
         {
             "path": "/canvasTest",
             "name": "canvasTest",
-            "component": "canvasTest"
+            "component": "canvas/canvasTest"
         },
         {
             "path": "/drop_shadow",
             "name": "drop_shadow",
             "component": "cssDemo/drop_shadow"
+        },
+        {
+            "path": "/transition",
+            "name": "transition",
+            "component": "transitionTest/transition"
+        },
+        {
+            "path": "/componentTest",
+            "name": "componentTest",
+            "component": "componentTest/componentFn"
+        },
+        {
+            "path": "/emojiTest",
+            "name": "emojiTest",
+            "component": "emojiTest/index"
+        },
+        {
+            "path": "/knowledgePoint",
+            "name": "knowledgePoint",
+            "component": "knowledgePoint/index"
+        },
+        {
+            "path": "/flextest",
+            "name": "flextest",
+            "component": "cssDemo/flextest"
+        },
+        {
+            "path": "/btnsChange",
+            "name": "btnsChange",
+            "component": "cssDemo/btnsChange"
         }
     ]
 }

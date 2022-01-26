@@ -15,21 +15,27 @@ export default {
 }
 </script>
 
-<style>
+<style  >
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
-*{
+* {
   margin: 0;
   padding: 0;
 }
-ul,li,dd,dt,dl{
+ul,
+li,
+dd,
+dt,
+dl {
   list-style: none;
 }
-
+* {
+  box-sizing: border-box;
+}
 </style>

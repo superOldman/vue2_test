@@ -37,16 +37,16 @@ module.exports = {
         port: 8888,
         open: false,
         // 配置代理
-        // proxy: {
-        //     '/index.php': {
-        //         target: 'https://prezhentui.71360.com', // pre环境
-        //         // target: 'https://tyunzhentui.71360.com', // 生产环境
-        //         changeOrigin: true,
-        //         pathRewrite: {
-        //             '^/index.php': ''
-        //         }
-        //     }
-        // }
+        proxy: {
+            '/localhost': {
+                target: 'http://localhost:3000',
+                // target: 'https://tyunzhentui.71360.com', 
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/localhost': ''
+                }
+            }
+        }
     },
     lintOnSave: false,
     chainWebpack: config => {

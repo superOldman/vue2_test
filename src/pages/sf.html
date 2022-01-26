@@ -76,20 +76,131 @@
     // }
     // console.log(longestPalindrome("babad"))
 
-    var C = function () { this.foo = 'bar'; this.baz = 'bim'; };
-    C.prototype.bop = 'bip';
-    iterate(new C());
-    function iterate(obj) {
-      console.log(obj)
-      const arr = []
-      for(let key in obj){
-        if(obj.hasOwnProperty(key)){
-          arr.push(`${key}: ${obj[key]}`)
+    // var C = function () { this.foo = 'bar'; this.baz = 'bim'; };
+    // C.prototype.bop = 'bip';
+    // iterate(new C());
+    // function iterate(obj) {
+    //   console.log(obj)
+    //   const arr = []
+    //   for(let key in obj){
+    //     if(obj.hasOwnProperty(key)){
+    //       arr.push(`${key}: ${obj[key]}`)
+    //     }
+    //   }
+    //   console.log(arr)
+    //   return arr
+    // }
+
+    // 归并排序
+    // 核心就是 两个数组的排序 让他们按序号从头循环比较大小并放到新的数组里，就可以了。        但是要有个前提 这两个数组得是排好序的数组，所以用递归把他们分成最小的
+    function mergeSort(arr) {
+      let len = arr.length;
+      if (len < 2) {
+        return arr;
+      }
+
+      let middle = Math.floor(len / 2);
+      let left = arr.slice(0, middle);
+      let right = arr.slice(middle);
+      return merge(mergeSort(left), mergeSort(right));
+    }
+    function merge(left, right) {
+      let result = [];
+
+      while (left.length && right.length) {
+        if (left[0] <= right[0]) {
+          result.push(left.shift());
+        } else {
+          result.push(right.shift());
         }
       }
-      console.log(arr)
+
+      while (left.length) {
+        result.push(left.shift());
+      }
+      while (right.length) {
+        result.push(right.shift());
+      }
+      return result
+
+    }
+
+    const arr = [91, 60, 96, 7, 35, 65, 10, 65, 9, 30, 20, 31, 77, 81, 24];
+    // console.log(mergeSort(arr));
+
+    // 冒泡排序
+    // 一个数组从头比较相邻两个元素的大小并互换位置 （每一次循环比对完最大的会在数组末位出现）
+    function popSort(arr) {
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {        //相邻元素两两对比
+            var temp = arr[j + 1];        //元素交换
+            arr[j + 1] = arr[j];
+            arr[j] = temp;
+          }
+        }
+      }
       return arr
     }
+    // console.log(popSort(arr));
+
+    // 选择排序
+    // 选择数组第一项最为最小数，循环比对找出真正最小的那个数与第一个交换位置
+    function selectionSort(arr) {
+      var len = arr.length;
+      var minIndex, temp;
+      for (var i = 0; i < len - 1; i++) {
+        minIndex = i;
+        for (var j = i + 1; j < len; j++) {
+          if (arr[j] < arr[minIndex]) {     //寻找最小的数
+            minIndex = j;                 //将最小数的索引保存
+          }
+        }
+        temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+      }
+      return arr;
+    }
+    // console.log(selectionSort(arr));
+
+    // 快排
+    var quickSort = function (arr) {
+      if (arr.length <= 1) {
+        return arr;
+      }
+      var pivotIndex = Math.floor(arr.length / 2);
+      var pivot = arr.splice(pivotIndex, 1)[0];
+      var left = [];
+      var right = [];
+
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
+        }
+      }
+      return quickSort(left).concat([pivot], quickSort(right));
+    }
+    console.log(quickSort(arr));
+
+
+    //
+    // const arr = [1, 0, -1, 0, -2, 2]
+      
+    function randomHalf(arr) {
+      const len = arr.length
+      if (len < 2) return { A: arr, B: [] }
+      arr.sort(() => Math.random() - 0.5)
+      return {
+        A: arr.splice(0, Math.floor(len / 2)),
+        B: arr
+      }
+    }
+
+    console.log(randomHalf(arr))
+
   </script>
 </body>
 

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var unicodeRegExp = /a-zA-Z\u00B7\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u037D\u037F-\u1FFF\u200C-\u200D\u203F-\u2040\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD/;
+
+		/**
+	 * Parse simple path.
+	 */
+		var bailRE = new RegExp(("[^" + (unicodeRegExp.source) + ".$_\\d]"));
+		function parsePath(path) {
+			if (bailRE.test(path)) {
+				return
+			}
+			var segments = path.split('.');
+			return function (obj) {
+				for (var i = 0; i < segments.length; i++) {
+					if (!obj) { return }
+					obj = obj[segments[i]];
+				}
+				return obj
+			}
+		}
+
+
+		class Dep {
+			constructor() {
+				this.subs = []
+			}
+			addSub(sub) {
+				this.subs.push(sub)
+			}
+			removeSub(sub) {
+				if (this.subs.length) {
+					const index = this.subs.indexOf(sub)
+					if (index !== -1) {
+						return this.subs.splice(index, 1)
+					}
+				}
+			}
+			depend() {
+				if (window.target) {
+					this.addSub(window.target)
+				}
+			}
+			notify() {
+				const subs = this.subs.slice()
+				console.log('subs', subs)
+				for (let i = 0; i < subs.length; i++) {
+					subs[i].update()
+					// 源码不是在这清除的
+					this.removeSub(subs[i])
+				}
+				
+			}
+		}
+
+		class Watcher {
+			constructor(vm, expOrFn, cb) {
+				this.vm = vm
+				this.getter = parsePath(expOrFn)
+				this.cb = cb
+				this.value = this.get()
+			}
+			get() {
+				window.target = this
+				let value = this.getter.call(this.vm, this.vm)
+				window.target = undefined
+				return value
+			}
+			update() {
+				const oldVal = this.value
+				this.value = this.get()
+				this.cb.call(this.vm, this.value, oldVal)
+
+			}
+		}
+
+		class Observer {
+			constructor(value) {
+				this.value = value
+				if (!Array.isArray(value)) {
+					this.walk(value)
+				}
+			}
+			walk(obj) {
+				const keys = Object.keys(obj)
+				for (let i = 0; i < keys.length; i++) {
+					defineReactive(obj, keys[i], obj[keys[i]])
+				}
+			}
+		}
+
+
+		function defineReactive(data, key, val) {
+			if (typeof val === 'object') {
+				new Observer(val)
+			}
+			let dep = new Dep()
+			Object.defineProperty(data, key, {
+				enumerable: true,
+				configurable: true,
+				set(newVal) {
+					if (val === newVal) return
+					val = newVal
+					dep.notify()
+				},
+				get() {
+					dep.depend()
+					return val
+				}
+			})
+		}
+
+		window.obj = {
+			a: 1,
+			b: 2
+		}
+		setSomeObj(obj)
+		function setSomeObj(obj) {
+			for (let key in obj) {
+				defineReactive(obj, key, obj[key])
+				new Watcher(obj, key, function (newVal, oldVal) {
+					console.log('newVal', newVal)
+					console.log('oldVal', oldVal)
+				})
+			}
+		}
+
+
+
+	</script>
+</body>
+
+</html>

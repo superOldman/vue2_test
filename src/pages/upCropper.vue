@@ -26,6 +26,7 @@ import img from '@/assets/logo.png'
 import { VueCropper } from 'vue-cropper' // https://github.com/xyxiao001/vue-cropper
 // import VueCropper2 from 'vue-cropperjs'
 // import 'cropperjs/dist/cropper.min.css';
+
 export default {
   name: '',
   components: {
@@ -48,6 +49,7 @@ export default {
       }
     }
   },
+  inject: [ 'a' ],
   mounted() {
   },
   methods: {

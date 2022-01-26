@@ -24,8 +24,8 @@
           <div class="icon" @click="showCrop(img.file)">开</div>
         </div>
       </transition> -->
-      <el-upload class="avatar-uploader" ref="upload" :before-upload="beforeAvatarUpload" :on-progress="uploadOnProgress" :on-success="onSuccess" :show-file-list="false" :on-error="onError"
-        action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card">
+      <el-upload class="avatar-uploader" ref="upload" :http-request="ajaxUpload" :before-upload="beforeAvatarUpload" :on-progress="uploadOnProgress" :on-success="onSuccess" :show-file-list="false"
+        :on-error="onError" action="localhost/upload" list-type="picture-card">
         <img v-if="false" :src="imageUrl" class="avatar">
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
@@ -35,6 +35,92 @@
 </template>
 
 <script>
+function ajaxUpload(option) {
+  if (typeof XMLHttpRequest === 'undefined') {
+    return;
+  }
+
+  const xhr = new XMLHttpRequest();
+  const action = option.action;
+
+  if (xhr.upload) {
+    xhr.upload.onprogress = function progress(e) {
+      if (e.total > 0) {
+        e.percent = e.loaded / e.total * 100;
+      }
+      console.log(e)
+      option.onProgress(e);
+    };
+  }
+
+  const formData = new FormData();
+
+  if (option.data) {
+    Object.keys(option.data).forEach(key => {
+      formData.append(key, option.data[key]);
+    });
+  }
+
+  formData.append(option.filename, option.file, option.file.name);
+
+  xhr.onerror = function error(e) {
+    option.onError(e);
+  };
+
+  xhr.onload = function onload() {
+    if (xhr.status < 200 || xhr.status >= 300) {
+      return option.onError(getError(action, option, xhr));
+    }
+
+    option.onSuccess(getBody(xhr));
+  };
+
+  xhr.open('post', action, true);
+
+  if (option.withCredentials && 'withCredentials' in xhr) {
+    xhr.withCredentials = true;
+  }
+
+  const headers = option.headers || {};
+
+  for (let item in headers) {
+    if (headers.hasOwnProperty(item) && headers[item] !== null) {
+      xhr.setRequestHeader(item, headers[item]);
+    }
+  }
+  xhr.send(formData);
+  return xhr;
+}
+function getError(action, option, xhr) {
+  let msg;
+  if (xhr.response) {
+    msg = `${xhr.response.error || xhr.response}`;
+  } else if (xhr.responseText) {
+    msg = `${xhr.responseText}`;
+  } else {
+    msg = `fail to post ${action} ${xhr.status}`;
+  }
+
+  const err = new Error(msg);
+  err.status = xhr.status;
+  err.method = 'post';
+  err.url = action;
+  return err;
+}
+
+function getBody(xhr) {
+  const text = xhr.responseText || xhr.response;
+  if (!text) {
+    return text;
+  }
+
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    return text;
+  }
+}
+
 import Compressor from 'compressorjs';
 import upCropper from './upCropper';
 export default {
@@ -48,7 +134,12 @@ export default {
       file: '',
       percentage: 0,
       percentageShow: false,
-      loadSuccess: false
+      loadSuccess: false,
+
+      test: {
+        a: 1,
+        b: 2
+      }
     };
   },
   watch: {
@@ -63,24 +154,36 @@ export default {
       }
     }
   },
+  provide() {
+    return {
+      a: {
+        a: this.file,
+        b: this.percentage
+      }
+    }
+  },
   mounted() {
     this.$nextTick(e => {
       console.log(this.$refs.upload.submit);
     });
   },
   methods: {
+    ajaxUpload,
+
     handleAvatarSuccess(res, file) {
     },
-    uploadOnProgress(e) {
-      console.log(arguments);
-      this.percentage = e.percent;
+    uploadOnProgress(progressEvent, file, arr) {
+      // console.log(arguments);
+      this.percentage = progressEvent.percent;
     },
     onSuccess(res, file) {
-      console.log('1111111', arguments);
+      console.log('res', res);
+      console.log('file', file);
       this.imageList.pop();
       this.imageList.push({
         file: file.raw,
-        src: URL.createObjectURL(file.raw)
+        src: URL.createObjectURL(file.raw || file)
+        // src: file.raw
       });
       if (file.status = 'success') {
         this.percentageShow = false;
@@ -100,14 +203,16 @@ export default {
       console.log(file);
 
       // this.$refs.upload;
-      // 判断大小
-      if (this.judgeSize(file)) {
-        return false;
-      }
+      // 
+
+      // if (this.judgeSize(file)) {
+      //   return false;
+      // }
       this.imageList.push({});
       this.percentageShow = true;
       return true;
     },
+    // 判断大小
     judgeSize(file) {
       if (file.size > 500000) {
         this.tipShow = true;
