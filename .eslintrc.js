@@ -43,7 +43,7 @@ module.exports = {
   * "error"或者2    把规则作为一个错误（退出代码触发时为1）
   */
   rules: {
-    'semi': 1,
+    'semi': 0,
     'quotes': [1, 'single'], // 引号类型
     'no-unused-vars': 1, // 检查未使用变量
     'no-undef': 0, // 检查未定义就使用变量

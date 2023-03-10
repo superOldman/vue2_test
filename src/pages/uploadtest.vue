@@ -112,7 +112,7 @@ function getBody(xhr) {
   const text = xhr.responseText || xhr.response;
   if (!text) {
     return text;
-  }
+  } 
 
   try {
     return JSON.parse(text);

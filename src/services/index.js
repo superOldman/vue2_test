@@ -43,6 +43,8 @@ axios.interceptors.response.use(
     }
 );
 
+export { axios }
+
 export function http_post(config) {
     const _data = config.params;
     // if (config.format) {
@@ -55,13 +57,13 @@ export function http_post(config) {
     //             });
     //     });
     // } else {
-        return new Promise((resolve, reject) => {
-            axios.post(config.api, _data).then((res) => {
-                resolve(res);
-            }).catch((err) => {
-                reject(err);
-            });
+    return new Promise((resolve, reject) => {
+        axios.post(config.api, _data).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err);
         });
+    });
     // }
 }
 

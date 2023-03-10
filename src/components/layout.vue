@@ -4,7 +4,7 @@
       <el-scrollbar>
         <div class="aside_in">
           <div v-for="(item,index) in nav" :key="index">
-            <div class="navBtn" @click="$router.push({ name: item.name, params:{ id: 123} })">{{item.name}}</div>
+            <div class="navBtn" @click="clickHandle(item)">{{item.name}}</div>
           </div>
         </div>
       </el-scrollbar>
@@ -16,7 +16,9 @@
 </template>
 
 <script>
+import routerList from '@/router/router.js'
 export default {
+  name: 'layout',
   data() {
     return {
       nav: {}
@@ -27,10 +29,18 @@ export default {
   },
   methods: {
     getNav() {
-      this.nav = JSON.parse(sessionStorage.getItem('router'));
+      console.log('router',routerList)
+      // this.nav = JSON.parse(sessionStorage.getItem('router'));
+      this.nav = routerList[0].children
+    },
+    clickHandle(item){
+      // debugger
+      this.$router.push({
+        name: item.name
+      })
     }
   }
-};
+}
 </script>
 
 <style scoped lang="less">

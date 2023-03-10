@@ -28,7 +28,6 @@ export default {
     debounceClick() {
       console.log(123123)
     }
-
   }
 }
 </script>

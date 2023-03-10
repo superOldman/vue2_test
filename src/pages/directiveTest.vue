@@ -22,6 +22,8 @@
       <el-input v-model="text" autocomplete="off" :title="text" />
     </text-overflow> -->
 
+    <el-input v-model="text2" type="textarea" :rows="6" autocomplete="off" :title="text" />
+
     <el-button @click="text='dsafa'">少字</el-button>
     <el-button @click="text=aaa">多字</el-button>
     <el-button @click="text=aaa2">多字少于三行</el-button>
@@ -29,7 +31,7 @@
     <el-button @click="text=more1">多1</el-button>
 
     <div class="textBox" id="box">
-      <text-overflow  lines="1">{{text}}</text-overflow>
+      <text-overflow lines="1">{{text}}</text-overflow>
     </div>
     <!-- <el-tooltip :disabled='true' content="3" placement="top" effect="light">
       <span ref="span" class="textOverflow">{{3}}</span>
@@ -46,6 +48,7 @@ export default {
     return {
       a: 0,
       text: 'dsafa',
+      text2: 'dsafa\ndfsgasdgf',
       aaa: `毒贩夫妇付付付付付付付付付付付付付付付付付付付付付付大法师打发是大法师打发是大法师打发是大法师打发是大法师
       毒贩夫妇付付付付付付付付付付付付付付付付付付付付付付大法师打发是大法师打发是大法师打发是大法师打发是大法师
       毒贩夫妇付付付付付付付付付付付付付付付付付付付付付付大法师打发是大法师打发是大法师打发是大法师打发是大法师
