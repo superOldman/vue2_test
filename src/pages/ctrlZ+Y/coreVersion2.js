@@ -14,10 +14,12 @@ class Recorder {
   constructor() { }
   save() { }
   // 记录list
-  record(list) {
+  record(list, oldBranch) {
     if (!list) return console.log('无记录')
     this.recordList.push(cloneDeep(list))
-    // console.log(this.recordList)
+    if (!oldBranch) this.recordList4ctrlY = []
+    console.log(111111, this.recordList)
+    console.log(222222, this.recordList4ctrlY)
   }
   // 撤回
   withdraw() {
@@ -26,7 +28,7 @@ class Recorder {
     }
     const idx = this.recordList.length - 2
     if (idx !== -1) {
-      this.list = this.recordList[idx]
+      this.list = cloneDeep(this.recordList[idx])
     }
     const tmp = this.recordList.pop()
     this.recordList4ctrlY.push(tmp)
@@ -38,12 +40,9 @@ class Recorder {
   ctrlY() {
     if (!this.recordList4ctrlY.length) return
     this.list = this.recordList4ctrlY.pop()
-    this.record(this.list)
+    this.record(this.list, true)
     console.log(111111, this.recordList)
     console.log(222222, this.recordList4ctrlY)
-
-
-
 
   }
   getList() {

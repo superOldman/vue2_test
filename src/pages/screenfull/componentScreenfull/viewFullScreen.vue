@@ -43,28 +43,38 @@ export default {
       }
     }
   },
-
+  mounted() {
+    window.addEventListener('keydown', this.onKeyDown)
+  },
   methods: {
     updateView() {
       if (!this.parentNode) {
         this.parentNode = this.$el.parentNode
       }
       if (this.isFullScreen) {
-        document.querySelector('#app').appendChild(this.$el);
+        this.$message('按Exc退出全屏');
+        document.querySelector('#app').appendChild(this.$el)
       } else {
         this.$el.remove()
         this.parentNode.appendChild(this.$el)
       }
+    },
+
+    onKeyDown(e) {
+      if (this.isFullScreen && e.key === 'Escape') {
+        this.$parent.setFullScreen()
+      }
     }
   },
 
-  destroyed() {
+  beforeDestroy() {
     if (this.isFullScreen) {
       document.querySelector('#app').removeChild(this.$el);
       this.parentNode = undefined
     }
+    window.removeEventListener('keydown', this.onKeyDown)
   }
-};
+}
 </script>
 
 <style scoped>

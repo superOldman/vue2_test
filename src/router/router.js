@@ -152,6 +152,11 @@ const router = [
         path: 'screenfull',
         name: 'screenfull',
         component: ()=> import('@/pages/screenfull/index')
+      },
+      {
+        path: 'editPane',
+        name: 'editPane',
+        component: ()=> import('@/pages/editPane/index')
       }
     ]
   }

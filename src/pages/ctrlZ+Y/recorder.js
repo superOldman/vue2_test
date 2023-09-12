@@ -1,25 +1,11 @@
-
-
 // 用于撤回的记录
-const recordList = []
+let recordList = []
 // 用于反撤回的记录
-const recordList4ctrlY = []
+let recordList4ctrlY = []
 import { cloneDeep } from 'lodash'
 // import indexVersion1 from '@/pages/dragDemo/indexVersion1.vue'
 export default {
   name: 'ctrlZ',
-  // mixins: [indexVersion1],
-  components: {
-
-  },
-  props: {
-
-  },
-  data() {
-    return {
-
-    }
-  },
   mounted() {
     document.addEventListener('keyup', this.onKeyUp)
     document.addEventListener('keydown', this.onKeyDown)
@@ -50,11 +36,11 @@ export default {
       }
       // ctrl + z 撤回
       if (e.ctrlKey && e.key === 'z') {
-        this.withdraw()
+        this.goBack()
       }
       // ctrl + y 反撤回
       if (e.ctrlKey && e.key === 'y') {
-        this.ctrlY()
+        this.goForward()
       }
       // ctrl + s 保存
       if (e.ctrlKey && e.key === 's') {
@@ -62,42 +48,38 @@ export default {
       }
     },
     // 记录list
-    record(rect) {
-      if (rect) {
-        // 更新list
-        const current = this.list.find(item => item.focused)
-        current.x = rect.left
-        current.y = rect.top
-        current.w = rect.width
-        current.h = rect.height
-      }
-      recordList.push(cloneDeep(this.list))
+    record(oldBranch) {
+      recordList.push(cloneDeep(this.layout))
+      if (!oldBranch) recordList4ctrlY = []
       console.log(recordList)
     },
     // 撤回
-    withdraw() {
+    goBack() {
       if (recordList.length === 1) {
-        alert('撤回到底了')
-        return
+        return this.$message.warning('撤回到底了')
       }
-      const idx = recordList.length - 2 // -1
+
+      const idx = recordList.length - 2
       if (idx !== -1) {
-        this.setNewList(recordList[idx])
+        this.layout = cloneDeep(recordList[idx])
       }
+
       const tmp = recordList.pop()
       recordList4ctrlY.push(tmp)
-
-      console.log(recordList)
-      console.log(recordList4ctrlY);
     },
     // 反撤回
-    ctrlY() {
-      this.list = recordList4ctrlY.pop()
-      this.record()
+    goForward() {
+      if (!recordList4ctrlY.length) return
+      this.layout = recordList4ctrlY.pop()
+      this.record(true)
     },
-    setNewList(list) {
-      this.list = list
+
+    getTwoList() { return [recordList, recordList4ctrlY] },
+    setTwoList(r, ry) {
+      recordList = r
+      recordList4ctrlY = ry
     }
+
   }
 }
 

@@ -58,13 +58,14 @@
 					// 源码不是在这清除的
 					this.removeSub(subs[i])
 				}
-				
+
 			}
 		}
 
 		class Watcher {
 			constructor(vm, expOrFn, cb) {
 				this.vm = vm
+				debugger
 				this.getter = parsePath(expOrFn)
 				this.cb = cb
 				this.value = this.get()

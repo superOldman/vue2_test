@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router/index';
 import EventBus from './EventBus';
 import Directives from './directives';
+import cache from './utils/cache';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -12,6 +13,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '@/styles/index.less';
 Vue.config.productionTip = false;
 Vue.prototype.$$EventBus = EventBus;
+Vue.prototype.$cache = cache;
 
 Vue.use(Directives);
 
