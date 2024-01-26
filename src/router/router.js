@@ -18,9 +18,19 @@ const router = [
         component: home
       },
       {
+        path: 'D3Test',
+        name: 'D3Test',
+        component: ()=> import('@/pages/D3/index')
+      },
+      {
         path: 'q',
         name: 'q',
         component: q1
+      },
+      {
+        path: 'abTest',
+        name: 'abTest',
+        component: ()=> import('@/pages/abTest/index')
       },
       {
         path: 'arithmetic',
