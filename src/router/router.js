@@ -23,6 +23,16 @@ const router = [
         component: ()=> import('@/pages/D3/index')
       },
       {
+        path: 'D3Test2',
+        name: 'D3Test2',
+        component: ()=> import('@/pages/D3/undirectedTree')
+      },
+      {
+        path: 'mySelect',
+        name: 'mySelect',
+        component: ()=> import('@/pages/mySelect/index')
+      },
+      {
         path: 'q',
         name: 'q',
         component: q1

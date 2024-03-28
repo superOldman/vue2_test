@@ -22,7 +22,7 @@ function uuid() {
   )
 }
 
-class D3Tree {
+export default class D3Tree {
   constructor(data, container, options) {
     this.width = 1920;
     this.height = 1080
@@ -43,7 +43,7 @@ class D3Tree {
     this.createResource()
     // 将缩放对象应用于SVG元素
     this.zoomHandler()
-
+    
     this.drawTree()
   }
 
@@ -67,21 +67,27 @@ class D3Tree {
       .attr('viewBox', [-this.marginLeft, -this.marginTop, this.width, this.dx])
       .attr('style', 'max-width: 100%; height: auto; font: 12px sans-serif; user-select: none;')
 
-    this.gLink = this.svg.append('g')
-      .attr('fill', 'none')
-      .attr('stroke', '#555')
-      .attr('stroke-opacity', 0.4)
-      .attr('stroke-width', 1.5)
+    this.wrap = this.svg.append('g')
 
-    this.gNode = this.svg.append('g')
+    this.gLink = this.wrap.append('g')
+      .attr('fill', 'none')
+      .attr('stroke', '#ADB3C2')
+      .attr('stroke-width', 1)
+      .attr('stroke-dasharray', 3)
+      .attr('stroke-opacity', 1)
+      .attr('class', 'link-group')
+
+    this.gNode = this.wrap.append('g')
       .attr('cursor', 'pointer')
       .attr('pointer-events', 'all')
+      .attr('class', 'node-group')
+
   }
 
   update(event, source) {
-    const duration = event?.altKey ? 2500 : 250
-    const nodes = this.root.descendants() //.reverse()
-    const links = this.root.links()
+    const duration = event?.altKey ? 3500 : 250
+    const nodesData = this.root.descendants() //.reverse()
+    const linksData = this.root.links()
 
     // Compute the new tree layout.
     this.tree(this.root)
@@ -101,20 +107,127 @@ class D3Tree {
     // .tween('resize', window.ResizeObserver ? null : () => () => this.svg.dispatch('toggle'))
 
 
-    d3.selectAll('.add_').text(d => {
+    d3.selectAll('.add-btn').text(d => {
       if (d.children) return '-'
       return '+'
     })
 
-    const node = this.gNode.selectAll('.node').data(nodes, d => d.id)
+    const node = this.gNode.selectAll('.node').data(nodesData, d => d.id)
+    const link = this.gLink.selectAll('.link').data(linksData, d => d.target.id)
 
-    // 创建Node
+    // 创建 Node
     this.createNode(node, source, transition, this.update.bind(this))
 
+    // 创建 Link
+    this.createLink(link, source, transition)
 
-    // Update the links…
-    const link = this.gLink.selectAll('path').data(links)
+    // 更新位置
+    this.root.eachBefore(d => {
+      d.x0 = d.x
+      d.y0 = d.y
+    })
 
+  }
+
+  createNode(node, source, transition, handleFunction) {
+    console.log('--------', node)
+
+    const nodeEnter = node.enter().append('g')
+      .attr('transform', d => `translate(${source.y0},${source.x0})`)
+      .attr('fill-opacity', 0)
+      .attr('stroke-opacity', 0)
+      .attr('class', 'node')
+      .attr('id', d => `g${d.id}`)
+
+    // 添加框
+    const nodeRect = nodeEnter.append('rect')
+      .attr('width', 132)
+      .attr('height', 38)
+      .attr('x', -66)
+      .attr('y', -19)
+      .attr('rx', 8)
+      .attr('ry', 8)
+
+    nodeRect.filter(d => d.depth < 2).attr('fill', d => `url(#stream_level${d.depth})`)
+    nodeRect.filter(d => d.depth >= 2).attr('fill', '#fff')
+      .attr('stroke-width', 1)
+      .attr('stroke', '#D0D1D6')
+
+
+    nodeEnter.append('text')
+      .attr('y', 5)
+      .attr('x', 0)
+      .attr('fill', d => d.depth < 2 ? '#fff' : '#000')
+      .attr('text-anchor', 'middle')
+      .attr('paint-order', 'stroke')
+      .attr('title', d => d.data.name)
+      .style('font-weight', 'bold')
+      .text(d => {
+        let text = d?.data?.name
+        if (text.length > 8) {
+          text = text.slice(0, 8) + '...'
+        }
+        return text
+      })
+
+    // 添加title
+    nodeEnter.append('title').text(d => d.data.name)
+
+
+    // 添加按钮
+    const icon = nodeEnter
+      .filter(d => d._children)
+      .append('g')
+      .attr('class', 'icon-text')
+      .attr('opacity', 1)
+
+    icon.append('circle')
+      .attr('class', 'icon-circle')
+      .attr('fill', '#B4BACA')
+      .attr('r', 8)
+      .attr('cx', 66)
+      .attr('cy', 0)
+
+
+    icon.append('text')
+      .attr('class', 'add-btn')
+      .attr('x', 66)
+      .attr('y', 4)
+      .attr('fill', '#fff')
+      .attr('text-anchor', 'middle')
+      .style('font-size', '14px')
+      .style('font-weight', 'bold')
+      .text(d => {
+        if (d.children) return '-'
+        return '+'
+      }).on('click', (event, d) => {
+        d.children = d.children ? null : d._children
+        handleFunction && handleFunction(event, d)
+      })
+
+
+    // Transition nodes to their new position.
+    const nodeUpdate = node.merge(nodeEnter)
+      .transition(transition)
+      .attr('transform', d => {
+        return `translate(${d.y},${d.x})`
+      })
+      .attr('fill-opacity', 1)
+      .attr('stroke-opacity', 1)
+
+    // Transition exiting nodes to the parent's new position.
+
+    const height = 132
+    const padding = 10
+    const transitionY = height / 2 + padding
+    const nodeExit = node.exit().transition(transition)
+      .attr('transform', d => `translate(${source.y + transitionY},${source.x})`)
+      .attr('fill-opacity', 0)
+      .attr('stroke-opacity', 0)
+      .remove()
+  }
+
+  createLink(link, source, transition) {
     // 
     function twoPoints(a, b) {
       let length = Math.abs(a.y - b.y)
@@ -174,165 +287,36 @@ class D3Tree {
       return theLine(pathData)
     }
 
-    link.join(
-      enter =>
-        enter
-          .append('path')
-          .attr('class', 'link')
-          .attr('fill', 'none')
-          .attr('stroke', 'gray')
-          .attr('d', createLine)
-          .transition()
-          .duration(1000),
-      update => update,
-      exit =>
-        exit
-          .transition()
-          .duration(1000)
-          .attr('d', createLine)
-          .remove()
-    ).transition(transition)
-      .duration(1000)
-      .attr('d', createLine)
 
-
-
-
-
-    // // Enter any new links at the parent's previous position.
-    // const linkEnter = link.enter().append('path')
-    //   .attr('d', d => {
-    //     const o = { x: source.x0, y: source.y0 }
-    //     return createLine({ source: o, target: o });
-    //   })
-    //   .attr('stroke', '#ADB3C2')
-    //   .attr('stroke-width', 1)
-    //   .attr('stroke-dasharray', 3)
-    //   .attr('stroke-opacity', 1)
-    //   .attr('marker-end', 'url(#marker_arrow)')
-
-    // // Transition links to their new position.
-    // link.merge(linkEnter).transition(transition)
-    //   .attr('d', (d) => {
-
-    //     return createLine(d)
-    //   })
-
-
-
-    // // Transition exiting nodes to the parent's new position.
-    // link.exit().transition(transition).remove()
-    //   .attr('d', d => {
-    //     const o = { x: source.x, y: source.y }
-    //     return createLine({ source: o, target: o })
-    //   })
-    //   .attr('stroke-opacity', 0)
-    //   .attr('fill-opacity', 0)
-
-
-
-    // Stash the old positions for transition.
-    this.root.eachBefore(d => {
-      d.x0 = d.x;
-      d.y0 = d.y;
-    })
-
-  }
-
-  createNode(node, source, transition, handleFunction) {
-    console.log('--------', node)
-
-    const nodeEnter = node.enter().append('g')
-      .attr('transform', d => `translate(${source.y0},${source.x0})`)
-      .attr('fill-opacity', 0)
-      .attr('stroke-opacity', 0)
-      .attr('class', 'node')
-      .attr('id', d => `g${d.id}`)
-
-    // 添加框
-    const nodeRect = nodeEnter.append('rect')
-      .attr('width', 132)
-      .attr('height', 38)
-      .attr('x', -66)
-      .attr('y', -19)
-      .attr('rx', 8)
-      .attr('ry', 8)
-
-    nodeRect.filter(d => d.depth < 2).attr('fill', d => `url(#stream_level${d.depth})`)
-    nodeRect.filter(d => d.depth >= 2).attr('fill', '#fff')
-      .attr('stroke-width', 1)
-      .attr('stroke', '#D0D1D6')
-
-
-    nodeEnter.append('text')
-      .attr('y', 5)
-      .attr('x', 0)
-      .attr('fill', d => d.depth < 2 ? '#fff' : '#000')
-      .attr('text-anchor', 'middle')
-      .attr('paint-order', 'stroke')
-      .attr('title', d => d.data.name)
-      .style('font-weight', 'bold')
-      .text(d => {
-        let text = d?.data?.name
-        if (text.length > 8) {
-          text = text.slice(0, 8) + '...'
-        }
-        return text
+    // Enter any new links at the parent's previous position.
+    const linkEnter = link.enter().append('path')
+      .attr('d', d => {
+        const o = { x: source.x0, y: source.y0 }
+        return createLine({ source: o, target: o })
       })
 
-    // 添加title
-    nodeEnter.append('title').text(d => d.data.name)
-
-
-
-    // 添加按钮
-    const icon = nodeEnter
-      .filter(d => d._children)
-      .append('g')
-      .attr('class', 'icon-text')
-      .attr('opacity', 1)
-
-    icon.append('circle')
-      .attr('class', 'icon-circle')
-      .attr('fill', '#B4BACA')
-      .attr('r', 8)
-      .attr('cx', 66)
-      .attr('cy', 0)
-
-
-    icon.append('text')
-      .attr('class', 'add_')
-      .attr('x', 66)
-      .attr('y', 4)
-      .attr('fill', '#fff')
-      .attr('text-anchor', 'middle')
-      .style('font-size', '14px')
-      .style('font-weight', 'bold')
-      .text(d => {
-        if (d.children) return '-'
-        return '+'
-      }).on('click', (event, d) => {
-        d.children = d.children ? null : d._children
-        handleFunction && handleFunction(event, d)
+    // Transition links to their new position.
+    link.merge(linkEnter).transition(transition)
+      .attr('d', (d) => {
+        return createLine(d)
       })
-
-
-    // Transition nodes to their new position.
-
-    const nodeUpdate = node.merge(nodeEnter).transition(transition)
-      .attr('transform', d => {
-
-        return `translate(${d.y},${d.x})`
-      })
-      .attr('fill-opacity', 1)
       .attr('stroke-opacity', 1)
+      .attr('fill-opacity', 1)
+      .attr('class', 'link')
+      .transition()
+      .attr('marker-end', 'url(#marker_arrow)')
+
 
     // Transition exiting nodes to the parent's new position.
-    const nodeExit = node.exit().transition(transition).remove()
-      .attr('transform', d => `translate(${source.y},${source.x})`)
+    link.exit().transition(transition)
+      .attr('d', (d) => {
+        const o = { x: source.x, y: source.y }
+        return createLine({ source: o, target: o })
+      })
+      .attr('marker-end', 'none')
+      .attr('stroke-opacity', 0)
       .attr('fill-opacity', 0)
-      .attr('stroke-opacity', 0);
-
+      .remove()
   }
 
   createResource() {
@@ -381,8 +365,7 @@ class D3Tree {
       .on('zoom', current => {
         const { transform } = current
         if (isNaN(transform.x)) return
-        this.gLink.attr('transform', `translate(${transform.x},${transform.y}) scale(${transform.k})`)
-        this.gNode.attr('transform', `translate(${transform.x},${transform.y}) scale(${transform.k})`)
+        this.wrap.attr('transform', `translate(${transform.x},${transform.y}) scale(${transform.k})`)
       }) // 指定缩放时的回调函数
 
     // 将缩放对象应用于SVG元素
@@ -391,5 +374,3 @@ class D3Tree {
     return zoom
   }
 }
-
-export default D3Tree

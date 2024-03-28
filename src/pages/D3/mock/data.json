@@ -1,0 +1,388 @@
+{
+  "Status": 200,
+  "Result": {
+      "Id": "3065012a7bc3f9583a8d09fb9d2f38b8",
+      "Name": "上海蔚来汽车有限公司司司司司司上海蔚来汽车有限公司司司司司司",
+      "NodeType": "999",
+      "children": [
+          {
+              "Id": "",
+              "Name": "法定代表人法定代表人法定代表人法定代表人法定代表人法定代表人法定代表人法定代表人法定代表人法定代表人法定代表人法定代表人法定代表人法定代表人",
+              "NodeType": "101",
+              "children": [
+                  {
+                      "Id": "p6eaee00ed68284af1aef0e49639bc89",
+                      "Name": "秦力洪",
+                      "Image": "https://image.qcc.com/person/p6eaee00ed68284af1aef0e49639bc89.jpg?x-oss-process=style/person_200",
+                      "OperType": 1,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "998",
+                      "Org": 2
+                  }
+              ]
+          },
+          {
+              "Id": "",
+              "Name": "实际控制人",
+              "NodeType": "102",
+              "children": []
+          },
+          {
+              "Id": "",
+              "Name": "最终受益人",
+              "NodeType": "103",
+              "children": []
+          },
+          {
+              "Id": "",
+              "Name": "股东",
+              "NodeType": "104",
+              "children": [
+                  {
+                      "Id": "821756ab28b45db49139d6dfc917a87f",
+                      "Name": "蔚来控股有限公司",
+                      "Image": "https://image.qcc.com/logo/821756ab28b45db49139d6dfc917a87f.jpg?x-oss-process=style/logo_200",
+                      "OperType": null,
+                      "Percent": "100%",
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": 0
+                  }
+              ]
+          },
+          {
+              "Id": "",
+              "Name": "主要人员",
+              "NodeType": "105",
+              "children": [
+                  {
+                      "Id": "p2f4391f2600fcc10442c8f22606be20",
+                      "Name": "李斌",
+                      "Image": "https://image.qcc.com/person/p2f4391f2600fcc10442c8f22606be20.jpg?x-oss-process=style/person_200",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": "董事长",
+                      "NodeType": "998",
+                      "Org": 2
+                  },
+                  {
+                      "Id": "p6eaee00ed68284af1aef0e49639bc89",
+                      "Name": "秦力洪",
+                      "Image": "https://image.qcc.com/person/p6eaee00ed68284af1aef0e49639bc89.jpg?x-oss-process=style/person_200",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": "总经理,董事",
+                      "NodeType": "998",
+                      "Org": 2
+                  },
+                  {
+                      "Id": "p66951d525230e886d3417a2bdd04016",
+                      "Name": "周欣",
+                      "Image": null,
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": "董事",
+                      "NodeType": "998",
+                      "Org": 2
+                  },
+                  {
+                      "Id": "p531d5cd6f362145b0d57455a4d566ea",
+                      "Name": "高岗",
+                      "Image": null,
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": "监事",
+                      "NodeType": "998",
+                      "Org": 2
+                  }
+              ]
+          },
+          {
+              "Id": "",
+              "Name": "对外投资",
+              "NodeType": "106",
+              "children": [
+                  {
+                      "Id": "0b410d7fcb1acb75d8bb31b0a811affd",
+                      "Name": "上海蔚来融资租赁有限公司",
+                      "Image": "https://image.qcc.com/logo/0b410d7fcb1acb75d8bb31b0a811affd.jpg?x-oss-process=style/logo_200",
+                      "OperType": null,
+                      "Percent": "75%",
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": 0
+                  },
+                  {
+                      "Id": "e160f2044585bbd2ae07afee723dae60",
+                      "Name": "阿维塔科技（重庆）有限公司",
+                      "Image": "https://image.qcc.com/logo/e160f2044585bbd2ae07afee723dae60.jpg?x-oss-process=style/logo_200",
+                      "OperType": null,
+                      "Percent": "0.6672%",
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": 0
+                  },
+                  {
+                      "Id": "d0b0aa82de323c8a52c7337e07363a3b",
+                      "Name": "南京市卡睿创新创业管理服务有限公司",
+                      "Image": "https://image.qcc.com/auto/d0b0aa82de323c8a52c7337e07363a3b.jpg?x-oss-process=style/logo_200&shortName=%E5%8D%A1%E7%9D%BF%E5%88%9B%E6%96%B0&color=7BB1DD",
+                      "OperType": null,
+                      "Percent": "10%",
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": 0
+                  },
+                  {
+                      "Id": "2b229a88efbb7ee0bd986836ce603d1e",
+                      "Name": "廊坊穗禾万泰一号企业管理合伙企业（有限合伙）",
+                      "Image": "https://image.qcc.com/auto/2b229a88efbb7ee0bd986836ce603d1e.jpg?x-oss-process=style/logo_200&shortName=%E7%A9%97%E7%A6%BE%E4%B8%87%E6%B3%B0&color=E5B072",
+                      "OperType": null,
+                      "Percent": "0.0198%",
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": 0
+                  },
+                  {
+                      "Id": "a00d31d97f9fa2992ae40d83767217f0",
+                      "Name": "上海蔚来新能源汽车有限公司",
+                      "Image": "https://image.qcc.com/logo/a00d31d97f9fa2992ae40d83767217f0.jpg?x-oss-process=style/logo_200",
+                      "OperType": null,
+                      "Percent": "50%",
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": 0
+                  }
+              ]
+          },
+          {
+              "Id": "",
+              "Name": "控股企业",
+              "NodeType": "107",
+              "children": []
+          },
+          {
+              "Id": "",
+              "Name": "分支机构",
+              "NodeType": "109",
+              "children": [
+                  {
+                      "Id": "7c5445f9af81caafa276a3890cf10830",
+                      "Name": "上海蔚来汽车有限公司北京分公司",
+                      "Image": "https://image.qcc.com/logo/7c5445f9af81caafa276a3890cf10830.jpg?x-oss-process=style/logo_200",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "d25573e446f8f269a4519e1ddeab9134",
+                      "Name": "上海蔚来汽车有限公司广州分公司",
+                      "Image": "https://image.qcc.com/logo/d25573e446f8f269a4519e1ddeab9134.jpg?x-oss-process=style/logo_200",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  }
+              ]
+          },
+          {
+              "Id": "",
+              "Name": "供应商",
+              "NodeType": "110",
+              "children": [
+                  {
+                      "Id": "cac78a933d135379732d216585d752f6",
+                      "Name": "无锡纽科电子科技股份有限公司",
+                      "Image": "https://image.qcc.com/logo/cac78a933d135379732d216585d752f6.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "05f08b6c63715b548d5c15ae7796aea8",
+                      "Name": "安徽巨一科技股份有限公司",
+                      "Image": "https://image.qcc.com/logo/05f08b6c63715b548d5c15ae7796aea8.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "113e8982a9a3537fe6aea1cb5e9f24a1",
+                      "Name": "神通科技集团股份有限公司",
+                      "Image": "https://image.qcc.com/logo/113e8982a9a3537fe6aea1cb5e9f24a1.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "9ee62b746fdf417f84a1d03c8e5d6e09",
+                      "Name": "阿尔特汽车技术股份有限公司",
+                      "Image": "https://image.qcc.com/logo/9ee62b746fdf417f84a1d03c8e5d6e09.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "3e3bc026382278b09c44cba029e4b918",
+                      "Name": "大医科技股份有限公司",
+                      "Image": "https://co-image.qichacha.com/CompanyImage/3e3bc026382278b09c44cba029e4b918.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "63115f0e46bb077473233b940e2e24ff",
+                      "Name": "东莞市顺林模型礼品股份有限公司",
+                      "Image": "https://co-image.qichacha.com/CompanyImage/63115f0e46bb077473233b940e2e24ff.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "cba98dd795e57444c0b0ccdfba8ff10b",
+                      "Name": "北京昆仑联通科技发展股份有限公司",
+                      "Image": "https://co-image.qichacha.com/CompanyImage/cba98dd795e57444c0b0ccdfba8ff10b.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "2586ede180db6f7bc9e53ac274ddefe1",
+                      "Name": "北京合力亿捷科技股份有限公司",
+                      "Image": "https://co-image.qichacha.com/CompanyImage/2586ede180db6f7bc9e53ac274ddefe1.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "c6de3990bf9a7ffcbff538b7b6827608",
+                      "Name": "上海事成软件股份有限公司",
+                      "Image": "https://co-image.qichacha.com/CompanyImage/c6de3990bf9a7ffcbff538b7b6827608.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "249d2f68349db1eab880e7d389e736c1",
+                      "Name": "上海派拉软件股份有限公司",
+                      "Image": "https://co-image.qichacha.com/CompanyImage/249d2f68349db1eab880e7d389e736c1.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  },
+                  {
+                      "Id": "15d66a18acd581f938e3bafca669d799",
+                      "Name": "上海波润实业有限公司",
+                      "Image": "https://image.qcc.com/logo/15d66a18acd581f938e3bafca669d799.jpg",
+                      "OperType": null,
+                      "Percent": null,
+                      "Location": "",
+                      "ProductName": "",
+                      "StockCode": "",
+                      "Job": null,
+                      "NodeType": "999",
+                      "Org": null
+                  }
+              ]
+          },
+          {
+              "Id": "",
+              "Name": "历史股东",
+              "NodeType": "114",
+              "children": []
+          }
+      ]
+  }
+}
