@@ -38,3 +38,5 @@ package.lock.json
 
 # 不对markdown进行格式化, 容易打乱自己编排的样式
 *.md
+
+格式化代码参考文章： https://www.cnblogs.com/fitzlovecode/p/code_formater.html
