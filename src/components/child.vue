@@ -37,7 +37,7 @@ export default {
     },
     send(params) {
       // console.log(params)
-      // debugger
+      // 
       this.$emit("parent", params);
       console.log(this.$refs);
     }

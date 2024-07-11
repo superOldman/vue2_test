@@ -29,7 +29,7 @@ export default {
   methods: {
     initScroll() {
       this.$nextTick(() => {
-        // debugger
+        // 
         const wrap = this.$refs.wrap
         const bs = new BetterScroll(wrap, {
           probeType: 3,

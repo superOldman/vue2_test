@@ -12,11 +12,10 @@
 <script>
 import data from './mock/data'
 // import { createNode, createResource } from '@/pages/D3/D3tree'
-import { D3Tree } from '@/pages/D3/D3tree2'
+import { D3Tree } from '@/pages/D3/D3tree3'
 export default {
-  name: 'd3_collapsibleTree_test',
+  name: 'EquityPenetration',
   components: {
-
   },
   props: {
 

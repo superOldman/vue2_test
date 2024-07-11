@@ -43,7 +43,7 @@ export default class D3Tree {
     this.createResource()
     // 将缩放对象应用于SVG元素
     this.zoomHandler()
-    
+
     this.drawTree()
   }
 
@@ -86,18 +86,21 @@ export default class D3Tree {
 
   update(event, source) {
     const duration = event?.altKey ? 3500 : 250
+    console.log('root', this.root)
+
     const nodesData = this.root.descendants() //.reverse()
     const linksData = this.root.links()
 
     // Compute the new tree layout.
-    this.tree(this.root)
-
-    let left = this.root
-    let right = this.root
-    this.root.eachBefore(node => {
-      if (node.x < left.x) left = node
-      if (node.x > right.x) right = node
-    })
+    const tree = this.tree(this.root)
+    console.log('tree', tree)
+    // console.log('tree2', JSON.stringify(tree))
+    // let left = this.root
+    // let right = this.root
+    // this.root.eachBefore(node => {
+    //   if (node.x < left.x) left = node
+    //   if (node.x > right.x) right = node
+    // })
 
     const height = this.dx // right.x - left.x + marginTop + marginBottom;
 

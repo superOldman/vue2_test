@@ -1,0 +1,51 @@
+{
+  "data": {
+      "code": "02",
+      "url": "/companyDetail/da15866bae28153408ac8d88abb87db4.html",
+      "_id": "da15866bae28153408ac8d88abb87db4",
+      "name": "武汉壹捌壹零企业管理有限公司",
+      "source": "pc",
+      "hasNext": 0,
+      "children": [
+          {
+              "code": "02",
+              "name": "对外投资",
+              "source": "pc",
+              "hasNext": 1,
+              "children": [
+                  {
+                      "code": "02",
+                      "_id": "804b78f03a3a4ffa3a10e681f38c8723",
+                      "eid": "c8399eac-59d6-407f-a193-809adc76ff11",
+                      "es_id": "804b78f03a3a4ffa3a10e681f38c8723",
+                      "name": "北京小米智造股权投资基金合伙企业（有限合伙）",
+                      "stockPercent": "24.91%",
+                      "type": 2,
+                      "source": "pc",
+                      "hasNext": 1,
+                      "cornerLabel": "存续",
+                      "provinceCode": "110000",
+                      "provinceName": "北京市",
+                      "stockPercentRation": 24.91,
+                      "operName": "北京小米企业管理有限公司",
+                      "oper_es_id": "9a70bb80db7a1c68b6ec6b6a3c441af1",
+                      "oper_eid": "dcb5f003-206a-4731-8aa7-641d343a6ef6",
+                      "regCapi": "903000万人民币",
+                      "shouldCapi": "200000万人民币",
+                      "startDate": "2021-09-18",
+                      "statusCode": "1",
+                      "statusName": "存续",
+                      "name_short": "小米智造"
+                  }
+              ],
+              "stockPercentRation": 0.0
+          }
+      ],
+      "stockPercentRation": 0.0
+  },
+  "code": 0,
+  "status": 0,
+  "success": true,
+  "msg": "成功",
+  "hasUse": 0
+}

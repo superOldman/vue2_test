@@ -65,7 +65,7 @@
 		class Watcher {
 			constructor(vm, expOrFn, cb) {
 				this.vm = vm
-				debugger
+				
 				this.getter = parsePath(expOrFn)
 				this.cb = cb
 				this.value = this.get()

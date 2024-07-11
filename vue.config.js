@@ -40,7 +40,6 @@ module.exports = {
     proxy: {
       '/localhost': {
         target: 'http://localhost:3000',
-        // target: 'https://tyunzhentui.71360.com',
         changeOrigin: true,
         pathRewrite: {
           '^/localhost': ''
@@ -50,6 +49,7 @@ module.exports = {
   },
   lintOnSave: false,
   chainWebpack: config => {
+
     var a = config.module.rule('svg')
     // console.log(config)
     // console.log(a)

@@ -245,7 +245,7 @@ export default {
       this.percentageShow = true;
       this.$nextTick(e => {
         // this.$refs.upload.submit(this.file);
-        // debugger;
+        // ;
 
         this.$refs.upload.uploadFiles.push(this.file);
         this.$refs.upload.$children[0].post(this.file);

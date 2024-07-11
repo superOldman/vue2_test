@@ -18,19 +18,37 @@ const router = [
         component: home
       },
       {
+        path: 'observeTest',
+        name: 'observeTest',
+        component: () => import('@/pages/intersectionObserver')
+      },
+      {
         path: 'D3Test',
         name: 'D3Test',
-        component: ()=> import('@/pages/D3/index')
+        component: () => import('@/pages/D3/index')
       },
       {
         path: 'D3Test2',
         name: 'D3Test2',
-        component: ()=> import('@/pages/D3/undirectedTree')
+        component: () => import('@/pages/D3/undirectedTree')
+      },
+      {
+        path: 'equityPenetration',
+        name: 'equityPenetration',
+        meta: {
+          title: 'D3_股权穿透'
+        },
+        component: () => import('@/pages/D3/equityPenetration')
+      },
+      {
+        path: 'D3Test4',
+        name: 'D3Test4',
+        component: () => import('@/pages/D3/ownership')
       },
       {
         path: 'mySelect',
         name: 'mySelect',
-        component: ()=> import('@/pages/mySelect/index')
+        component: () => import('@/pages/mySelect/index')
       },
       {
         path: 'q',
@@ -40,143 +58,143 @@ const router = [
       {
         path: 'abTest',
         name: 'abTest',
-        component: ()=> import('@/pages/abTest/index')
+        component: () => import('@/pages/abTest/index')
       },
       {
         path: 'arithmetic',
         name: 'arithmetic',
-        component: ()=> import('@/pages/arithmetic/index')
+        component: () => import('@/pages/arithmetic/index')
       },
       {
         path: 'smallTools',
         name: 'smallTools',
-        component: ()=> import('@/pages/smallTools/index')
+        component: () => import('@/pages/smallTools/index')
       },
       {
         path: 'vfor_test',
         name: 'vfor_test',
-        component: ()=> import('@/pages/vfor_test')
+        component: () => import('@/pages/vfor_test')
       },
       {
         path: 'busSendTest',
         name: 'busSendTest',
-        component: ()=> import('@/pages/busSendTest')
+        component: () => import('@/pages/busSendTest')
       },
       {
         path: 'busGetTest',
         name: 'busGetTest',
-        component: ()=> import('@/pages/busGetTest')
+        component: () => import('@/pages/busGetTest')
       },
       {
         path: 'computeTest',
         name: 'computeTest',
-        component: ()=> import('@/pages/computeTest')
+        component: () => import('@/pages/computeTest')
       },
       {
         path: 'directiveTest',
         name: 'directiveTest',
-        component: ()=> import('@/pages/directiveTest')
+        component: () => import('@/pages/directiveTest')
       },
       {
         path: 'betterScroll',
         name: 'betterScroll',
-        component: ()=> import('@/pages/betterScroll/index')
+        component: () => import('@/pages/betterScroll/index')
       },
       {
         path: 'copyDemo',
         name: 'copyDemo',
-        component: ()=> import('@/pages/directiveTest/copyDemo')
+        component: () => import('@/pages/directiveTest/copyDemo')
       },
       {
         path: 'pinyin',
         name: 'pinyin',
-        component: ()=> import('@/pages/pinyin/index')
+        component: () => import('@/pages/pinyin/index')
       },
       {
         path: 'uploadTest',
         name: 'uploadTest',
-        component: ()=> import('@/pages/uploadtest')
+        component: () => import('@/pages/uploadtest')
       },
       {
         path: 'downloadExcal',
         name: 'downloadExcal',
-        component: ()=> import('@/pages/downloadExcal')
+        component: () => import('@/pages/downloadExcal')
       },
 
       {
         path: 'canvasTest',
         name: 'canvasTest',
-        component: ()=> import('@/pages/canvas/canvasTest')
+        component: () => import('@/pages/canvas/canvasTest')
       },
       {
         path: 'drop_shadow',
         name: 'drop_shadow',
-        component: ()=> import('@/pages/cssDemo/drop_shadow')
+        component: () => import('@/pages/cssDemo/drop_shadow')
       },
       {
         path: 'transition',
         name: 'transition',
-        component: ()=> import('@/pages/transitionTest/transition')
+        component: () => import('@/pages/transitionTest/transition')
       },
       {
         path: 'componentTest',
         name: 'componentTest',
-        component: ()=> import('@/pages/componentTest/componentFn')
+        component: () => import('@/pages/componentTest/componentFn')
       },
       {
         path: 'emojiTest',
         name: 'emojiTest',
-        component: ()=> import('@/pages/emojiTest/index')
+        component: () => import('@/pages/emojiTest/index')
       },
       {
         path: 'knowledgePoint',
         name: 'knowledgePoint',
-        component: ()=> import('@/pages/knowledgePoint/index')
+        component: () => import('@/pages/knowledgePoint/index')
       },
       {
         path: 'flextest',
         name: 'flextest',
-        component: ()=> import('@/pages/cssDemo/flextest')
+        component: () => import('@/pages/cssDemo/flextest')
       },
       {
         path: 'btnsChange',
         name: 'btnsChange',
-        component: ()=> import('@/pages/cssDemo/btnsChange')
+        component: () => import('@/pages/cssDemo/btnsChange')
       },
       {
         path: 'avTest',
         name: 'avTest',
-        component: ()=> import('@/pages/avTest/index')
+        component: () => import('@/pages/avTest/index')
       },
       {
         path: 'dragDemo',
         name: 'dragDemo',
-        component: ()=> import('@/pages/dragDemo/index')
+        component: () => import('@/pages/dragDemo/index')
       },
       {
         path: 'dragDemo2',
         name: 'dragDemo2',
-        component: ()=> import('@/pages/dragDemo/indexVersion1')
+        component: () => import('@/pages/dragDemo/indexVersion1')
       },
       {
         path: 'indexVersion2',
         name: 'indexVersion2',
-        component: ()=> import('@/pages/dragDemo/indexVersion2')
+        component: () => import('@/pages/dragDemo/indexVersion2')
       },
       {
         path: 'ctrlZ+Y',
         name: 'ctrlZ+Y',
-        component: ()=> import('@/pages/ctrlZ+Y/index')
+        component: () => import('@/pages/ctrlZ+Y/index')
       },
       {
         path: 'screenfull',
         name: 'screenfull',
-        component: ()=> import('@/pages/screenfull/index')
+        component: () => import('@/pages/screenfull/index')
       },
       {
         path: 'editPane',
         name: 'editPane',
-        component: ()=> import('@/pages/editPane/index')
+        component: () => import('@/pages/editPane/index')
       }
     ]
   }

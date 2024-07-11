@@ -9,7 +9,7 @@
       <!-- </template> -->
     </div>
 
-    <el-input type="textarea" v-model="test" placeholder=""></el-input>
+    <el-input type="textarea" v-model="test" placeholder="" autofocus></el-input>
 
     <text-overflow>123123123</text-overflow>
     <el-button type="primary" @click="downloadCSV">downloadCSV</el-button>

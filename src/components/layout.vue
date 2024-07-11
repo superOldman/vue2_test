@@ -34,7 +34,7 @@ export default {
       this.nav = routerList[0].children
     },
     clickHandle(item){
-      // debugger
+      // 
       this.$router.push({
         name: item.name
       })

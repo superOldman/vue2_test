@@ -126,7 +126,7 @@ export default {
     aftermousedown(e, id) {
       const index = this.list.findIndex(e => e.id === id)
       if (index !== -1 && !this.isDrag) {
-        // debugger
+        // 
         const target = this.target = e.target.parentNode
         this.placeholder.width = this.list[index].width
         this.placeholder.height = this.list[index].height

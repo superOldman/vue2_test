@@ -61,7 +61,7 @@ export class D3Tree {
   create(data) {
     this.sourceData = data
     this.tree = d3.tree().nodeSize([50, 240])
-    // debugger
+    // 
     // 区分左右
     this.left = { ...data, children: data.children.filter((e, i) => i < Math.floor(data.children.length / 2)) }
     this.right = { ...data, children: data.children.filter((e, i) => i >= Math.floor(data.children.length / 2)) }
@@ -80,12 +80,11 @@ export class D3Tree {
   drawTree() {
     for (let index = 0; index < this.root.length; index++) {
       // 计算布局
-      const tree = this.tree(this.root[index])
-      console.log(tree);
+
       const root = this.root[index]
       root.x0 = this.height / 2
       root.y0 = 0
-      root.descendants().forEach((d, i) => {
+      root.descendants().forEach(d => {
         d.id = d.data.Id || (d.data.Name + d.data.Type) // uuid()
         d._children = d.children
 
@@ -167,6 +166,12 @@ export class D3Tree {
 
   update(event, source, i) {
 
+    // 更新位置
+    const tree = this.tree(this.root[i])
+    this.root[i].descendants().forEach(d => {
+      if (i) d.y = -d.y
+    })
+
     const duration = event?.altKey ? 3500 : 250
     const nodesData = this.root[i].descendants()
     const linksData = this.root[i].links()
@@ -217,7 +222,7 @@ export class D3Tree {
         d3.select(event.currentTarget)
           .selectAll('.vertical-line')
           .attr('style', d => `stroke: rgb(102, 102, 102); stroke-width: 1; ${d.children ? 'visibility: hidden;' : null}`)
-        debugger
+        
         this.expandNode && this.expandNode(event, d, i)
       })
 
@@ -225,7 +230,7 @@ export class D3Tree {
     // nodeEnter.filter(d => d.depth == 2)
     //   .on('click', (event, d) => {
     //     // d.children = d.children ? null : d._children
-    //     // debugger
+    //     // 
     //     d.children = qwe.Result.Children
     //     d.data.children = qwe.Result.Children
     //     this.asyncExpandNode && this.asyncExpandNode(event, d, i)
@@ -356,7 +361,7 @@ export class D3Tree {
     const nodeExit = node.exit()
       .transition(transition)
       .attr('transform', d => {
-        debugger
+        
         return `translate(${source.y + transitionY},${source.x})`
       })
       .attr('fill-opacity', 0)
