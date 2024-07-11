@@ -17,56 +17,54 @@
 <script>
 export default {
   name: 'operationPanel',
-  components: {
-
-  },
+  components: {},
   props: {
-    data: null
+    data: null,
   },
   data() {
     return {
       form: null,
       source: {
-        'text': 't box',
-        'attributes': {
-          'style': {
-            'height': '21px',
-            'width': '1366px',
-            'fontSize': '16px',
-            'color': 'rgb(0, 0, 0)',
-            'fontWeight': '400',
-            'borderWidth': '0px',
-            'borderStyle': 'none',
-            'fontStyle': 'normal',
-            'backgroundColor': 'rgba(0, 0, 0, 0)',
-            'borderRadius': '0px',
-            'textDecorationLine': 'none',
-            'textAlign': 'start',
-            'float': 'none',
-            'left': 'auto',
-            'top': 'auto',
-            'bottom': 'auto',
-            'right': 'auto',
-            'position': 'static',
-            'fontFamily': '"Microsoft YaHei"',
-            'lineHeight': 'normal',
-            'wordSpacing': '0px',
-            'whiteSpace': 'normal',
-            'textDecoration': 'none solid rgb(0, 0, 0)',
-            'overflow': 'visible',
-            'verticalAlign': 'baseline',
-            'zIndex': 'auto',
-            'backgroundImage': 'none',
-            'backgroundRepeat': 'repeat',
-            'margin': '0px',
-            'padding': '0px',
-            'borderColor': 'rgb(0, 0, 0)',
-            'opacity': '1',
-            'textDecorationColor': 'rgb(0, 0, 0)',
-            'textDecorationStyle': 'solid'
-          }
-        }
-      }
+        text: 't box',
+        attributes: {
+          style: {
+            height: '21px',
+            width: '1366px',
+            fontSize: '16px',
+            color: 'rgb(0, 0, 0)',
+            fontWeight: '400',
+            borderWidth: '0px',
+            borderStyle: 'none',
+            fontStyle: 'normal',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            borderRadius: '0px',
+            textDecorationLine: 'none',
+            textAlign: 'start',
+            float: 'none',
+            left: 'auto',
+            top: 'auto',
+            bottom: 'auto',
+            right: 'auto',
+            position: 'static',
+            fontFamily: '"Microsoft YaHei"',
+            lineHeight: 'normal',
+            wordSpacing: '0px',
+            whiteSpace: 'normal',
+            textDecoration: 'none solid rgb(0, 0, 0)',
+            overflow: 'visible',
+            verticalAlign: 'baseline',
+            zIndex: 'auto',
+            backgroundImage: 'none',
+            backgroundRepeat: 'repeat',
+            margin: '0px',
+            padding: '0px',
+            borderColor: 'rgb(0, 0, 0)',
+            opacity: '1',
+            textDecorationColor: 'rgb(0, 0, 0)',
+            textDecorationStyle: 'solid',
+          },
+        },
+      },
     }
   },
   methods: {
@@ -80,11 +78,10 @@ export default {
           for (const key in props) {
             if (typeof props[key] === 'object') {
               getKey(props[key], theKey + key + '.')
-            }
-            else if (typeof props[key] === 'string') {
+            } else if (typeof props[key] === 'string') {
               resKey.push({
                 key: theKey ? theKey + key : key,
-                value: props[key]
+                value: props[key],
               })
             }
           }
@@ -133,11 +130,10 @@ export default {
               if (sourceVal !== otherVal) {
                 resKey.push({
                   key: theKey ? theKey + key : key,
-                  value: otherVal
+                  value: otherVal,
                 })
               }
-            }
-            else if (typeof sourceVal === 'object' && typeof otherVal === 'object') {
+            } else if (typeof sourceVal === 'object' && typeof otherVal === 'object') {
               diff(sourceVal, otherVal, theKey + key + '.')
             }
           }
@@ -145,10 +141,10 @@ export default {
       }
 
       diff(source, other)
-      console.log(resKey, resKey);
+      console.log(resKey, resKey)
       return resKey
-    }
-  }
+    },
+  },
 }
 </script>
 

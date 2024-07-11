@@ -1,78 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  <body>
+    <canvas id="cvs"></canvas>
+    <script>
+      const canvas = document.querySelector('#cvs')
+      const context = canvas.getContext('2d')
+      const width = 80
+      const height = 80
+      let radius = 20
+      canvas.width = width
+      canvas.height = height
 
-<body>
-  <canvas id="cvs"></canvas>
-  <script>
-    const canvas = document.querySelector('#cvs')
-    const context = canvas.getContext('2d')
-    const width = 80
-    const height = 80
-    let radius = 20
-    canvas.width = width
-    canvas.height = height
+      function drawCircle() {
+        context.beginPath()
+        context.arc(width / 2, height / 2, radius, 0, Math.PI * 2)
+        context.closePath()
+        context.lineWidth = 2 //线条宽度
+        context.strokeStyle = '#9CCFFF' //颜色
+        context.stroke()
+        radius += 1 //每一帧半径增加0.5
 
-    function drawCircle() {
-      context.beginPath()
-      context.arc(width / 2, height / 2, radius, 0, Math.PI * 2)
-      context.closePath()
-      context.lineWidth = 2 //线条宽度
-      context.strokeStyle = '#9CCFFF' //颜色
-      context.stroke()
-      radius += 1 //每一帧半径增加0.5
-
-      //半径radius大于30时，重置为0
-      if (radius > 39) {
-        radius = 0
+        //半径radius大于30时，重置为0
+        if (radius > 39) {
+          radius = 0
+        }
       }
-    }
-    function render() {
-      //默认值为source-over
-      var prev = context.globalCompositeOperation
+      function render() {
+        //默认值为source-over
+        var prev = context.globalCompositeOperation
 
-      //只显示canvas上原图像的重叠部分
-      context.globalCompositeOperation = 'destination-in'
+        //只显示canvas上原图像的重叠部分
+        context.globalCompositeOperation = 'destination-in'
 
-      //设置主canvas的绘制透明度
-      context.globalAlpha = 0.95
+        //设置主canvas的绘制透明度
+        context.globalAlpha = 0.95
 
-      //这一步目的是将canvas上的图像变的透明
-      context.fillRect(0, 0, width, height)
+        //这一步目的是将canvas上的图像变的透明
+        context.fillRect(0, 0, width, height)
 
-      //在原图像上重叠新图像
-      context.globalCompositeOperation = prev
+        //在原图像上重叠新图像
+        context.globalCompositeOperation = prev
 
-      //在主canvas上画新圆
-      drawCircle()
+        //在主canvas上画新圆
+        drawCircle()
 
+        window.requestAnimationFrame(render)
+      }
       window.requestAnimationFrame(render)
 
-    }
-    window.requestAnimationFrame(render)
-
-
-
-
-    let a = 'asdaAef'
-    let arr = a.split('')
-    let i = 0
-    arr.forEach((e, index) => {
-      if ((/[A-Z]/).test(e)) {
-        i = index
-        e = e.toLowerCase()
-      }
-    })
-    console.log(arr)
-    arr.splice(i,0,'-')
-    console.log(arr)
-    let a = arr.join('')
-  </script>
-</body>
-
+      let a = 'asdaAef'
+      let arr = a.split('')
+      let i = 0
+      arr.forEach((e, index) => {
+        if (/[A-Z]/.test(e)) {
+          i = index
+          e = e.toLowerCase()
+        }
+      })
+      console.log(arr)
+      arr.splice(i, 0, '-')
+      console.log(arr)
+      let a = arr.join('')
+    </script>
+  </body>
 </html>

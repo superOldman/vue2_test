@@ -2,7 +2,7 @@
   <div>
     <div class="wrap" ref="wrap">
       <ul class="items">
-        <li class="item" v-for="(item,i) in 100" :key="i">{{i}}</li>
+        <li class="item" v-for="(item, i) in 100" :key="i">{{ i }}</li>
       </ul>
     </div>
   </div>
@@ -13,14 +13,7 @@ import BetterScroll from 'better-scroll'
 export default {
   data() {
     return {
-      list: [
-        { text: 'ssss' },
-        { text: 'ssss' },
-        { text: 'ssss' },
-        { text: 'ssss' },
-        { text: 'ssss' },
-        { text: 'ssss' }
-      ]
+      list: [{ text: 'ssss' }, { text: 'ssss' }, { text: 'ssss' }, { text: 'ssss' }, { text: 'ssss' }, { text: 'ssss' }],
     }
   },
   mounted() {
@@ -29,17 +22,17 @@ export default {
   methods: {
     initScroll() {
       this.$nextTick(() => {
-        // 
+        //
         const wrap = this.$refs.wrap
         const bs = new BetterScroll(wrap, {
           probeType: 3,
           click: true, // 设为 true 表示可以在的 div 里面 实现点击事件
-          pullUpLoad: true // 表示上拉加载更多
+          pullUpLoad: true, // 表示上拉加载更多
         })
         console.log(bs)
       })
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="css" scoped>

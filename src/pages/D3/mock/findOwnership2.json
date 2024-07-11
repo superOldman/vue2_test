@@ -1,85 +1,85 @@
 {
-    "data": {
+  "data": {
+    "code": "01",
+    "url": "/companyDetail/42a6483d302c93a16fb91b3ca53463e8.html",
+    "_id": "42a6483d302c93a16fb91b3ca53463e8",
+    "name": "小米科技有限责任公司",
+    "logoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
+    "source": "pc",
+    "hasNext": 0,
+    "children": [
+      {
         "code": "01",
-        "url": "/companyDetail/42a6483d302c93a16fb91b3ca53463e8.html",
-        "_id": "42a6483d302c93a16fb91b3ca53463e8",
-        "name": "小米科技有限责任公司",
-        "logoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
+        "name": "股东持股",
         "source": "pc",
-        "hasNext": 0,
+        "hasNext": 1,
         "children": [
-            {
-                "code": "01",
-                "name": "股东持股",
-                "source": "pc",
-                "hasNext": 1,
-                "children": [
-                    {
-                        "code": "01",
-                        "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
-                        "name": "雷军",
-                        "pid": "fdc8b96a9541c5dc8b415653d0039533",
-                        "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
-                        "enterpriseName": "小米科技有限责任公司",
-                        "stockPercent": "77.8%",
-                        "type": 1,
-                        "source": "pc",
-                        "hasNext": 0,
-                        "stockPercentRation": 77.8,
-                        "label": {
-                            "majorShareholder": "大股东",
-                            "beneficiary": "疑似最终受益人",
-                            "result": "雷军"
-                        }
-                    },
-                    {
-                        "code": "01",
-                        "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
-                        "name": "黎万强",
-                        "pid": "02717a4d4a3c31a7ac9f8d369a476824",
-                        "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
-                        "enterpriseName": "小米科技有限责任公司",
-                        "stockPercent": "10.12%",
-                        "type": 1,
-                        "source": "pc",
-                        "hasNext": 0,
-                        "stockPercentRation": 10.12
-                    },
-                    {
-                        "code": "01",
-                        "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
-                        "name": "洪锋",
-                        "pid": "f8356037dd5e37c790d06259addf3278",
-                        "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
-                        "enterpriseName": "小米科技有限责任公司",
-                        "stockPercent": "10.07%",
-                        "type": 1,
-                        "source": "pc",
-                        "hasNext": 0,
-                        "stockPercentRation": 10.07
-                    },
-                    {
-                        "code": "01",
-                        "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
-                        "name": "刘德",
-                        "pid": "ff46dae2d44974dd704ba2a5bde4c91e",
-                        "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
-                        "enterpriseName": "小米科技有限责任公司",
-                        "stockPercent": "2.01%",
-                        "type": 1,
-                        "source": "pc",
-                        "hasNext": 0,
-                        "stockPercentRation": 2.01
-                    }
-                ],
-                "stockPercentRation": 0.0
+          {
+            "code": "01",
+            "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
+            "name": "雷军",
+            "pid": "fdc8b96a9541c5dc8b415653d0039533",
+            "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
+            "enterpriseName": "小米科技有限责任公司",
+            "stockPercent": "77.8%",
+            "type": 1,
+            "source": "pc",
+            "hasNext": 0,
+            "stockPercentRation": 77.8,
+            "label": {
+              "majorShareholder": "大股东",
+              "beneficiary": "疑似最终受益人",
+              "result": "雷军"
             }
+          },
+          {
+            "code": "01",
+            "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
+            "name": "黎万强",
+            "pid": "02717a4d4a3c31a7ac9f8d369a476824",
+            "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
+            "enterpriseName": "小米科技有限责任公司",
+            "stockPercent": "10.12%",
+            "type": 1,
+            "source": "pc",
+            "hasNext": 0,
+            "stockPercentRation": 10.12
+          },
+          {
+            "code": "01",
+            "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
+            "name": "洪锋",
+            "pid": "f8356037dd5e37c790d06259addf3278",
+            "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
+            "enterpriseName": "小米科技有限责任公司",
+            "stockPercent": "10.07%",
+            "type": 1,
+            "source": "pc",
+            "hasNext": 0,
+            "stockPercentRation": 10.07
+          },
+          {
+            "code": "01",
+            "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
+            "name": "刘德",
+            "pid": "ff46dae2d44974dd704ba2a5bde4c91e",
+            "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
+            "enterpriseName": "小米科技有限责任公司",
+            "stockPercent": "2.01%",
+            "type": 1,
+            "source": "pc",
+            "hasNext": 0,
+            "stockPercentRation": 2.01
+          }
         ],
         "stockPercentRation": 0.0
-    },
-    "code": 0,
-    "status": 0,
-    "success": true,
-    "msg": "成功",
-    "hasUse": 0
+      }
+    ],
+    "stockPercentRation": 0.0
+  },
+  "code": 0,
+  "status": 0,
+  "success": true,
+  "msg": "成功",
+  "hasUse": 0
 }

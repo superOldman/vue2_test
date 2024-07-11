@@ -1,127 +1,127 @@
 {
   "Status": 200,
   "Result": {
-      "Id": "0b410d7fcb1acb75d8bb31b0a811affd",
-      "Name": "上海蔚来融资租赁有限公司",
-      "NodeType": "999",
-      "Children": [
+    "Id": "0b410d7fcb1acb75d8bb31b0a811affd",
+    "Name": "上海蔚来融资租赁有限公司",
+    "NodeType": "999",
+    "Children": [
+      {
+        "Id": "",
+        "Name": "法定代表人",
+        "NodeType": "101",
+        "Children": [
           {
-              "Id": "",
-              "Name": "法定代表人",
-              "NodeType": "101",
-              "Children": [
-                  {
-                      "Id": "pr2d0892ea53adf67f1cea764cda08cb",
-                      "Name": "曲玉",
-                      "Image": null,
-                      "OperType": 1,
-                      "Percent": null,
-                      "Location": "",
-                      "ProductName": "",
-                      "StockCode": "",
-                      "Job": null,
-                      "NodeType": "998",
-                      "Org": 2
-                  }
-              ]
-          },
-          {
-              "Id": "",
-              "Name": "实际控制人",
-              "NodeType": "102",
-              "Children": []
-          },
-          {
-              "Id": "",
-              "Name": "最终受益人",
-              "NodeType": "103",
-              "Children": []
-          },
-          {
-              "Id": "",
-              "Name": "股东",
-              "NodeType": "104",
-              "Children": [
-                  {
-                      "Id": "3065012a7bc3f9583a8d09fb9d2f38b8",
-                      "Name": "上海蔚来汽车有限公司",
-                      "Image": "https://image.qcc.com/logo/3065012a7bc3f9583a8d09fb9d2f38b8.jpg?x-oss-process=style/logo_200",
-                      "OperType": null,
-                      "Percent": "75.00%",
-                      "Location": "",
-                      "ProductName": "",
-                      "StockCode": "",
-                      "Job": null,
-                      "NodeType": "999",
-                      "Org": 0
-                  },
-                  {
-                      "Id": "hbb2955a486952be8bbbede0567e18b1",
-                      "Name": "Nio Nextev Limited",
-                      "Image": "https://image.qcc.com/logo/hbb2955a486952be8bbbede0567e18b1.jpg?x-oss-process=style/logo_200",
-                      "OperType": null,
-                      "Percent": "25.00%",
-                      "Location": "",
-                      "ProductName": "",
-                      "StockCode": "",
-                      "Job": null,
-                      "NodeType": "999",
-                      "Org": 3
-                  }
-              ]
-          },
-          {
-              "Id": "",
-              "Name": "主要人员",
-              "NodeType": "105",
-              "Children": [
-                  {
-                      "Id": "pr2d0892ea53adf67f1cea764cda08cb",
-                      "Name": "曲玉",
-                      "Image": null,
-                      "OperType": null,
-                      "Percent": null,
-                      "Location": "",
-                      "ProductName": "",
-                      "StockCode": "",
-                      "Job": "执行董事,总经理",
-                      "NodeType": "998",
-                      "Org": 2
-                  },
-                  {
-                      "Id": "p531d5cd6f362145b0d57455a4d566ea",
-                      "Name": "高岗",
-                      "Image": null,
-                      "OperType": null,
-                      "Percent": null,
-                      "Location": "",
-                      "ProductName": "",
-                      "StockCode": "",
-                      "Job": "监事",
-                      "NodeType": "998",
-                      "Org": 2
-                  },
-                  {
-                      "Id": "pr8f19913fe23164a22cf06afeb07688",
-                      "Name": "孙远婕",
-                      "Image": null,
-                      "OperType": null,
-                      "Percent": null,
-                      "Location": "",
-                      "ProductName": "",
-                      "StockCode": "",
-                      "Job": "",
-                      "NodeType": "998",
-                      "Org": 2
-                  }
-              ]
-          },
-          {
-              "Id": "",
-              "Name": "历史法人",
-              "NodeType": "113",
-              "Children": []
+            "Id": "pr2d0892ea53adf67f1cea764cda08cb",
+            "Name": "曲玉",
+            "Image": null,
+            "OperType": 1,
+            "Percent": null,
+            "Location": "",
+            "ProductName": "",
+            "StockCode": "",
+            "Job": null,
+            "NodeType": "998",
+            "Org": 2
           }
-      ]
+        ]
+      },
+      {
+        "Id": "",
+        "Name": "实际控制人",
+        "NodeType": "102",
+        "Children": []
+      },
+      {
+        "Id": "",
+        "Name": "最终受益人",
+        "NodeType": "103",
+        "Children": []
+      },
+      {
+        "Id": "",
+        "Name": "股东",
+        "NodeType": "104",
+        "Children": [
+          {
+            "Id": "3065012a7bc3f9583a8d09fb9d2f38b8",
+            "Name": "上海蔚来汽车有限公司",
+            "Image": "https://image.qcc.com/logo/3065012a7bc3f9583a8d09fb9d2f38b8.jpg?x-oss-process=style/logo_200",
+            "OperType": null,
+            "Percent": "75.00%",
+            "Location": "",
+            "ProductName": "",
+            "StockCode": "",
+            "Job": null,
+            "NodeType": "999",
+            "Org": 0
+          },
+          {
+            "Id": "hbb2955a486952be8bbbede0567e18b1",
+            "Name": "Nio Nextev Limited",
+            "Image": "https://image.qcc.com/logo/hbb2955a486952be8bbbede0567e18b1.jpg?x-oss-process=style/logo_200",
+            "OperType": null,
+            "Percent": "25.00%",
+            "Location": "",
+            "ProductName": "",
+            "StockCode": "",
+            "Job": null,
+            "NodeType": "999",
+            "Org": 3
+          }
+        ]
+      },
+      {
+        "Id": "",
+        "Name": "主要人员",
+        "NodeType": "105",
+        "Children": [
+          {
+            "Id": "pr2d0892ea53adf67f1cea764cda08cb",
+            "Name": "曲玉",
+            "Image": null,
+            "OperType": null,
+            "Percent": null,
+            "Location": "",
+            "ProductName": "",
+            "StockCode": "",
+            "Job": "执行董事,总经理",
+            "NodeType": "998",
+            "Org": 2
+          },
+          {
+            "Id": "p531d5cd6f362145b0d57455a4d566ea",
+            "Name": "高岗",
+            "Image": null,
+            "OperType": null,
+            "Percent": null,
+            "Location": "",
+            "ProductName": "",
+            "StockCode": "",
+            "Job": "监事",
+            "NodeType": "998",
+            "Org": 2
+          },
+          {
+            "Id": "pr8f19913fe23164a22cf06afeb07688",
+            "Name": "孙远婕",
+            "Image": null,
+            "OperType": null,
+            "Percent": null,
+            "Location": "",
+            "ProductName": "",
+            "StockCode": "",
+            "Job": "",
+            "NodeType": "998",
+            "Org": 2
+          }
+        ]
+      },
+      {
+        "Id": "",
+        "Name": "历史法人",
+        "NodeType": "113",
+        "Children": []
+      }
+    ]
   }
 }

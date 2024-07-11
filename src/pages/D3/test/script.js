@@ -6,7 +6,7 @@ const Node = {
   height: 60,
   background: 'rgb(0, 139, 248)',
   r: 8,
-  color: 'white'
+  color: 'white',
 }
 const CenterBackground = 'orange'
 const ParentBackground = 'darkblue'
@@ -50,14 +50,14 @@ function draw(init = false) {
 
   nodes.forEach(a => ([a.x, a.y] = [a.y, a.x])) // 需要旋转90度
 
-  let leftMiddleOffset =  (left[0].y + left[1].y) / 2
+  let leftMiddleOffset = (left[0].y + left[1].y) / 2
   left.forEach(a => {
     a.descendants().forEach(b => {
       b.x = -b.x
       b.y -= leftMiddleOffset
     })
   })
-  let rightMiddleOffset =   (right[0].y + right[1].y) / 2
+  let rightMiddleOffset = (right[0].y + right[1].y) / 2
   right.forEach(a => {
     a.descendants().forEach(b => {
       b.y -= rightMiddleOffset

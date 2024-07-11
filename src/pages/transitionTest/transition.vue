@@ -8,9 +8,8 @@
       </el-table>
       <p v-else>Sorry, no items found.</p>
     </transition>
-    <animated-integer :value="number"/>
-    <el-button @click="number=Math.random()*100">切换</el-button>
-
+    <animated-integer :value="number" />
+    <el-button @click="number = Math.random() * 100">切换</el-button>
 
     <!-- <animated-integer  /> -->
   </div>
@@ -30,7 +29,7 @@ export default {
       table: [
         // { name: '1', sex: 'man' },
         // { name: '2', sex: 'woman' },
-      ]
+      ],
     }
   },
   methods: {
@@ -44,11 +43,9 @@ export default {
         this.table = []
       }
       this.btnchange = !this.btnchange
-
-    }
+    },
   },
-};
+}
 </script>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

@@ -9,7 +9,6 @@
       </li>
       <li></li>
     </ul>
-
   </div>
 </template>
 
@@ -20,21 +19,14 @@ export default {
   name: 'smallTools',
   components: {
     removeHtml,
-    removeFocus
+    removeFocus,
   },
-  props: {
-
-  },
+  props: {},
   data() {
-    return {
-
-    }
+    return {}
   },
-  methods: {
-
-  },
-};
+  methods: {},
+}
 </script>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

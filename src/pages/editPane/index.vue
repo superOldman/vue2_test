@@ -3,19 +3,39 @@
     <viewFullScreen style="background:#fff" :is-full-screen="isFullScreen">
       <div>
         <el-button type="primary" @click="goHome">去首页</el-button>
-        <el-button type="primary" @click="isEdit=!isEdit">{{isEdit?'保存':'编辑模式'}}</el-button>
+        <el-button type="primary" @click="isEdit = !isEdit">{{ isEdit ? '保存' : '编辑模式' }}</el-button>
         <el-button type="primary" @click="setBig">模拟模块改变</el-button>
         <el-button type="primary" @click="setBlock">模拟添加模块</el-button>
         <el-button type="primary" @click="setFullScreen">全屏</el-button>
         <el-button type="primary" @click="goBack">后退 </el-button>
         <el-button type="primary" @click="goForward">前进 </el-button>
       </div>
-      <grid-layout ref="gridLayout" :layout.sync="layout" :col-num="8" :row-height="192" :is-draggable="isEdit" :is-resizable="true"
-       :is-mirrored="false" :vertical-compact="true" :margin="[16, 16]"
-        :use-css-transforms="true" :isResizable="false">
-        <grid-item v-for="item in layout" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" drag-allow-from=".vue-draggable-handle" drag-ignore-from=".no-drag"
-          @moved="movedEvent">
-          {{item.i}}
+      <grid-layout
+        ref="gridLayout"
+        :layout.sync="layout"
+        :col-num="8"
+        :row-height="192"
+        :is-draggable="isEdit"
+        :is-resizable="true"
+        :is-mirrored="false"
+        :vertical-compact="true"
+        :margin="[16, 16]"
+        :use-css-transforms="true"
+        :isResizable="false"
+      >
+        <grid-item
+          v-for="item in layout"
+          :x="item.x"
+          :y="item.y"
+          :w="item.w"
+          :h="item.h"
+          :i="item.i"
+          :key="item.i"
+          drag-allow-from=".vue-draggable-handle"
+          drag-ignore-from=".no-drag"
+          @moved="movedEvent"
+        >
+          {{ item.i }}
           <div class="vue-draggable-handle" v-if="isEdit">拖动</div>
           <div class="no-drag">内容</div>
         </grid-item>
@@ -35,11 +55,9 @@ export default {
   components: {
     GridLayout: VueGridLayout.GridLayout,
     GridItem: VueGridLayout.GridItem,
-    viewFullScreen
+    viewFullScreen,
   },
-  props: {
-
-  },
+  props: {},
   data() {
     return {
       isEdit: false,
@@ -51,7 +69,7 @@ export default {
         // { 'x': 6, 'y': 0, 'w': 2, 'h': 1, 'i': '3' },
         // { 'x': 0, 'y': 1, 'w': 2, 'h': 2, 'i': '4' },
         // { 'x': 2, 'y': 2, 'w': 2, 'h': 2, 'i': '5' }
-      ]
+      ],
     }
   },
   mounted() {
@@ -60,7 +78,7 @@ export default {
   },
   methods: {
     createId(prefix = '') {
-      return prefix + Math.floor(Math.random() * 2147483648).toString(36);
+      return prefix + Math.floor(Math.random() * 2147483648).toString(36)
     },
     initData() {
       const { list, recorder } = this.$cache.local.getQueryParams() || {}
@@ -84,15 +102,14 @@ export default {
           h: +heights[Math.floor(Math.random() * 2)],
           i: this.createId(),
           x: 0,
-          y: 0
+          y: 0,
         })
       }
-
     },
     goHome() {
       this.$cache.local.saveQueryParams({
         list: this.layout,
-        recorder: this.getTwoList()
+        recorder: this.getTwoList(),
       })
       this.$router.push('screenfull')
     },
@@ -101,7 +118,7 @@ export default {
 
       var b = this.layout.find(e => e.y == a).h
 
-      this.layout.push({ 'x': 0, 'y': a + b, 'w': 4, 'h': 2, 'i': new Date().getTime() })
+      this.layout.push({ x: 0, y: a + b, w: 4, h: 2, i: new Date().getTime() })
       this.record()
     },
     setBig() {
@@ -113,13 +130,13 @@ export default {
     },
 
     movedEvent() {
-      console.log('movedEvent', this.layout);
+      console.log('movedEvent', this.layout)
       this.record()
     },
     setFullScreen() {
       this.isFullScreen = !this.isFullScreen
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -144,8 +161,3 @@ export default {
   cursor: pointer;
 }
 </style>
-
-
-
-
-

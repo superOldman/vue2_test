@@ -10,7 +10,7 @@
         <input type="text" v-model="e" />
       </div>
 
-      <div class="output">总和：{{all}}</div>
+      <div class="output">总和：{{ all }}</div>
     </div>
 
     <div class="watchBlock">
@@ -18,17 +18,17 @@
       <div>
         <h5>对象 添加属性 赋值监听</h5>
         <input type="text" v-model="text.name" />
-        <div>监听到：{{text}}</div>
+        <div>监听到：{{ text }}</div>
       </div>
       <div>
         <h5>对象 $set 赋值监听</h5>
         <input type="text" v-model="text2.name" />
-        <div>监听到：{{text2}}</div>
+        <div>监听到：{{ text2 }}</div>
       </div>
       <div>
         <h5>对象 整个重新赋值 监听</h5>
         <input type="text" v-model="text3.name" />
-        <div>监听到：{{text3}}</div>
+        <div>监听到：{{ text3 }}</div>
       </div>
     </div>
   </div>
@@ -47,49 +47,43 @@ export default {
       text2: {},
       text3: {},
       arr: [
-        { name: "小明", age: 13 },
-        { name: "小红", age: 14 }
-      ]
-    };
+        { name: '小明', age: 13 },
+        { name: '小红', age: 14 },
+      ],
+    }
   },
   computed: {
     all: function() {
-      return (
-        Number(this.a) +
-        Number(this.b) +
-        Number(this.c) +
-        Number(this.d) +
-        Number(this.e)
-      );
-    }
+      return Number(this.a) + Number(this.b) + Number(this.c) + Number(this.d) + Number(this.e)
+    },
   },
   created() {
     // this.$set(this.text, "name", "12312");
 
-    this.text.name = 1231;
-    this.$set(this.text2, "name", "12312");
+    this.text.name = 1231
+    this.$set(this.text2, 'name', '12312')
     this.text3 = {
-      name : '123131'
+      name: '123131',
     }
   },
   watch: {
     text: {
       deep: true,
       handler(val) {
-        console.log("监听", val);
-      }
-    }
+        console.log('监听', val)
+      },
+    },
   },
   mounted() {
-    this.fn();
+    this.fn()
   },
   methods: {
     fn() {
-      var a = this.arr.map(a => a.name);
-      console.log(a);
-    }
-  }
-};
+      var a = this.arr.map(a => a.name)
+      console.log(a)
+    },
+  },
+}
 </script>
 
 <style lang="less" scoped>

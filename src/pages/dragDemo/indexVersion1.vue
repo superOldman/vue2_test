@@ -5,9 +5,9 @@
       <el-button type="primary" @click="randomHandle">生成随机</el-button>
     </div>
     <div class="drag-wrap clearFix">
-      <div v-for="block in list" :key="block.id" class="t" :data-id="block.id" :style="{'width':block.width,'height':block.height,'background': block.bg}" @mouseenter="e=>afterEnter(e,block.id)">
-        <div class="drag-btn" @mousedown="e=>aftermousedown(e,block.id)">拖动</div>
-        <p>ID: {{block.id}}</p>
+      <div v-for="block in list" :key="block.id" class="t" :data-id="block.id" :style="{ width: block.width, height: block.height, background: block.bg }" @mouseenter="e => afterEnter(e, block.id)">
+        <div class="drag-btn" @mousedown="e => aftermousedown(e, block.id)">拖动</div>
+        <p>ID: {{ block.id }}</p>
       </div>
     </div>
   </div>
@@ -17,13 +17,9 @@
 import Trigger from '@/pages/ctrlZ+Y/coreVersion2'
 export default {
   name: 'indexVersion1',
-  components: {
-
-  },
+  components: {},
   // mixins: [coreVersion2],
-  props: {
-
-  },
+  props: {},
   data() {
     return {
       list: [
@@ -36,14 +32,14 @@ export default {
       isDrag: false,
       py: {
         left: 0,
-        top: 0
+        top: 0,
       },
-      trigger: null
+      trigger: null,
     }
   },
   mounted() {
     this.initEvent()
-    this.trigger = new Trigger(list => this.list = list)
+    this.trigger = new Trigger(list => (this.list = list))
   },
   beforeDestroy() {
     this.removeEvent()
@@ -54,14 +50,25 @@ export default {
       this.trigger.record(l)
     },
     fixHandle() {
-      this.list = [{ 'width': '25%', 'height': '180px', 'id': 'fpsej0', 'bg': '#ce1b11' }, { 'width': '25%', 'height': '180px', 'id': '6apsuf', 'bg': '#fb0e72' }, { 'width': '25%', 'height': '180px', 'id': 'obtcep', 'bg': '#782066' }, { 'width': '25%', 'height': '180px', 'id': 'uk98w3', 'bg': '#51330c' }, { 'width': '25%', 'height': '180px', 'id': 'zfh6zz', 'bg': '#853e67' }, { 'width': '25%', 'height': '180px', 'id': '59wqvs', 'bg': '#10b6d8' }, { 'width': '25%', 'height': '180px', 'id': 'rnogav', 'bg': '#f06196' }, { 'width': '25%', 'height': '180px', 'id': 'm0rne7', 'bg': '#8747a5' }, { 'width': '25%', 'height': '180px', 'id': 'z86tis', 'bg': '#650872' }, { 'width': '25%', 'height': '180px', 'id': 'lknf01', 'bg': '#7e73a1' }]
+      this.list = [
+        { width: '25%', height: '180px', id: 'fpsej0', bg: '#ce1b11' },
+        { width: '25%', height: '180px', id: '6apsuf', bg: '#fb0e72' },
+        { width: '25%', height: '180px', id: 'obtcep', bg: '#782066' },
+        { width: '25%', height: '180px', id: 'uk98w3', bg: '#51330c' },
+        { width: '25%', height: '180px', id: 'zfh6zz', bg: '#853e67' },
+        { width: '25%', height: '180px', id: '59wqvs', bg: '#10b6d8' },
+        { width: '25%', height: '180px', id: 'rnogav', bg: '#f06196' },
+        { width: '25%', height: '180px', id: 'm0rne7', bg: '#8747a5' },
+        { width: '25%', height: '180px', id: 'z86tis', bg: '#650872' },
+        { width: '25%', height: '180px', id: 'lknf01', bg: '#7e73a1' },
+      ]
       this.record(this.list)
     },
     randomHandle() {
       this.initData()
     },
     createId(prefix = '') {
-      return prefix + Math.floor(Math.random() * 2147483648).toString(36);
+      return prefix + Math.floor(Math.random() * 2147483648).toString(36)
     },
     createColor() {
       return '#' + Math.floor(Math.random() * 16777215).toString(16)
@@ -76,10 +83,9 @@ export default {
           width: widths[Math.floor(Math.random() * 1)],
           height: heights[Math.floor(Math.random() * 1)],
           id: this.createId(),
-          bg: this.createColor()
+          bg: this.createColor(),
         })
       }
-
     },
     initEvent() {
       document.addEventListener('mousemove', this.mousemove)
@@ -126,8 +132,8 @@ export default {
     aftermousedown(e, id) {
       const index = this.list.findIndex(e => e.id === id)
       if (index !== -1 && !this.isDrag) {
-        // 
-        const target = this.target = e.target.parentNode
+        //
+        const target = (this.target = e.target.parentNode)
         this.placeholder.width = this.list[index].width
         this.placeholder.height = this.list[index].height
         const py = this.py
@@ -148,11 +154,9 @@ export default {
         this.list.splice(zwIndex, 1)
         this.list.splice(imgIndex, 0, this.placeholder)
       }
-    }
-  }
-
-
-};
+    },
+  },
+}
 </script>
 
 <style scoped lang="less">
@@ -176,7 +180,7 @@ export default {
 }
 
 .clearFix::after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
 }

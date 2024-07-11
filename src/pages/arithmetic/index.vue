@@ -8,16 +8,10 @@
 import * as echarts from 'echarts'
 export default {
   name: '',
-  components: {
-
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
-    return {
-
-    }
+    return {}
   },
   mounted() {
     this.init([120, 200, 150, 80, 70, 110, 130])
@@ -26,8 +20,8 @@ export default {
   },
   methods: {
     init(data) {
-      var chartDom = document.getElementById('main');
-      var myChart = echarts.init(chartDom);
+      var chartDom = document.getElementById('main')
+      var myChart = echarts.init(chartDom)
       var option
 
       option = {
@@ -36,7 +30,7 @@ export default {
           // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
         yAxis: {
-          type: 'value'
+          type: 'value',
         },
         series: [
           {
@@ -44,14 +38,13 @@ export default {
             type: 'bar',
             showBackground: true,
             backgroundStyle: {
-              color: 'rgba(180, 180, 180, 0.2)'
-            }
-          }
-        ]
+              color: 'rgba(180, 180, 180, 0.2)',
+            },
+          },
+        ],
       }
 
-      option && myChart.setOption(option);
-
+      option && myChart.setOption(option)
     },
 
     mysort() {
@@ -59,16 +52,18 @@ export default {
       function popSort(arr) {
         for (let i = 0; i < arr.length; i++) {
           for (let j = 0; j < arr.length - 1 - i; j++) {
-            if (arr[j] > arr[j + 1]) {        //相邻元素两两对比
-              var temp = arr[j + 1];        //元素交换
-              arr[j + 1] = arr[j];
+            if (arr[j] > arr[j + 1]) {
+              //相邻元素两两对比
+              var temp = arr[j + 1] //元素交换
+              arr[j + 1] = arr[j]
               arr[j] = temp
               newArr.push(JSON.parse(JSON.stringify(arr)))
             }
           }
         }
         return arr
-      }0
+      }
+      0
       console.log(newArr)
       popSort([120, 200, 150, 80, 70, 110, 130])
       let timer = null
@@ -81,7 +76,7 @@ export default {
           clearInterval(timer)
         }
       }, 300)
-    }
+    },
   },
 }
 </script>

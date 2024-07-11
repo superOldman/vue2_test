@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-for="(item,i) in options" :key="i">
+    <div v-for="(item, i) in options" :key="i">
       <slot v-if="item.com" :name="item.key" :row="item" />
-      <template v-else>{{item.key}}</template>
+      <template v-else>{{ item.key }}</template>
     </div>
   </div>
 </template>
@@ -10,22 +10,15 @@
 <script>
 export default {
   name: '',
-  components: {
-
-  },
+  components: {},
   props: {
-    options: Array
+    options: Array,
   },
   data() {
-    return {
-
-    };
+    return {}
   },
-  methods: {
-
-  }
-};
+  methods: {},
+}
 </script>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

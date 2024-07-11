@@ -1,222 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
+      .box {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        width: 400px;
+        height: 100%;
+        margin: 0 auto;
+        border: 1px solid blue;
+        min-height: 100px;
+        max-height: 600px;
+        margin-top: 30px;
+        overflow: auto;
+      }
 
-    .box {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      width: 400px;
-      height: 100%;
-      margin: 0 auto;
-      border: 1px solid blue;
-      min-height: 100px;
-      max-height: 600px;
-      margin-top: 30px;
-      overflow: auto;
-    }
+      .list {
+        flex: 1;
+      }
 
-    .list {
-      flex: 1;
-    }
+      .top {
+        width: 100%;
+        height: 50px;
+      }
 
-    .top {
-      width: 100%;
-      height: 50px;
-    }
+      .bottom {
+        width: 100%;
+        min-height: 50px;
+        background: #ccc;
+        text-align: center;
+        line-height: 50px;
+      }
 
-    .bottom {
-      width: 100%;
-      min-height: 50px;
-      background: #ccc;
-      text-align: center;
-      line-height: 50px;
-    }
+      .item-list {
+        width: 90%;
+        height: 100px;
+        border: 1px solid red;
+        margin: 10px auto;
+      }
+    </style>
+  </head>
 
-    .item-list {
-      width: 90%;
-      height: 100px;
-      border: 1px solid red;
-      margin: 10px auto;
+  <body>
+    <div id="content" class="box">
+      <ul id="list" class="list"></ul>
+    </div>
+  </body>
+  <!-- <script src="./index.js"></script> -->
+  <script>
+    let list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+    window.list2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+    // 插入dom
+    let curPage = list || list.slice((pageNum - 1) * 10, pageNum * 10)
+    // 创建文档碎片
+    let frm = document.createDocumentFragment()
+    for (let i = 0; i < curPage.length; i++) {
+      let li = document.createElement('li')
+      li.innerHTML = curPage[i]
+      li.className = 'item-list'
+      li.setAttribute('data-index', curPage[i])
+      frm.appendChild(li)
     }
-  </style>
-</head>
+    document.getElementById('list').appendChild(frm)
+    frm = null
 
-<body>
-  <div id="content" class="box">
-    <ul id="list" class="list">
-    </ul>
-  </div>
-</body>
-<!-- <script src="./index.js"></script> -->
-<script>
-  let list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
-  window.list2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
-  // 插入dom
-  let curPage = list || list.slice((pageNum - 1) * 10, pageNum * 10)
-  // 创建文档碎片
-  let frm = document.createDocumentFragment();
-  for (let i = 0; i < curPage.length; i++) {
-    let li = document.createElement('li')
-    li.innerHTML = curPage[i];
-    li.className = "item-list"
-    li.setAttribute('data-index', curPage[i])
-    frm.appendChild(li)
-  }
-  document.getElementById('list').appendChild(frm);
-  frm = null;
-
-  class LoadMore {
-    constructor(options) {
-      this.observer = null;
-      this.rootNode = document.getElementById(options.root); // 父级容器
-      this.obsNode = this.rootNode.querySelectorAll('li')
-      this.init() // 初始化
-    }
-    // 关闭交叉监听
-    canclobserve() {
-      console.log('完毕')
-      this.obsNode.forEach(e => {
-        this.observer.unobserve(e)
-      })
-    }
-    // 设置首位节点交叉监听
-    hanldeObserve() {
-      this.obsNode.forEach(e => {
-        this.observer.observe(e)
-      })
-    }
-    // 初始化
-    init() {
-      // 创建 IntersectionObserver 实例子
-      // , {
-      //   root: this.rootNode || null, // 交叉窗口、根元素
-      //   rootMargin: '0px', // 交叉窗口边界扩展或者伸缩
-      //   threshold: 0.8 // 交叉占比（0～1），达到该比例才触发回调
-      // }
-      this.observer = new IntersectionObserver(entries => {
-        // 首次加载返回所有dom的状态
-        // console.log('entries', entries);
-        entries.forEach(e => {
-          // console.log('yyyyyyyyy', e);
-          const attr = e.target.getAttribute('data-index')
-          const index = list.findIndex(e => e == attr)
-          if (index != -1 && e.isIntersecting) {
-            list2[index] = {
-              isIntersecting: e.isIntersecting
-            }
-          }
+    class LoadMore {
+      constructor(options) {
+        this.observer = null
+        this.rootNode = document.getElementById(options.root) // 父级容器
+        this.obsNode = this.rootNode.querySelectorAll('li')
+        this.init() // 初始化
+      }
+      // 关闭交叉监听
+      canclobserve() {
+        console.log('完毕')
+        this.obsNode.forEach(e => {
+          this.observer.unobserve(e)
         })
-        // isIntersecting  true:可见
-      })
-      this.hanldeObserve()
+      }
+      // 设置首位节点交叉监听
+      hanldeObserve() {
+        this.obsNode.forEach(e => {
+          this.observer.observe(e)
+        })
+      }
+      // 初始化
+      init() {
+        // 创建 IntersectionObserver 实例子
+        // , {
+        //   root: this.rootNode || null, // 交叉窗口、根元素
+        //   rootMargin: '0px', // 交叉窗口边界扩展或者伸缩
+        //   threshold: 0.8 // 交叉占比（0～1），达到该比例才触发回调
+        // }
+        this.observer = new IntersectionObserver(entries => {
+          // 首次加载返回所有dom的状态
+          // console.log('entries', entries);
+          entries.forEach(e => {
+            // console.log('yyyyyyyyy', e);
+            const attr = e.target.getAttribute('data-index')
+            const index = list.findIndex(e => e == attr)
+            if (index != -1 && e.isIntersecting) {
+              list2[index] = {
+                isIntersecting: e.isIntersecting,
+              }
+            }
+          })
+          // isIntersecting  true:可见
+        })
+        this.hanldeObserve()
+      }
     }
-  }
 
-  new LoadMore({
-    root: 'content'
-  })
+    new LoadMore({
+      root: 'content',
+    })
 
+    class TaskQueue {
+      constructor(max) {
+        this.max = max // 最大并发数
+        this.queue = [] // 任务队列
+        this.resultArr = [] // 结果队列
+        this.count = 0 // 任务数
+      }
 
-  class TaskQueue {
-    constructor(max) {
-      this.max = max // 最大并发数
-      this.queue = [] // 任务队列
-      this.resultArr = [] // 结果队列
-      this.count = 0 // 任务数
-    }
-
-    /*
+      /*
     加入任务队列
     */
-    addTask(t) {
-      this.queue.push({
-        t, // 任务
-        index: this.count // 用来保存任务的顺序，保证结果是有序的
-      })
-      this.count++
-    }
+      addTask(t) {
+        this.queue.push({
+          t, // 任务
+          index: this.count, // 用来保存任务的顺序，保证结果是有序的
+        })
+        this.count++
+      }
 
-    /*
+      /*
     开始执行任务
     */
-    run() {
-      return new Promise(resolve => {
-        this.next(resolve)
-      })
-    }
+      run() {
+        return new Promise(resolve => {
+          this.next(resolve)
+        })
+      }
 
-    /*
+      /*
     从任务队列中取出任务并执行
     */
-    next(resolve) {
-      console.log('this',this);
-      let length = this.queue.length
-      if (length === 0) {
-        return
+      next(resolve) {
+        console.log('this', this)
+        let length = this.queue.length
+        if (length === 0) {
+          return
+        }
+        let min = Math.min(this.max, length) // 每次拿取的任务数不能超过max和队列长度，所以取最小值
+        for (let i = 0; i < min; i++) {
+          let { t, index } = this.queue.shift()
+          this.max--
+          t()
+            .then(result => {
+              console.log(result)
+              this.resultArr[index] = result //任务执行完毕，有序保留结果
+            })
+            .catch(error => {
+              console.log(error)
+            })
+            .finally(() => {
+              this.count-- // 任务数-1
+              if (this.count === 0) {
+                // 所有任务都已经完成
+                resolve(this.resultArr)
+              }
+              this.max++ // 留出空位给下一个任务
+              this.next(resolve) // 执行下一次循环
+            })
+        }
       }
-      let min = Math.min(this.max, length) // 每次拿取的任务数不能超过max和队列长度，所以取最小值
-      for (let i = 0; i < min; i++) {
-        let { t, index } = this.queue.shift()
-        this.max--
-        t().then(result => {
-          console.log(result)
-          this.resultArr[index] = result //任务执行完毕，有序保留结果
+    }
+
+    const task = i => {
+      console.log('yunxing???')
+
+      return () => {
+        console.log('yunxing')
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve(i)
+          }, 2500)
         })
-          .catch(error => {
-            console.log(error)
-          })
-          .finally(() => {
-            this.count-- // 任务数-1
-            if (this.count === 0) { // 所有任务都已经完成
-              resolve(this.resultArr)
-            }
-            this.max++ // 留出空位给下一个任务
-            this.next(resolve) // 执行下一次循环
-          })
       }
     }
-  }
 
-  const task = (i) => {
-    console.log('yunxing???');
-
-    return () => {
-      console.log('yunxing');
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve(i)
-        }, 2500);
-      })
+    this.taskQueue = new TaskQueue(6)
+    async function test() {
+      for (let i = 0; i < 10; i++) {
+        taskQueue.addTask(task(i))
+      }
+      let p = await taskQueue.run()
+      console.log('p', p)
     }
-  }
-
-  this.taskQueue = new TaskQueue(6)
-  async function test() {
-    for (let i = 0; i < 10; i++) {
-      taskQueue.addTask(task(i))
-    }
-    let p = await taskQueue.run()
-    console.log('p',p)
-  }
-
-  test()
-
-  setTimeout(()=>{
 
     test()
-  },1000)
-</script>
 
+    setTimeout(() => {
+      test()
+    }, 1000)
+  </script>
 </html>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input type="text" v-model="text" :placeholder="'请输入内容'">
-    {{text}}
+    <input type="text" v-model="text" :placeholder="'请输入内容'" />
+    {{ text }}
     <el-button v-copy="text">复制</el-button>
     <button v-debounce="debounceClick">fangddfs</button>
 
@@ -9,28 +9,24 @@
   </div>
 </template>
 
-<script> 
+<script>
 import arrows from '../../components/arrows'
 export default {
   components: {
-    arrows
+    arrows,
   },
   data() {
     return {
       text: '',
     }
   },
-  mounted() {
-
-
-  },
+  mounted() {},
   methods: {
     debounceClick() {
       console.log(123123)
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style lang="css" scoped>
-</style>
+<style lang="css" scoped></style>

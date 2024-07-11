@@ -1,7 +1,6 @@
 <template>
   <div class="svg-wrap">
-    <div ref="container" style="width: 100%;height:100%;">
-    </div>
+    <div ref="container" style="width: 100%;height:100%;"></div>
 
     <el-popover placement="bottom" trigger="manual" :visible-arrow="false" :content="content" v-model="visible" popper-class="d3-scale-percent">
       <div class="btn" slot="reference" @click="visible = !visible"></div>
@@ -15,22 +14,18 @@ import data from './mock/data'
 import { D3Tree } from '@/pages/D3/D3tree3'
 export default {
   name: 'EquityPenetration',
-  components: {
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
     return {
       visible: false,
-      content: '100%'
+      content: '100%',
     }
   },
   mounted() {
     D3Tree.prototype.emit = this.percentHandle
     const tree = new D3Tree(this.$refs.container)
     tree.create(data.Result)
-
   },
   methods: {
     percentHandle(scale) {
@@ -40,8 +35,8 @@ export default {
       this.timer = setTimeout(() => {
         this.visible = false
       }, 1000)
-    }
-  }
+    },
+  },
 }
 </script>
 

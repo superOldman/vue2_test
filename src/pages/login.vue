@@ -6,44 +6,43 @@
 </template>
 
 <script>
-import ajax from "../services/api";
+import ajax from '../services/api'
 
 export default {
   created() {
-    this.setList();
+    this.setList()
   },
-  mounted() { },
+  mounted() {},
   methods: {
     async setList() {
-      const result = await ajax.getRouter();
-      const children = result.data;
+      const result = await ajax.getRouter()
+      const children = result.data
 
       console.log('child', children)
-      sessionStorage.setItem("router", JSON.stringify(children));
+      sessionStorage.setItem('router', JSON.stringify(children))
       children.forEach(e => {
-        let cp = e.component;
-        e.component = () => import(`./${cp}.vue`);
-      });
+        let cp = e.component
+        e.component = () => import(`./${cp}.vue`)
+      })
 
       let arr = [
         {
-          path: "/home",
-          name: "wrap",
-          component: () => import("./wrap.vue"),
-          children
-        }
-      ];
+          path: '/home',
+          name: 'wrap',
+          component: () => import('./wrap.vue'),
+          children,
+        },
+      ]
 
       if (this.$router.options.routes.length <= 2) {
-        this.$router.options.routes.push(arr[0]);
-        this.$router.addRoutes(arr);
+        this.$router.options.routes.push(arr[0])
+        this.$router.addRoutes(arr)
       }
     },
     turnHome() {
-      this.$router.push("/home");
-    }
-  }
-};
+      this.$router.push('/home')
+    },
+  },
+}
 </script>
-<style>
-</style>
+<style></style>

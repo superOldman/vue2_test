@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
-    <Skeleton ref="skeleton" v-for="(item,i) in options" :key="i" class="item-block" @update="updateHandle(item)">
-      {{item.label}}
+    <Skeleton ref="skeleton" v-for="(item, i) in options" :key="i" class="item-block" @update="updateHandle(item)">
+      {{ item.label }}
     </Skeleton>
   </div>
 </template>
@@ -13,10 +13,9 @@ export default {
   name: '',
   mixins: [observer],
   components: {
-    Skeleton
+    Skeleton,
   },
-  props: {
-  },
+  props: {},
   data() {
     return {
       options: [
@@ -43,11 +42,14 @@ export default {
         { label: '无无无无无无无无无无无无无无' },
         { label: '无无无无无无无无无无无无无无' },
         { label: '无无无无无无无无无无无无无无' },
-      ]
+      ],
     }
   },
   mounted() {
-    this.initObserve(null, this.$refs.skeleton.map(e => e.$el))
+    this.initObserve(
+      null,
+      this.$refs.skeleton.map(e => e.$el)
+    )
   },
   methods: {
     updateHandle(item) {
@@ -57,8 +59,8 @@ export default {
         label += '加载'
       }
       item.label = label
-    }
-  }
+    },
+  },
 }
 </script>
 

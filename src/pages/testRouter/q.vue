@@ -7,22 +7,13 @@
 <script>
 export default {
   name: 'q',
-  components: {
-
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
-    return {
-
-    }
+    return {}
   },
-  methods: {
-
-  }
+  methods: {},
 }
 </script>
 
-<style scoped lang="css">
-</style>
+<style scoped lang="css"></style>

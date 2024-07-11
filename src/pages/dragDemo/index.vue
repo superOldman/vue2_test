@@ -1,10 +1,15 @@
 <template>
   <div class="drag-wrap clearFix">
-    <div v-for="block in list" :key="block.id" class="t" :data-id="block.id" :style="{'width':block.width,'height':block.height,'background': block.bg}"
-     @mousedown="e=>aftermousedown(e,block.id)">
-    </div>
+    <div
+      v-for="block in list"
+      :key="block.id"
+      class="t"
+      :data-id="block.id"
+      :style="{ width: block.width, height: block.height, background: block.bg }"
+      @mousedown="e => aftermousedown(e, block.id)"
+    ></div>
     <div class="coverage clearFix" v-show="coverageShow">
-      <div v-for="(block,i) in coverageList" :key="i" class="coverage-block" :style="{'opacity': block.bg}" @mouseenter="e=>afterEnter(e,i)" @mouseleave="e=>afterLeave(e,i)"></div>
+      <div v-for="(block, i) in coverageList" :key="i" class="coverage-block" :style="{ opacity: block.bg }" @mouseenter="e => afterEnter(e, i)" @mouseleave="e => afterLeave(e, i)"></div>
     </div>
   </div>
 </template>
@@ -12,12 +17,8 @@
 <script>
 export default {
   name: '',
-  components: {
-
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
     return {
       list: [
@@ -30,11 +31,11 @@ export default {
       isDrag: false,
       py: {
         left: 0,
-        top: 0
+        top: 0,
       },
       coverageList: [],
 
-      coverageShow: false
+      coverageShow: false,
     }
   },
   mounted() {
@@ -45,7 +46,7 @@ export default {
   },
   methods: {
     createId(prefix = '') {
-      return prefix + Math.floor(Math.random() * 2147483648).toString(36);
+      return prefix + Math.floor(Math.random() * 2147483648).toString(36)
     },
     createColor() {
       return '#' + Math.floor(Math.random() * 16777215).toString(16)
@@ -55,13 +56,15 @@ export default {
       const heights = ['180px', '90px']
       const len = Math.floor(Math.random() * 10) + 6
       for (let index = 0; index < len; index++) {
-        this.list.push(
-          { width: widths[Math.floor(Math.random() * 1)], height: heights[Math.floor(Math.random() * 2)], id: this.createId(), bg: this.createColor() }
-        )
+        this.list.push({
+          width: widths[Math.floor(Math.random() * 1)],
+          height: heights[Math.floor(Math.random() * 2)],
+          id: this.createId(),
+          bg: this.createColor(),
+        })
       }
-
     },
-    initBlock() { },
+    initBlock() {},
     initEvent() {
       this.wrap = document.querySelector('.drag-wrap')
 
@@ -71,14 +74,12 @@ export default {
         this.coverageList.push({ bg: '' })
       }
       document.addEventListener('mousemove', e => {
-
         if (this.isDrag && this.target) {
           const py = this.py
           this.move(this.target, e.pageX - py.left, e.pageY - py.top)
         }
       })
       document.addEventListener('mouseup', e => {
-
         const id = e.target.dataset.id
         this.isDrag = false
         this.coverageShow = false
@@ -102,8 +103,6 @@ export default {
           this.target = null
         }
       })
-
-
     },
 
     move(el, x, y) {
@@ -113,13 +112,12 @@ export default {
       el.style['top'] = y + 'px'
       el.style['z-index'] = 2
       el.style['opacity'] = 0.9
-
     },
 
     aftermousedown(e, id) {
       const index = this.list.findIndex(e => e.id === id)
       if (index !== -1 && !this.isDrag) {
-        const target = this.target = e.target
+        const target = (this.target = e.target)
         this.placeholder.width = this.list[index].width
         this.placeholder.height = this.list[index].height
         const py = this.py
@@ -158,18 +156,14 @@ export default {
       if (this.isDrag) {
         this.coverageList[i].bg = 'rgba(0, 0, 0, 0.8);'
 
-
-
         // const imgIndex = this.list.findIndex(e => e.id == id)
         // const zwIndex = this.list.findIndex(e => e.id == 'x')
         // this.list.splice(zwIndex, 1)
         // this.list.splice(imgIndex, 0, this.placeholder)
       }
-    }
-  }
-
-
-};
+    },
+  },
+}
 </script>
 
 <style scoped lang="less">
@@ -201,7 +195,7 @@ export default {
 
 .clearFix::after {
   display: block;
-  content: "";
+  content: '';
   clear: both;
 }
 </style>

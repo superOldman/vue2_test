@@ -11,21 +11,14 @@ import SelectBtn from '@/components/selectDropdown/selectBtn'
 export default {
   name: 'MySelect',
   components: {
-    SelectBtn
+    SelectBtn,
   },
-  props: {
-
-  },
+  props: {},
   data() {
-    return {
-
-    }
+    return {}
   },
-  methods: {
-
-  },
-};
+  methods: {},
+}
 </script>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

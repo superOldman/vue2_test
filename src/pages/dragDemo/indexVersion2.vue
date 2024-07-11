@@ -2,20 +2,41 @@
   <div>
     <viewFullScreen style="background:#fff" :is-full-screen="isFullScreen">
       <div>
-        <el-button type="primary" @click="isEdit=!isEdit">{{isEdit?'保存':'编辑模式'}}</el-button>
+        <el-button type="primary" @click="isEdit = !isEdit">{{ isEdit ? '保存' : '编辑模式' }}</el-button>
         <el-button type="primary" @click="setBig">模拟模块改变</el-button>
         <el-button type="primary" @click="setBlock">模拟添加模块</el-button>
-        <el-button type="primary" @click="isFullScreen=!isFullScreen">全屏</el-button>
+        <el-button type="primary" @click="isFullScreen = !isFullScreen">全屏</el-button>
         <!-- you bug -->
         <el-button type="primary" @click="goBack">后退 </el-button>
         <el-button type="primary" @click="goForward">前进 </el-button>
       </div>
-      <grid-layout ref="gridLayout" :layout.sync="layout" :col-num="8" :row-height="250" :is-draggable="isEdit" :is-resizable="true" :is-mirrored="false" :vertical-compact="true" :margin="[20, 20]"
-        :use-css-transforms="true" :isResizable="false">
-        <grid-item v-for="item in layout" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i" drag-allow-from=".vue-draggable-handle" drag-ignore-from=".no-drag"
-          @moved="movedEvent">
-          {{item.i}}
-          <div class="vue-draggable-handle"  v-if="isEdit">拖动</div>
+      <grid-layout
+        ref="gridLayout"
+        :layout.sync="layout"
+        :col-num="8"
+        :row-height="250"
+        :is-draggable="isEdit"
+        :is-resizable="true"
+        :is-mirrored="false"
+        :vertical-compact="true"
+        :margin="[20, 20]"
+        :use-css-transforms="true"
+        :isResizable="false"
+      >
+        <grid-item
+          v-for="item in layout"
+          :x="item.x"
+          :y="item.y"
+          :w="item.w"
+          :h="item.h"
+          :i="item.i"
+          :key="item.i"
+          drag-allow-from=".vue-draggable-handle"
+          drag-ignore-from=".no-drag"
+          @moved="movedEvent"
+        >
+          {{ item.i }}
+          <div class="vue-draggable-handle" v-if="isEdit">拖动</div>
           <div class="no-drag">内容</div>
         </grid-item>
       </grid-layout>
@@ -35,22 +56,20 @@ export default {
   components: {
     GridLayout: VueGridLayout.GridLayout,
     GridItem: VueGridLayout.GridItem,
-    viewFullScreen
+    viewFullScreen,
   },
-  props: {
-
-  },
+  props: {},
   data() {
     return {
       isEdit: false,
       isFullScreen: false,
       layout: [
-        { 'x': 0, 'y': 0, 'w': 2, 'h': 1, 'i': '0' },
-        { 'x': 2, 'y': 0, 'w': 2, 'h': 2, 'i': '1' },
-        { 'x': 4, 'y': 0, 'w': 2, 'h': 2, 'i': '2' },
-        { 'x': 6, 'y': 0, 'w': 2, 'h': 1, 'i': '3' },
-        { 'x': 0, 'y': 1, 'w': 2, 'h': 2, 'i': '4' },
-        { 'x': 2, 'y': 2, 'w': 2, 'h': 2, 'i': '5' }
+        { x: 0, y: 0, w: 2, h: 1, i: '0' },
+        { x: 2, y: 0, w: 2, h: 2, i: '1' },
+        { x: 4, y: 0, w: 2, h: 2, i: '2' },
+        { x: 6, y: 0, w: 2, h: 1, i: '3' },
+        { x: 0, y: 1, w: 2, h: 2, i: '4' },
+        { x: 2, y: 2, w: 2, h: 2, i: '5' },
         // { 'x': 0, 'y': 5, 'w': 2, 'h': 5, 'i': '6' },
         // { 'x': 2, 'y': 5, 'w': 2, 'h': 5, 'i': '7' },
         // { 'x': 4, 'y': 5, 'w': 2, 'h': 5, 'i': '8' },
@@ -65,30 +84,26 @@ export default {
         // { 'x': 10, 'y': 4, 'w': 2, 'h': 2, 'i': '17' },
         // { 'x': 0, 'y': 9, 'w': 2, 'h': 3, 'i': '18' },
         // { 'x': 2, 'y': 6, 'w': 2, 'h': 2, 'i': '19' }
-      ]
+      ],
     }
   },
   mounted() {
-    this.trigger = new Trigger(list => this.layout = list)
+    this.trigger = new Trigger(list => (this.layout = list))
     this.record(this.layout)
-
-
   },
   beforeDestroy() {
     this.trigger.removeEvent()
   },
   methods: {
     setBlock() {
-
-      var a = Math.max(...this.layout.filter(e=>e.x==0).map(e=>e.y))
+      var a = Math.max(...this.layout.filter(e => e.x == 0).map(e => e.y))
       // console.log(this.layout.map(e=>e.y));
-      console.log(a);
-      var b = this.layout.find(e=>e.y==a).h
-      console.log(b);
-      console.log(a+b);
-      this.layout.push( { 'x': 0, 'y': a+b, 'w': 4, 'h': 2, 'i': new Date().getTime() })
+      console.log(a)
+      var b = this.layout.find(e => e.y == a).h
+      console.log(b)
+      console.log(a + b)
+      this.layout.push({ x: 0, y: a + b, w: 4, h: 2, i: new Date().getTime() })
       // this.record()
-
     },
 
     goBack() {
@@ -97,8 +112,6 @@ export default {
     goForward() {
       this.trigger.goForward()
     },
-
-
 
     setBig() {
       // eventName, id, x, y, h, w
@@ -111,10 +124,10 @@ export default {
       this.trigger.record(this.layout)
     },
     movedEvent() {
-      console.log('movedEvent', this.layout);
+      console.log('movedEvent', this.layout)
       this.record()
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -1,118 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
+      // 定义promise的三个状态
+      const PENDING = 'PENDING'
+      const RESOLVED = 'RESOLVED'
+      const REJECTED = 'REJECTED'
+      function myPromise(fn) {
+        // 当前执行上下文
+        let that = this
+        // 初始状态是pending
+        that.status = PENDING
+        // 参数
+        that.params = null
+        // 定义两个回调数组：存储 resolve 和 reject 要执行的函数(then传进来的函数)
+        that.resolvedCallbacks = []
+        that.rejectedCallbacks = []
 
-        // 定义promise的三个状态
-        const PENDING = "PENDING";
-        const RESOLVED = "RESOLVED";
-        const REJECTED = "REJECTED";
-        function myPromise(fn) {
-            // 当前执行上下文
-            let that = this;
-            // 初始状态是pending
-            that.status = PENDING;
-            // 参数
-            that.params = null;
-            // 定义两个回调数组：存储 resolve 和 reject 要执行的函数(then传进来的函数)
-            that.resolvedCallbacks = [];
-            that.rejectedCallbacks = [];
-
-            // 定义resolve函数
-            function resolve(params) {
-                // 只有状态为PENDING时才可以操作
-                if (that.status === PENDING) {
-                    // 修改状态
-                    that.status = RESOLVED;
-                    that.params = params;
-                    // console.log('我是resolve函数');
-                    // 遍历执行函数
-                    that.resolvedCallbacks.map((cb) => cb(that.params));
-                }
-            }
-
-            // 定义rejected函数
-            function reject(params) {
-                // 只有状态为PENDING时才可以操作
-                if (that.status === PENDING) {
-                    that.status = REJECTED;
-                    that.params = params;
-                    // console.log('我是reject函数');
-                    // 遍历执行函数
-                    that.rejectedCallbacks.map((cb) => cb(that.params));
-                }
-            }
-
-            // 执行fn()
-            try {
-                fn(resolve, reject);
-                // console.log('我是fn函数');
-            } catch (err) {
-                reject(err);
-            }
+        // 定义resolve函数
+        function resolve(params) {
+          // 只有状态为PENDING时才可以操作
+          if (that.status === PENDING) {
+            // 修改状态
+            that.status = RESOLVED
+            that.params = params
+            // console.log('我是resolve函数');
+            // 遍历执行函数
+            that.resolvedCallbacks.map(cb => cb(that.params))
+          }
         }
-        // 通过 then 实现链式调用
-        myPromise.prototype.then = function (onFulfilled, onRejected) {
-            let that = this;
-            console.log(that.status);
-            // 当状态为 PENDING 时，把 onFulfilled 和 onRejected 加进对应数组中
-            if (that.status === PENDING) {
-                that.resolvedCallbacks.push(onFulfilled);
-                that.rejectedCallbacks.push(onRejected);
-                // console.log(that.rejectedCallbacks, that.resolvedCallbacks);
-            }
-            // 当状态为 RESOLVED时，执行 onFulfilled
-            if (that.status === RESOLVED) {
-                onFulfilled(that.params);
-            }
-            // 当状态为 RESOLVED时，执行 onRejected
-            if (that.status === REJECTED) {
-                onRejected(that.params);
-            }
-        };
 
-        var a = new myPromise((res, rej) => {
-            // setTimeout(() => {
-                res(1)
-            // }, 1000)
-        })
-        // console.log(111, a)
-        setTimeout(() => {
-            a.then(e => {
-                console.log(22222222222222222222222222222, e)
-            })
-        }, 2000)
+        // 定义rejected函数
+        function reject(params) {
+          // 只有状态为PENDING时才可以操作
+          if (that.status === PENDING) {
+            that.status = REJECTED
+            that.params = params
+            // console.log('我是reject函数');
+            // 遍历执行函数
+            that.rejectedCallbacks.map(cb => cb(that.params))
+          }
+        }
 
+        // 执行fn()
+        try {
+          fn(resolve, reject)
+          // console.log('我是fn函数');
+        } catch (err) {
+          reject(err)
+        }
+      }
+      // 通过 then 实现链式调用
+      myPromise.prototype.then = function(onFulfilled, onRejected) {
+        let that = this
+        console.log(that.status)
+        // 当状态为 PENDING 时，把 onFulfilled 和 onRejected 加进对应数组中
+        if (that.status === PENDING) {
+          that.resolvedCallbacks.push(onFulfilled)
+          that.rejectedCallbacks.push(onRejected)
+          // console.log(that.rejectedCallbacks, that.resolvedCallbacks);
+        }
+        // 当状态为 RESOLVED时，执行 onFulfilled
+        if (that.status === RESOLVED) {
+          onFulfilled(that.params)
+        }
+        // 当状态为 RESOLVED时，执行 onRejected
+        if (that.status === REJECTED) {
+          onRejected(that.params)
+        }
+      }
 
-        // var b1 = new myPromise((res, rej) => {
-        //     setTimeout(() => {
-        //         res(122)
-        //     }, 1000)
-        // })
-        // console.log(b1)
-        // b1.then(e => {
-        //     console.log(e)
-        // })
-
-
-
-
-        // var b = new Promise((res) => { res(1) })
-        // console.log('b', b)
+      var a = new myPromise((res, rej) => {
         // setTimeout(() => {
-        //     b.then(e => {
-        //         console.log('Promise', e)
-        //     })
-        // })
+        res(1)
+        // }, 1000)
+      })
+      // console.log(111, a)
+      setTimeout(() => {
+        a.then(e => {
+          console.log(22222222222222222222222222222, e)
+        })
+      }, 2000)
 
+      // var b1 = new myPromise((res, rej) => {
+      //     setTimeout(() => {
+      //         res(122)
+      //     }, 1000)
+      // })
+      // console.log(b1)
+      // b1.then(e => {
+      //     console.log(e)
+      // })
+
+      // var b = new Promise((res) => { res(1) })
+      // console.log('b', b)
+      // setTimeout(() => {
+      //     b.then(e => {
+      //         console.log('Promise', e)
+      //     })
+      // })
     </script>
-</body>
-
+  </body>
 </html>

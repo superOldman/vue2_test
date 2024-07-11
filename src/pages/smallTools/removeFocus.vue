@@ -5,27 +5,21 @@
 <script>
 export default {
   name: 'removeFocus',
-  components: {
-
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
-    return {
-    }
+    return {}
   },
   methods: {
     clickHandler(evt) {
-      let target = evt.target;
+      let target = evt.target
       if (target.nodeName == 'SPAN') {
-        target = evt.target.parentNode;
+        target = evt.target.parentNode
       }
-      target.blur();
-    }
-  }
+      target.blur()
+    },
+  },
 }
 </script>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>

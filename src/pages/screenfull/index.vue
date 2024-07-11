@@ -1,7 +1,7 @@
 <template>
   <viewFullScreen class="test" :is-full-screen="isFullScreen2">
-    <span @click='clickFullscreen'>全屏1</span>
-    <span @click='isFullScreen2 = !isFullScreen2'>全屏2</span>
+    <span @click="clickFullscreen">全屏1</span>
+    <span @click="isFullScreen2 = !isFullScreen2">全屏2</span>
   </viewFullScreen>
 </template>
 
@@ -11,12 +11,12 @@ import viewFullScreen from '@/pages/screenfull/componentScreenfull/viewFullScree
 export default {
   name: 'screenfull',
   components: {
-    viewFullScreen
+    viewFullScreen,
   },
   data() {
     return {
       isFullscreen: false,
-      isFullScreen2: false
+      isFullScreen2: false,
     }
   },
   methods: {
@@ -24,18 +24,18 @@ export default {
       if (!screenfull.isEnabled) {
         this.$message({
           message: 'you browser can not work',
-          type: 'warning'
+          type: 'warning',
         })
         return false
       }
       screenfull.toggle()
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped lang="less">
-.test{
+.test {
   background-color: #fff;
 }
 </style>

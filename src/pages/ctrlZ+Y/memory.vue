@@ -1,29 +1,17 @@
 <template>
-    <div>
-
-    </div>
+  <div></div>
 </template>
 
 <script>
 export default {
   name: '',
-  components: {
-
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
-    return {
-
-    }
+    return {}
   },
-  methods: {
-
-  }
-};
+  methods: {},
+}
 </script>
 
-<style scoped lang="less">
-
-</style>
+<style scoped lang="less"></style>

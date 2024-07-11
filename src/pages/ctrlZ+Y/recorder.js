@@ -18,21 +18,21 @@ export default {
     onKeyDown(e) {
       e.preventDefault()
       switch (e.key) {
-      case 'Shift':
-        this.multiable = true
-        break
-      default:
-        break
+        case 'Shift':
+          this.multiable = true
+          break
+        default:
+          break
       }
     },
     onKeyUp(e) {
       e.preventDefault()
       switch (e.key) {
-      case 'Shift':
-        this.multiable = false
-        break
-      default:
-        break
+        case 'Shift':
+          this.multiable = false
+          break
+        default:
+          break
       }
       // ctrl + z 撤回
       if (e.ctrlKey && e.key === 'z') {
@@ -74,12 +74,12 @@ export default {
       this.record(true)
     },
 
-    getTwoList() { return [recordList, recordList4ctrlY] },
+    getTwoList() {
+      return [recordList, recordList4ctrlY]
+    },
     setTwoList(r, ry) {
       recordList = r
       recordList4ctrlY = ry
-    }
-
-  }
+    },
+  },
 }
-

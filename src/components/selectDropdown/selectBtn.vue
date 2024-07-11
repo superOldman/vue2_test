@@ -2,8 +2,8 @@
   <div class="select-btn">
     <div class="btn-main fx-s-center">
       <div class="plat-img"></div>
-      <div v-if="dropDownSelected.length" class="mid-text">已选：{{dropDownSelected.length}}</div>
-      <div v-else class="mid-text">{{list.length}}</div>
+      <div v-if="dropDownSelected.length" class="mid-text">已选：{{ dropDownSelected.length }}</div>
+      <div v-else class="mid-text">{{ list.length }}</div>
     </div>
     <SelectDropdown :data="list" class="select-dropdown" @change="changeHandle" />
   </div>
@@ -14,11 +14,9 @@ import SelectDropdown from '@/components/selectDropdown/selectDropdown'
 export default {
   name: 'SelectBtn',
   components: {
-    SelectDropdown
+    SelectDropdown,
   },
-  props: {
-
-  },
+  props: {},
   data() {
     return {
       selected: 0,
@@ -29,16 +27,16 @@ export default {
         { name: '23', text: '都是法师法师法师打发手打' },
         { name: '123', text: '都是法师法师法师打发手打' },
         { name: '4', text: '都是法师法师法师打发手打' },
-        { name: '5', text: '都是法师法师法师打发手打' }
-      ]
+        { name: '5', text: '都是法师法师法师打发手打' },
+      ],
     }
   },
   methods: {
     changeHandle(val) {
       this.dropDownSelected = val
-    }
+    },
   },
-};
+}
 </script>
 
 <style scoped lang="less">
@@ -60,7 +58,7 @@ export default {
       background: #425f9b;
       border-radius: 4px;
     }
-    .mid-text{
+    .mid-text {
       margin: 0 4px;
     }
   }

@@ -2,27 +2,25 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import routerList from '@/router/router'
-Vue.use(Router);
+Vue.use(Router)
 const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
-    return originalPush.call(this, location).catch(err => err)
+  return originalPush.call(this, location).catch(err => err)
 }
 
-
 const router = new Router({
-    mode: 'hash',
-    // mode: 'history',
-    base: process.env.BASE_URL,
-    routes: [
-        {
-            path: '/',
-            redirect: () => {
-                return 'home'
-            }
-        },
-        ...routerList
-    ]
-
+  mode: 'hash',
+  // mode: 'history',
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path: '/',
+      redirect: () => {
+        return 'home'
+      },
+    },
+    ...routerList,
+  ],
 })
 
 // router.beforeEach((to, from, next) => {
@@ -55,6 +53,5 @@ const router = new Router({
 
 //     next()
 // })
-
 
 export default router

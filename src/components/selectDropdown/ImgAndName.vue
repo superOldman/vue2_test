@@ -1,38 +1,38 @@
 <template>
   <div>
-    <div v-if="preview==5 || preview ==6" class="imgNameWrap-24 fx-s-center">
-      <div class="pictureWrap-24 fx-s-center" :class="{ 'insHeaderImg':preview==4 }">
+    <div v-if="preview == 5 || preview == 6" class="imgNameWrap-24 fx-s-center">
+      <div class="pictureWrap-24 fx-s-center" :class="{ insHeaderImg: preview == 4 }">
         <div class="mr-8">
-          <div class="picture" :class="{ 'br-50':preview !=2 || preview !=3 }">
-            <img v-if="photo" :src="base64addHead(photo)" alt="" srcset="" class="photo">
+          <div class="picture" :class="{ 'br-50': preview != 2 || preview != 3 }">
+            <img v-if="photo" :src="base64addHead(photo)" alt="" srcset="" class="photo" />
             <span v-else class="strPhoto">{{ firstStr(text) }}</span>
           </div>
-          <img :src="imgLogo" alt="" srcset="" class="overLogo">
+          <img :src="imgLogo" alt="" srcset="" class="overLogo" />
         </div>
         <text-overflow>{{ text }}</text-overflow>
       </div>
       <div class="fx-full"></div>
-      <div v-if="date && preview!=4" class="date">{{ date }}</div>
+      <div v-if="date && preview != 4" class="date">{{ date }}</div>
     </div>
 
     <div v-else class="imgNameWrap fx">
       <div class="pictureWrap fx-none">
-        <div class="picture" :class="{ 'br-50':preview==4 || preview == 1}" :style="{height:height+'px','line-height':height+'px', width: height+'px'}">
-          <img v-if="photo" :class="{ 'br-4':preview==2 || preview == 3}" :src="base64addHead(photo)" alt="" srcset="" class="photo">
+        <div class="picture" :class="{ 'br-50': preview == 4 || preview == 1 }" :style="{ height: height + 'px', 'line-height': height + 'px', width: height + 'px' }">
+          <img v-if="photo" :class="{ 'br-4': preview == 2 || preview == 3 }" :src="base64addHead(photo)" alt="" srcset="" class="photo" />
           <span v-else class="strPhoto">{{ firstStr(text) }}</span>
         </div>
-        <img :src="imgLogo" alt="" srcset="" class="overLogo">
+        <img :src="imgLogo" alt="" srcset="" class="overLogo" />
       </div>
       <!-- :style="{width:detailWidth}" -->
       <div class="detial fx-c fx-p-center fx-full">
-        <div :class="[{'text':!textScond},{'text_2 text-class':textScond}]">
+        <div :class="[{ text: !textScond }, { 'text_2 text-class': textScond }]">
           <text-overflow>{{ text }}</text-overflow>
         </div>
-        <div v-if="date && preview!=4" class="fx-full"></div>
+        <div v-if="date && preview != 4" class="fx-full"></div>
         <div v-if="textScond" class="textScond" :title="textScond">
           <text-overflow>{{ textScond }}</text-overflow>
         </div>
-        <div v-if="date && preview!=4" class="date">{{ date }}</div>
+        <div v-if="date && preview != 4" class="date">{{ date }}</div>
       </div>
     </div>
   </div>
@@ -42,25 +42,25 @@ export default {
   props: {
     photo: {
       type: String,
-      default: ''
+      default: '',
     },
     preview: {
       type: Number | String,
-      default: undefined
+      default: undefined,
     },
     imgLogo: '',
     textScond: {
       type: String,
-      default: ''
+      default: '',
     },
     text: '',
     date: {
       type: String,
-      default: ''
+      default: '',
     },
     height: {
       type: Number,
-      default: 40
+      default: 40,
     },
   },
   computed: {
@@ -68,8 +68,7 @@ export default {
       let lh = '40px'
       if (this.height && this.textScond) {
         lh = this.height / 2 + 'px'
-      }
-      else if (this.height) {
+      } else if (this.height) {
         lh = this.height + 'px'
       }
       return lh
@@ -78,8 +77,7 @@ export default {
     //   return `calc(100% - 10px - ${this.height}px)`
     // }
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     base64addHead(val) {
       if (val) {
@@ -97,10 +95,9 @@ export default {
     },
     firstStr(str) {
       return str && str.charAt(0)
-    }
-  }
+    },
+  },
 }
-
 </script>
 <style lang="less" scope>
 .br-50 {

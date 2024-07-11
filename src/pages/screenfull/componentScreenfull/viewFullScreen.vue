@@ -1,5 +1,5 @@
 <template>
-  <div :style="style" :class="{[fullScreenCls]:isFullScreen}">
+  <div :style="style" :class="{ [fullScreenCls]: isFullScreen }">
     <slot></slot>
   </div>
 </template>
@@ -10,22 +10,22 @@ export default {
   props: {
     isFullScreen: {
       type: Boolean,
-      default: false
+      default: false,
     },
     fullScreenCls: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   watch: {
     isFullScreen: {
-      handler: function () {
+      handler: function() {
         this.$nextTick(() => {
-          this.updateView();
-        });
+          this.updateView()
+        })
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   computed: {
     style() {
@@ -39,9 +39,9 @@ export default {
         right: 0,
         bottom: 0,
         width: '100vm',
-        height: ' 100vh'
+        height: ' 100vh',
       }
-    }
+    },
   },
   mounted() {
     window.addEventListener('keydown', this.onKeyDown)
@@ -52,7 +52,7 @@ export default {
         this.parentNode = this.$el.parentNode
       }
       if (this.isFullScreen) {
-        this.$message('按Exc退出全屏');
+        this.$message('按Exc退出全屏')
         document.querySelector('#app').appendChild(this.$el)
       } else {
         this.$el.remove()
@@ -64,18 +64,17 @@ export default {
       if (this.isFullScreen && e.key === 'Escape') {
         this.$parent.setFullScreen()
       }
-    }
+    },
   },
 
   beforeDestroy() {
     if (this.isFullScreen) {
-      document.querySelector('#app').removeChild(this.$el);
+      document.querySelector('#app').removeChild(this.$el)
       this.parentNode = undefined
     }
     window.removeEventListener('keydown', this.onKeyDown)
-  }
+  },
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

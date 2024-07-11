@@ -3,33 +3,20 @@ function uuid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
-      .substring(1);
+      .substring(1)
   }
 
-  return (
-    s4() +
-    s4() +
-    "-" +
-    s4() +
-    "-" +
-    s4() +
-    "-" +
-    s4() +
-    "-" +
-    s4() +
-    s4() +
-    s4()
-  )
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4()
 }
 
 export default class D3Tree {
   constructor(data, container, options) {
-    this.width = 1920;
+    this.width = 1920
     this.height = 1080
-    this.marginTop = 500;
-    this.marginRight = 10;
-    this.marginBottom = 10;
-    this.marginLeft = 500;
+    this.marginTop = 500
+    this.marginRight = 10
+    this.marginBottom = 10
+    this.marginLeft = 500
     this.container = container
 
     this.root = d3.hierarchy(data)
@@ -61,7 +48,8 @@ export default class D3Tree {
   }
 
   createLayout() {
-    this.svg = d3.create('svg')
+    this.svg = d3
+      .create('svg')
       .attr('width', this.width)
       .attr('height', this.dx)
       .attr('viewBox', [-this.marginLeft, -this.marginTop, this.width, this.dx])
@@ -69,7 +57,8 @@ export default class D3Tree {
 
     this.wrap = this.svg.append('g')
 
-    this.gLink = this.wrap.append('g')
+    this.gLink = this.wrap
+      .append('g')
       .attr('fill', 'none')
       .attr('stroke', '#ADB3C2')
       .attr('stroke-width', 1)
@@ -77,11 +66,11 @@ export default class D3Tree {
       .attr('stroke-opacity', 1)
       .attr('class', 'link-group')
 
-    this.gNode = this.wrap.append('g')
+    this.gNode = this.wrap
+      .append('g')
       .attr('cursor', 'pointer')
       .attr('pointer-events', 'all')
       .attr('class', 'node-group')
-
   }
 
   update(event, source) {
@@ -109,7 +98,6 @@ export default class D3Tree {
     // .attr('viewBox', [-this.marginLeft, left.x - this.marginTop, this.width, height])
     // .tween('resize', window.ResizeObserver ? null : () => () => this.svg.dispatch('toggle'))
 
-
     d3.selectAll('.add-btn').text(d => {
       if (d.children) return '-'
       return '+'
@@ -129,13 +117,14 @@ export default class D3Tree {
       d.x0 = d.x
       d.y0 = d.y
     })
-
   }
 
   createNode(node, source, transition, handleFunction) {
     console.log('--------', node)
 
-    const nodeEnter = node.enter().append('g')
+    const nodeEnter = node
+      .enter()
+      .append('g')
       .attr('transform', d => `translate(${source.y0},${source.x0})`)
       .attr('fill-opacity', 0)
       .attr('stroke-opacity', 0)
@@ -143,7 +132,8 @@ export default class D3Tree {
       .attr('id', d => `g${d.id}`)
 
     // 添加框
-    const nodeRect = nodeEnter.append('rect')
+    const nodeRect = nodeEnter
+      .append('rect')
       .attr('width', 132)
       .attr('height', 38)
       .attr('x', -66)
@@ -152,15 +142,17 @@ export default class D3Tree {
       .attr('ry', 8)
 
     nodeRect.filter(d => d.depth < 2).attr('fill', d => `url(#stream_level${d.depth})`)
-    nodeRect.filter(d => d.depth >= 2).attr('fill', '#fff')
+    nodeRect
+      .filter(d => d.depth >= 2)
+      .attr('fill', '#fff')
       .attr('stroke-width', 1)
       .attr('stroke', '#D0D1D6')
 
-
-    nodeEnter.append('text')
+    nodeEnter
+      .append('text')
       .attr('y', 5)
       .attr('x', 0)
-      .attr('fill', d => d.depth < 2 ? '#fff' : '#000')
+      .attr('fill', d => (d.depth < 2 ? '#fff' : '#000'))
       .attr('text-anchor', 'middle')
       .attr('paint-order', 'stroke')
       .attr('title', d => d.data.name)
@@ -176,7 +168,6 @@ export default class D3Tree {
     // 添加title
     nodeEnter.append('title').text(d => d.data.name)
 
-
     // 添加按钮
     const icon = nodeEnter
       .filter(d => d._children)
@@ -184,15 +175,16 @@ export default class D3Tree {
       .attr('class', 'icon-text')
       .attr('opacity', 1)
 
-    icon.append('circle')
+    icon
+      .append('circle')
       .attr('class', 'icon-circle')
       .attr('fill', '#B4BACA')
       .attr('r', 8)
       .attr('cx', 66)
       .attr('cy', 0)
 
-
-    icon.append('text')
+    icon
+      .append('text')
       .attr('class', 'add-btn')
       .attr('x', 66)
       .attr('y', 4)
@@ -203,14 +195,15 @@ export default class D3Tree {
       .text(d => {
         if (d.children) return '-'
         return '+'
-      }).on('click', (event, d) => {
+      })
+      .on('click', (event, d) => {
         d.children = d.children ? null : d._children
         handleFunction && handleFunction(event, d)
       })
 
-
     // Transition nodes to their new position.
-    const nodeUpdate = node.merge(nodeEnter)
+    const nodeUpdate = node
+      .merge(nodeEnter)
       .transition(transition)
       .attr('transform', d => {
         return `translate(${d.y},${d.x})`
@@ -223,7 +216,9 @@ export default class D3Tree {
     const height = 132
     const padding = 10
     const transitionY = height / 2 + padding
-    const nodeExit = node.exit().transition(transition)
+    const nodeExit = node
+      .exit()
+      .transition(transition)
       .attr('transform', d => `translate(${source.y + transitionY},${source.x})`)
       .attr('fill-opacity', 0)
       .attr('stroke-opacity', 0)
@@ -231,7 +226,7 @@ export default class D3Tree {
   }
 
   createLink(link, source, transition) {
-    // 
+    //
     function twoPoints(a, b) {
       let length = Math.abs(a.y - b.y)
       let minY
@@ -243,7 +238,7 @@ export default class D3Tree {
       const midPointY = length / 2 + minY
       return {
         az: { x: a.x, y: midPointY },
-        bz: { x: b.x, y: midPointY }
+        bz: { x: b.x, y: midPointY },
       }
     }
 
@@ -270,15 +265,13 @@ export default class D3Tree {
       ep = { x: ep.x, y: ep.y }
       // 计算两个直角折点的坐标
       const { az: midPoint1, bz: midPoint2 } = twoPoints(sp, ep)
-      return [
-        sp,
-        midPoint1,
-        midPoint2,
-        ep
-      ]
+      return [sp, midPoint1, midPoint2, ep]
     }
     // 创建折线生成器
-    const theLine = d3.line().x(d => d.y).y(d => d.x)
+    const theLine = d3
+      .line()
+      .x(d => d.y)
+      .y(d => d.x)
 
     function createLine(d) {
       const height = 132
@@ -290,17 +283,20 @@ export default class D3Tree {
       return theLine(pathData)
     }
 
-
     // Enter any new links at the parent's previous position.
-    const linkEnter = link.enter().append('path')
+    const linkEnter = link
+      .enter()
+      .append('path')
       .attr('d', d => {
         const o = { x: source.x0, y: source.y0 }
         return createLine({ source: o, target: o })
       })
 
     // Transition links to their new position.
-    link.merge(linkEnter).transition(transition)
-      .attr('d', (d) => {
+    link
+      .merge(linkEnter)
+      .transition(transition)
+      .attr('d', d => {
         return createLine(d)
       })
       .attr('stroke-opacity', 1)
@@ -309,10 +305,11 @@ export default class D3Tree {
       .transition()
       .attr('marker-end', 'url(#marker_arrow)')
 
-
     // Transition exiting nodes to the parent's new position.
-    link.exit().transition(transition)
-      .attr('d', (d) => {
+    link
+      .exit()
+      .transition(transition)
+      .attr('d', d => {
         const o = { x: source.x, y: source.y }
         return createLine({ source: o, target: o })
       })
@@ -325,7 +322,8 @@ export default class D3Tree {
   createResource() {
     // 复用集合
     const defs = this.svg.append('defs')
-    defs.append('pattern')
+    defs
+      .append('pattern')
       .attr('id', 'stream_level0')
       .attr('width', '100%')
       .attr('height', '100%')
@@ -336,7 +334,8 @@ export default class D3Tree {
       .attr('height', '1')
       .attr('preserveAspectRatio', 'none')
 
-    defs.append('pattern')
+    defs
+      .append('pattern')
       .attr('id', 'stream_level1')
       .attr('width', '100%')
       .attr('height', '100%')
@@ -347,7 +346,8 @@ export default class D3Tree {
       .attr('height', '1')
       .attr('preserveAspectRatio', 'none')
 
-    defs.append('marker')
+    defs
+      .append('marker')
       .attr('id', 'marker_arrow')
       .attr('markerHeight', '8')
       .attr('markerWidth', '8')
@@ -363,7 +363,8 @@ export default class D3Tree {
 
   zoomHandler() {
     // 创建一个缩放对象
-    const zoom = d3.zoom()
+    const zoom = d3
+      .zoom()
       .scaleExtent([0.1, 100]) // 设置缩放范围
       .on('zoom', current => {
         const { transform } = current

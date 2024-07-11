@@ -7,21 +7,13 @@
 <script>
 export default {
   name: '',
-  components: {
-
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
-    return {
-
-    }
+    return {}
   },
-  methods: {
-
-  },
-};
+  methods: {},
+}
 </script>
 
 <style scoped lang="less">
@@ -29,7 +21,7 @@ export default {
   margin: 100px;
   width: 150px;
   height: 150px;
-  background-image: url("~@/assets/logo.png");
+  background-image: url('~@/assets/logo.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -39,7 +31,7 @@ export default {
 }
 
 .colorfulShadow::after {
-  content: "";
+  content: '';
   width: 100%;
   height: 100%;
   position: absolute;

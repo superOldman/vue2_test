@@ -1,6 +1,6 @@
 <template>
   <div class="arrowsWrap">
-    <div :class="{'arrow':show}" v-for="i in barNumber" :key="i">
+    <div :class="{ arrow: show }" v-for="i in barNumber" :key="i">
       <div class="top"></div>
       <div class="bot"></div>
     </div>
@@ -13,12 +13,12 @@ export default {
   props: {
     barNumber: {
       type: Number,
-      default: 5
-    }
+      default: 5,
+    },
   },
   data() {
     return {
-      show: true
+      show: true,
     }
   },
   mounted() {
@@ -30,8 +30,8 @@ export default {
         this.show = !this.show
         this.run()
       }, 500)
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="css">
@@ -94,11 +94,3 @@ export default {
   }
 }
 </style>
-
-
-
-
-
-
-
-

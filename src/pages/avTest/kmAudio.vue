@@ -1,15 +1,25 @@
 <template>
   <div>
     <!-- 此处的ref属性，可以很方便的在vue组件中通过 this.$refs.audio获取该dom元素 -->
-    <audio style="display:none" :src="src" controls="controls" ref="audio" @pause="onPause" @play="onPlay" @ended="onEnded" @volumechange="onVolumechange" @timeupdate="onTimeupdate"
-      @loadedmetadata="onLoadedmetadata"></audio>
+    <audio
+      style="display:none"
+      :src="src"
+      controls="controls"
+      ref="audio"
+      @pause="onPause"
+      @play="onPlay"
+      @ended="onEnded"
+      @volumechange="onVolumechange"
+      @timeupdate="onTimeupdate"
+      @loadedmetadata="onLoadedmetadata"
+    ></audio>
     <!-- 音频播放控件 -->
     <div>
       <el-link :underline="false" style="font-size:48px" @click="startPlayOrPause">
         <i v-if="audio.playing" class="el-icon-video-play"></i>
         <i v-else class="el-icon-video-pause"></i>
       </el-link>
-      <div>{{ realFormatSecond(audio.currentTime) }}/{{ realFormatSecond(audio.maxTime)}}</div>
+      <div>{{ realFormatSecond(audio.currentTime) }}/{{ realFormatSecond(audio.maxTime) }}</div>
       <!-- 进度条ui -->
       <el-slider ref="slider" v-model="sliderTime" :format-tooltip="formatProcessToolTip" :step="1" :max="audio.maxTime" @input="getFirstValue" @change="changeCurrentTime"></el-slider>
 
@@ -34,8 +44,8 @@ export default {
   props: {
     src: {
       type: String,
-      default: '张叶蕾-还是分开.mp3'
-    }
+      default: '张叶蕾-还是分开.mp3',
+    },
   },
   data() {
     return {
@@ -52,8 +62,8 @@ export default {
         muted: false,
 
         firstValue: 0,
-        moveEv: false
-      }
+        moveEv: false,
+      },
     }
   },
   methods: {
@@ -96,7 +106,6 @@ export default {
       this.audio.maxTime = parseInt(res.target.duration)
       this.audio.volume = parseInt(res.target.volume * 100)
     },
-
 
     getFirstValue() {
       const slider = this.$refs.slider
@@ -148,8 +157,8 @@ export default {
       } else {
         return '0:00:00'
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

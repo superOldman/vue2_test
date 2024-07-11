@@ -1,5 +1,5 @@
-let queryParamsKeys = []            // 用于匿藏页面跳转信息key
-let queryParamsObj = {}         // 用于匿藏页面跳转信息
+let queryParamsKeys = [] // 用于匿藏页面跳转信息key
+let queryParamsObj = {} // 用于匿藏页面跳转信息
 const QUERY_PARAMS_KEYS = 'QUERY_PARAMS_KEYS'
 const QUERY_PARAMS_OBJ = 'QUERY_PARAMS_OBJ'
 const sessionCache = {
@@ -32,8 +32,8 @@ const sessionCache = {
     }
   },
   remove(key) {
-    sessionStorage.removeItem(key);
-  }
+    sessionStorage.removeItem(key)
+  },
 }
 const localCache = {
   set(key, value) {
@@ -65,7 +65,7 @@ const localCache = {
     }
   },
   remove(key) {
-    localStorage.removeItem(key);
+    localStorage.removeItem(key)
   },
   // 目前暂存5个
   saveQueryParams(params) {
@@ -101,16 +101,16 @@ const localCache = {
   removeQueryParams() {
     this.remove(QUERY_PARAMS_OBJ)
     this.remove(QUERY_PARAMS_KEYS)
-  }
+  },
 }
 
 export default {
   /**
-     * 会话级缓存
-     */
+   * 会话级缓存
+   */
   session: sessionCache,
   /**
-     * 本地缓存
-     */
-  local: localCache
+   * 本地缓存
+   */
+  local: localCache,
 }

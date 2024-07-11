@@ -1,147 +1,147 @@
 {
-    "data": {
-        "_id": "42a6483d302c93a16fb91b3ca53463e8",
-        "name": "小米科技有限责任公司",
-        "type": 2,
-        "hasNext": 0,
+  "data": {
+    "_id": "42a6483d302c93a16fb91b3ca53463e8",
+    "name": "小米科技有限责任公司",
+    "type": 2,
+    "hasNext": 0,
+    "children": [
+      {
+        "code": "up",
+        "name": "向上穿透(股权穿透)",
+        "hasNext": 1,
         "children": [
-            {
-                "code": "up",
-                "name": "向上穿透(股权穿透)",
-                "hasNext": 1,
-                "children": [
-                    {
-                        "code": "up",
-                        "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
-                        "name": "雷军",
-                        "pid": "fdc8b96a9541c5dc8b415653d0039533",
-                        "company_num": 42,
-                        "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
-                        "enterpriseName": "小米科技有限责任公司",
-                        "stockPercent": "77.8%",
-                        "type": 1,
-                        "hasNext": 0,
-                        "lineText": {
-                            "stockPercent": "77.8%"
-                        },
-                        "headLabel": "疑似最终受益人",
-                        "beneficiaryShare": "77.8%",
-                        "isBeneficiaryShare": 0,
-                        "stockPercentRation": 77.8
-                    },
-                    {
-                        "code": "up",
-                        "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
-                        "name": "黎万强",
-                        "pid": "02717a4d4a3c31a7ac9f8d369a476824",
-                        "company_num": 18,
-                        "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
-                        "enterpriseName": "小米科技有限责任公司",
-                        "stockPercent": "10.12%",
-                        "type": 1,
-                        "hasNext": 0,
-                        "lineText": {
-                            "stockPercent": "10.12%"
-                        },
-                        "stockPercentRation": 10.12
-                    },
-                    {
-                        "code": "up",
-                        "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
-                        "name": "洪锋",
-                        "pid": "f8356037dd5e37c790d06259addf3278",
-                        "company_num": 11,
-                        "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
-                        "enterpriseName": "小米科技有限责任公司",
-                        "stockPercent": "10.07%",
-                        "type": 1,
-                        "hasNext": 0,
-                        "lineText": {
-                            "stockPercent": "10.07%"
-                        },
-                        "stockPercentRation": 10.07
-                    },
-                    {
-                        "code": "up",
-                        "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
-                        "name": "刘德",
-                        "pid": "ff46dae2d44974dd704ba2a5bde4c91e",
-                        "company_num": 106,
-                        "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
-                        "enterpriseName": "小米科技有限责任公司",
-                        "stockPercent": "2.01%",
-                        "type": 1,
-                        "hasNext": 0,
-                        "lineText": {
-                            "stockPercent": "2.01%"
-                        },
-                        "stockPercentRation": 2.01
-                    }
-                ],
-                "stockPercentRation": 0.0
+          {
+            "code": "up",
+            "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
+            "name": "雷军",
+            "pid": "fdc8b96a9541c5dc8b415653d0039533",
+            "company_num": 42,
+            "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
+            "enterpriseName": "小米科技有限责任公司",
+            "stockPercent": "77.8%",
+            "type": 1,
+            "hasNext": 0,
+            "lineText": {
+              "stockPercent": "77.8%"
             },
-            {
-                "code": "down",
-                "name": "向下穿透(控股关联)",
-                "hasNext": 1,
-                "children": [
-                    {
-                        "code": "down",
-                        "_id": "4bf86c444606d8eaa18ba552c303fa22",
-                        "eid": "10fb809e-4f0d-4f52-b3d6-ea29c746cef1",
-                        "es_id": "4bf86c444606d8eaa18ba552c303fa22",
-                        "name": "广东横琴小米科技发展有限公司",
-                        "stockPercent": "100%",
-                        "type": 2,
-                        "hasNext": 0,
-                        "lineText": {
-                            "desc": "控股",
-                            "stockPercent": "100%"
-                        },
-                        "cornerLabel": "存续",
-                        "provinceCode": "440000",
-                        "provinceName": "广东省",
-                        "stockPercentRation": 100.0,
-                        "operName": "刘振",
-                        "regCapi": "100万人民币",
-                        "startDate": "2021-08-02",
-                        "statusCode": "1",
-                        "statusName": "存续",
-                        "name_short": "小米科技"
-                    },
-                    {
-                        "code": "down",
-                        "_id": "661468b2eeb272945b7aa762c9348ef0",
-                        "eid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
-                        "es_id": "661468b2eeb272945b7aa762c9348ef0",
-                        "name": "天津金星创业投资有限公司",
-                        "stockPercent": "100%",
-                        "type": 2,
-                        "hasNext": 0,
-                        "lineText": {
-                            "desc": "控股",
-                            "stockPercent": "100%"
-                        },
-                        "cornerLabel": "存续",
-                        "provinceCode": "120000",
-                        "provinceName": "天津市",
-                        "stockPercentRation": 100.0,
-                        "operName": "林世伟",
-                        "regCapi": "247655.7552万人民币",
-                        "startDate": "2013-12-26",
-                        "statusCode": "1",
-                        "statusName": "存续",
-                        "name_short": "金星投资"
-                    }
-                ],
-                "stockPercentRation": 0.0
-            }
+            "headLabel": "疑似最终受益人",
+            "beneficiaryShare": "77.8%",
+            "isBeneficiaryShare": 0,
+            "stockPercentRation": 77.8
+          },
+          {
+            "code": "up",
+            "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
+            "name": "黎万强",
+            "pid": "02717a4d4a3c31a7ac9f8d369a476824",
+            "company_num": 18,
+            "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
+            "enterpriseName": "小米科技有限责任公司",
+            "stockPercent": "10.12%",
+            "type": 1,
+            "hasNext": 0,
+            "lineText": {
+              "stockPercent": "10.12%"
+            },
+            "stockPercentRation": 10.12
+          },
+          {
+            "code": "up",
+            "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
+            "name": "洪锋",
+            "pid": "f8356037dd5e37c790d06259addf3278",
+            "company_num": 11,
+            "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
+            "enterpriseName": "小米科技有限责任公司",
+            "stockPercent": "10.07%",
+            "type": 1,
+            "hasNext": 0,
+            "lineText": {
+              "stockPercent": "10.07%"
+            },
+            "stockPercentRation": 10.07
+          },
+          {
+            "code": "up",
+            "_enterpriseId": "42a6483d302c93a16fb91b3ca53463e8",
+            "name": "刘德",
+            "pid": "ff46dae2d44974dd704ba2a5bde4c91e",
+            "company_num": 106,
+            "enterpriseLogoUrl": "https://wzdata-api.qizhidao.com/bigtools/big/rk/logo/49a5492199edf619da90c87ff465d5ff/32ea27112aa8499e85db4259944de70e",
+            "enterpriseName": "小米科技有限责任公司",
+            "stockPercent": "2.01%",
+            "type": 1,
+            "hasNext": 0,
+            "lineText": {
+              "stockPercent": "2.01%"
+            },
+            "stockPercentRation": 2.01
+          }
         ],
         "stockPercentRation": 0.0
-    },
-    "code": 0,
-    "status": 0,
-    "success": true,
-    "msg": "成功",
-    "hasUse": 0
+      },
+      {
+        "code": "down",
+        "name": "向下穿透(控股关联)",
+        "hasNext": 1,
+        "children": [
+          {
+            "code": "down",
+            "_id": "4bf86c444606d8eaa18ba552c303fa22",
+            "eid": "10fb809e-4f0d-4f52-b3d6-ea29c746cef1",
+            "es_id": "4bf86c444606d8eaa18ba552c303fa22",
+            "name": "广东横琴小米科技发展有限公司",
+            "stockPercent": "100%",
+            "type": 2,
+            "hasNext": 0,
+            "lineText": {
+              "desc": "控股",
+              "stockPercent": "100%"
+            },
+            "cornerLabel": "存续",
+            "provinceCode": "440000",
+            "provinceName": "广东省",
+            "stockPercentRation": 100.0,
+            "operName": "刘振",
+            "regCapi": "100万人民币",
+            "startDate": "2021-08-02",
+            "statusCode": "1",
+            "statusName": "存续",
+            "name_short": "小米科技"
+          },
+          {
+            "code": "down",
+            "_id": "661468b2eeb272945b7aa762c9348ef0",
+            "eid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+            "es_id": "661468b2eeb272945b7aa762c9348ef0",
+            "name": "天津金星创业投资有限公司",
+            "stockPercent": "100%",
+            "type": 2,
+            "hasNext": 0,
+            "lineText": {
+              "desc": "控股",
+              "stockPercent": "100%"
+            },
+            "cornerLabel": "存续",
+            "provinceCode": "120000",
+            "provinceName": "天津市",
+            "stockPercentRation": 100.0,
+            "operName": "林世伟",
+            "regCapi": "247655.7552万人民币",
+            "startDate": "2013-12-26",
+            "statusCode": "1",
+            "statusName": "存续",
+            "name_short": "金星投资"
+          }
+        ],
+        "stockPercentRation": 0.0
+      }
+    ],
+    "stockPercentRation": 0.0
+  },
+  "code": 0,
+  "status": 0,
+  "success": true,
+  "msg": "成功",
+  "hasUse": 0
 }

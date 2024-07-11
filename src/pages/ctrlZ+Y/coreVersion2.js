@@ -1,6 +1,3 @@
-
-
-
 import { cloneDeep } from 'lodash'
 
 class Recorder {
@@ -11,8 +8,8 @@ class Recorder {
   // 用于抛出的当前状态
   list = []
 
-  constructor() { }
-  save() { }
+  constructor() {}
+  save() {}
   // 记录list
   record(list, oldBranch) {
     if (!list) return console.log('无记录')
@@ -43,7 +40,6 @@ class Recorder {
     this.record(this.list, true)
     console.log(111111, this.recordList)
     console.log(222222, this.recordList4ctrlY)
-
   }
   getList() {
     return this.list
@@ -52,7 +48,7 @@ class Recorder {
 
 export default class Trigger {
   recorder = null
-  setNewList = () => { }
+  setNewList = () => {}
   constructor(setFn) {
     this.recorder = new Recorder()
     this.initEvent()
@@ -100,4 +96,3 @@ export default class Trigger {
     this.notice()
   }
 }
-

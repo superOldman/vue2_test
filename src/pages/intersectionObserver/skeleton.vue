@@ -1,5 +1,5 @@
 <template>
-  <div class="over-flow" :style="{height}">
+  <div class="over-flow" :style="{ height }">
     <slot />
   </div>
 </template>
@@ -9,15 +9,15 @@ export default {
   name: 'MySkeleton',
   data() {
     return {
-      height: "150px"
+      height: '150px',
     }
   },
   methods: {
     update() {
       this.height = null
       this.$emit('update')
-    }
-  }
+    },
+  },
 }
 </script>
 

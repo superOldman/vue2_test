@@ -1,7 +1,6 @@
 <template>
   <div class="svg-wrap">
-    <div ref="container" style="width: 100%;height:100%;">
-    </div>
+    <div ref="container" style="width: 100%;height:100%;"></div>
     <!-- <svg style="width: 100%;height:100%;">
       <path class="bottomToTop" stroke="black" stroke-width="1" d="M0,0L100,0" transform="translate(400, 0)"></path>
 
@@ -25,16 +24,12 @@ import data from './mock/data'
 import { D3Tree } from '@/pages/D3/D3tree4'
 export default {
   name: 'Ownership',
-  components: {
-
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
     return {
       visible: false,
-      content: '100%'
+      content: '100%',
     }
   },
   mounted() {
@@ -55,164 +50,178 @@ export default {
 
     initSvg() {
       // 定义初始值
-      let marginX = 0;
-      let marginY = 0;
-      let paddingX = 0;
-      let paddingY = 0;
+      let marginX = 0
+      let marginY = 0
+      let paddingX = 0
+      let paddingY = 0
 
       // 计算可用空间
-      const availableWidth = document.body.clientWidth - paddingX - marginX;
-      const availableHeight = document.body.clientHeight - paddingY - marginY;
+      const availableWidth = document.body.clientWidth - paddingX - marginX
+      const availableHeight = document.body.clientHeight - paddingY - marginY
 
       // 计算中心点
-      const centerX = availableWidth / 2 + paddingX;
-      const centerY = availableHeight / 2 + marginY;
+      const centerX = availableWidth / 2 + paddingX
+      const centerY = availableHeight / 2 + marginY
 
       // 设置中心点属性
-      this.centerPoint = [centerX, centerY];
+      this.centerPoint = [centerX, centerY]
 
       // 创建 SVG 元素
-      const svg = d3.select("#svg")
-        .append("svg")
-        .attr("width", availableWidth)
-        .attr("id", "stock-rpt-svg")
-        .attr("height", availableHeight)
-        .style("user-select", "none")
-        .style("color", "#292A2D")
-        .attr("font-size", this.fontSize);
+      const svg = d3
+        .select('#svg')
+        .append('svg')
+        .attr('width', availableWidth)
+        .attr('id', 'stock-rpt-svg')
+        .attr('height', availableHeight)
+        .style('user-select', 'none')
+        .style('color', '#292A2D')
+        .attr('font-size', this.fontSize)
 
       // 创建容器组并设置变换
-      this.container = svg.append("g")
-        .attr("id", "container")
-        .attr("transform", `translate(${paddingX},${marginY}) scale(1)`);
+      this.container = svg
+        .append('g')
+        .attr('id', 'container')
+        .attr('transform', `translate(${paddingX},${marginY}) scale(1)`)
 
       // 绘制根节点
-      this.drawRoot();
+      this.drawRoot()
 
       // 创建缩放行为
-      const zoomBehavior = d3.zoom()
+      const zoomBehavior = d3
+        .zoom()
         .scaleExtent(this.scaleRange)
-        .on("zoom", this.zoomFn);
+        .on('zoom', this.zoomFn)
 
       // 应用缩放行为
-      this.d3Zoom = zoomBehavior;
-      svg.call(zoomBehavior);
+      this.d3Zoom = zoomBehavior
+      svg.call(zoomBehavior)
 
       // 处理数据
-      this.dealData();
+      this.dealData()
     },
     update(t, direction) {
-      const reverse = direction === "up" ? -1 : 1;
-      const groupClassName = `${direction}gNode`;
+      const reverse = direction === 'up' ? -1 : 1
+      const groupClassName = `${direction}gNode`
 
-      const tree = this.treeMap(this.root[direction]);
-      const nodes = tree.descendants();
-      const links = tree.links();
+      const tree = this.treeMap(this.root[direction])
+      const nodes = tree.descendants()
+      const links = tree.links()
 
       nodes.forEach(node => {
         if (!node.depth && reverse > 0) {
-          node.x = node.x + this.centerPoint[0];
-          node.y = reverse * node.y + this.centerPoint[1] - this.textNodeHeight / 2;
+          node.x = node.x + this.centerPoint[0]
+          node.y = reverse * node.y + this.centerPoint[1] - this.textNodeHeight / 2
         } else {
-          node.x = node.x + this.centerPoint[0];
-          node.y = reverse * node.y + this.centerPoint[1];
+          node.x = node.x + this.centerPoint[0]
+          node.y = reverse * node.y + this.centerPoint[1]
         }
-      });
+      })
 
-      const nodeSelection = this.container.selectAll(`g.${groupClassName}`)
-        .data(nodes, d => `${d.id}`);
+      const nodeSelection = this.container.selectAll(`g.${groupClassName}`).data(nodes, d => `${d.id}`)
 
-      const nodeEnter = nodeSelection.enter().append("g")
-        .attr("id", d => `g${d.id}`)
-        .attr("class", groupClassName)
-        .attr("transform", d => `translate(${t.x0},${t.y0})`)
-        .attr("fill-opacity", 0)
-        .attr("stroke-opacity", 0)
-        .style("cursor", "pointer")
-        .on("mouseenter", (t, d) => {
-          if (d && d.data.type !== -1) this.mouseovered(true, d, reverse);
+      const nodeEnter = nodeSelection
+        .enter()
+        .append('g')
+        .attr('id', d => `g${d.id}`)
+        .attr('class', groupClassName)
+        .attr('transform', d => `translate(${t.x0},${t.y0})`)
+        .attr('fill-opacity', 0)
+        .attr('stroke-opacity', 0)
+        .style('cursor', 'pointer')
+        .on('mouseenter', (t, d) => {
+          if (d && d.data.type !== -1) this.mouseovered(true, d, reverse)
         })
-        .on("mouseleave", (t, d) => {
-          if (d && d.data.type !== -1) this.mouseovered(false, d, reverse);
+        .on('mouseleave', (t, d) => {
+          if (d && d.data.type !== -1) this.mouseovered(false, d, reverse)
         })
-        .on("click", (t, d) => {
-          t.stopPropagation();
-          if (d && d.data.type === -1) this.addNodeByClick(d, direction);
-          else this.handleCenterNode(d);
-        });
+        .on('click', (t, d) => {
+          t.stopPropagation()
+          if (d && d.data.type === -1) this.addNodeByClick(d, direction)
+          else this.handleCenterNode(d)
+        })
 
       nodeEnter.each(node => {
         if (node.depth !== 0) {
-          if (node.data.name.length <= 11) this.drawText(`g${node.id}`, reverse, node);
-          else this.drawTextMultiline(`g${node.id}`, reverse);
+          if (node.data.name.length <= 11) this.drawText(`g${node.id}`, reverse, node)
+          else this.drawTextMultiline(`g${node.id}`, reverse)
 
-          if (node.data.headLabel) this.drawPopup(`g${node.id}`, reverse);
+          if (node.data.headLabel) this.drawPopup(`g${node.id}`, reverse)
 
           const cornerLabelParams = {
             id: `g${node.id}`,
             dirTop: reverse,
             x: () => this.textNodeWidth / 3 - 6,
             y: () => -this.textNodeHeight / 2 + 1,
-            key: "cornerLabel",
+            key: 'cornerLabel',
             offsetX: () => this.textNodeWidth / 3 - this.subTextWidth / 2 - 6,
             offsetY: () => -this.textNodeHeight / 2 - this.fontSize,
             rectColor: this.getStatusColor(node.data).rectColor,
-            textColor: this.getStatusColor(node.data).textColor
-          };
+            textColor: this.getStatusColor(node.data).textColor,
+          }
 
-          if (node.data.lineText && node.data.lineText.stockPercent) this.drawLineText(`g${node.id}`, direction, node);
-          if (node.data.cornerLabel) this.drawTextWidthRect(cornerLabelParams);
-          if (node.depth && node.data.hasNext) this.drawCircle(`g${node.id}`, direction);
-          if (node.depth) this.drawTriangle(`g${node.id}`, reverse);
+          if (node.data.lineText && node.data.lineText.stockPercent) this.drawLineText(`g${node.id}`, direction, node)
+          if (node.data.cornerLabel) this.drawTextWidthRect(cornerLabelParams)
+          if (node.depth && node.data.hasNext) this.drawCircle(`g${node.id}`, direction)
+          if (node.depth) this.drawTriangle(`g${node.id}`, reverse)
         }
-      });
+      })
 
-      const nodeMerge = nodeEnter.merge(nodeSelection);
-      nodeMerge.transition().duration(this.duration)
-        .attr("transform", d => `translate(${d.x},${d.y})`)
-        .attr("fill-opacity", 1)
-        .attr("stroke-opacity", 1);
+      const nodeMerge = nodeEnter.merge(nodeSelection)
+      nodeMerge
+        .transition()
+        .duration(this.duration)
+        .attr('transform', d => `translate(${d.x},${d.y})`)
+        .attr('fill-opacity', 1)
+        .attr('stroke-opacity', 1)
 
-      nodeSelection.exit().transition().duration(this.duration)
-        .attr("transform", d => `translate(${t.x},${t.y})`)
-        .attr("fill-opacity", 0)
-        .attr("stroke-opacity", 0)
-        .remove();
+      nodeSelection
+        .exit()
+        .transition()
+        .duration(this.duration)
+        .attr('transform', d => `translate(${t.x},${t.y})`)
+        .attr('fill-opacity', 0)
+        .attr('stroke-opacity', 0)
+        .remove()
 
-      const linkSelection = this.container.selectAll(`path.${groupClassName}`)
-        .data(links, d => d.target.id);
+      const linkSelection = this.container.selectAll(`path.${groupClassName}`).data(links, d => d.target.id)
 
-      const linkEnter = linkSelection.enter().insert("path", "g")
-        .each(function (d) { d.target.linkNode = this; })
-        .attr("class", groupClassName)
-        .attr("d", d => {
-          const source = { x: t.x0, y: t.y0, depth: d.source.depth };
-          return this.diagonal({ source, target: source }, reverse);
+      const linkEnter = linkSelection
+        .enter()
+        .insert('path', 'g')
+        .each(function(d) {
+          d.target.linkNode = this
         })
-        .attr("fill", "none")
-        .attr("stroke-width", 1)
-        .attr("stroke", "#AFB1B7");
-
-      linkEnter.merge(linkSelection).transition().duration(this.duration)
-        .attr("d", d => this.diagonal(d, reverse));
-
-      linkSelection.exit().transition().duration(this.duration)
-        .attr("d", d => {
-          const source = { x: t.x, y: t.y, depth: d.depth };
-          return this.diagonal({ source, target: source, depth: d.source.depth }, reverse);
+        .attr('class', groupClassName)
+        .attr('d', d => {
+          const source = { x: t.x0, y: t.y0, depth: d.source.depth }
+          return this.diagonal({ source, target: source }, reverse)
         })
-        .remove();
+        .attr('fill', 'none')
+        .attr('stroke-width', 1)
+        .attr('stroke', '#AFB1B7')
+
+      linkEnter
+        .merge(linkSelection)
+        .transition()
+        .duration(this.duration)
+        .attr('d', d => this.diagonal(d, reverse))
+
+      linkSelection
+        .exit()
+        .transition()
+        .duration(this.duration)
+        .attr('d', d => {
+          const source = { x: t.x, y: t.y, depth: d.depth }
+          return this.diagonal({ source, target: source, depth: d.source.depth }, reverse)
+        })
+        .remove()
 
       this.root[direction].eachBefore(d => {
-        d.x0 = d.x;
-        d.y0 = d.y;
-      });
-    }
-
-
-
-
-  }
+        d.x0 = d.x
+        d.y0 = d.y
+      })
+    },
+  },
 }
 </script>
 

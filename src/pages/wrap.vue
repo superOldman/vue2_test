@@ -5,22 +5,16 @@
 </template>
 
 <script>
-import layout from "../components/layout.vue"
-
+import layout from '../components/layout.vue'
 
 export default {
   name: 'wrap',
   components: {
-    layout
+    layout,
   },
-  created() {
-  },
-  methods: {
-
-
-  }
+  created() {},
+  methods: {},
 }
 </script>
 
-<style>
-</style>
+<style></style>

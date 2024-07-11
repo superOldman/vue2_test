@@ -3,8 +3,8 @@
     <aside class="aside">
       <el-scrollbar>
         <div class="aside_in">
-          <div v-for="(item,index) in nav" :key="index">
-            <div class="navBtn" @click="clickHandle(item)">{{item.name}}</div>
+          <div v-for="(item, index) in nav" :key="index">
+            <div class="navBtn" @click="clickHandle(item)">{{ item.name }}</div>
           </div>
         </div>
       </el-scrollbar>
@@ -21,25 +21,25 @@ export default {
   name: 'layout',
   data() {
     return {
-      nav: {}
-    };
+      nav: {},
+    }
   },
   mounted() {
-    this.getNav();
+    this.getNav()
   },
   methods: {
     getNav() {
-      console.log('router',routerList)
+      console.log('router', routerList)
       // this.nav = JSON.parse(sessionStorage.getItem('router'));
       this.nav = routerList[0].children
     },
-    clickHandle(item){
-      // 
+    clickHandle(item) {
+      //
       this.$router.push({
-        name: item.name
+        name: item.name,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -51,14 +51,14 @@ export default {
 }
 .aside {
   width: 200px;
-  
+
   border-right: 1px solid #ccc;
   flex-grow: 0;
   flex-shrink: 0;
   height: 100%;
   /* overflow: auto; */
 }
-.aside_in{
+.aside_in {
   margin: 10px;
 }
 .main {

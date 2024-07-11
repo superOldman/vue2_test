@@ -1,7 +1,6 @@
 <template>
   <div>
     <VueEmoji ref="emoji" @input="onInput" />
-
   </div>
 </template>
 
@@ -10,14 +9,12 @@ import VueEmoji from 'emoji-vue'
 export default {
   name: '',
   components: {
-    VueEmoji
+    VueEmoji,
   },
-  props: {
-
-  },
+  props: {},
   data() {
     return {
-      myText: '123213'
+      myText: '123213',
     }
   },
   methods: {
@@ -29,9 +26,8 @@ export default {
     clearTextarea() {
       this.$refs.emoji.clear()
     },
-  }
+  },
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

@@ -7,12 +7,12 @@ import textOverflow from './textOverflow'
 const directives = {
   copy,
   debounce,
-  textOverflow
+  textOverflow,
 }
 
 export default {
   install(Vue) {
-    Object.keys(directives).forEach((key) => {
+    Object.keys(directives).forEach(key => {
       Vue.directive(key, directives[key])
     })
   },

@@ -10,20 +10,12 @@
 <script>
 export default {
   name: 'flextest',
-  components: {
-
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
-    return {
-
-    }
+    return {}
   },
-  methods: {
-
-  }
+  methods: {},
 }
 </script>
 
@@ -56,7 +48,7 @@ export default {
   height: 100%;
   padding: 24px;
   overflow: auto;
-  .dom1{
+  .dom1 {
     height: 1200px;
     border: 1px solid pink;
   }

@@ -23,9 +23,8 @@ function fn(el) {
   el.style.textOverflow = 'ellipsis'
   el.style.whiteSpace = 'nowrap'
   if (textSpan.offsetWidth >= el.offsetWidth) {
-
     // 鼠标移入
-    el.onmouseenter = (e) => {
+    el.onmouseenter = e => {
       console.log(e)
       /* 第4步：鼠标移入`onmouseenter`事件里需要处理title提示的显示 */
       // 创建浮层元素并设置样式
@@ -45,7 +44,7 @@ function fn(el) {
         border-radius: 5px;
         z-index: 19999;
       `
-      
+
       // 设置id方便寻找
       kxmTooltipDom.setAttribute('id', 'kxm-tooltip')
       // 将浮层插入到body中
@@ -67,19 +66,17 @@ function fn(el) {
 }
 
 export default {
-  bind(el) {
-  },
+  bind(el) {},
   inserted(el) {
     fn(el)
   },
   // 指令所在组件的 VNode 及其子 VNode 全部更新后调用
-  componentUpdated(el) {
-  },
+  componentUpdated(el) {},
   // 指令与元素解绑时
   unbind() {
     /* 第6步：解绑移除浮层元素 */
     // 找到浮层元素并移除
     const kxmTooltipDom = document.getElementById('kxm-tooltip')
     kxmTooltipDom && document.body.removeChild(kxmTooltipDom)
-  }
+  },
 }

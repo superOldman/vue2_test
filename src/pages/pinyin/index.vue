@@ -1,53 +1,139 @@
 <template>
   <div class="main" v-loading="waiting">
     <p style="text-align: left;">拼音首字母排序</p>
-    <el-row v-for="(item,i) in peo" :key="i">
+    <el-row v-for="(item, i) in peo" :key="i">
       <el-col :span="1">名字:</el-col>
-      <el-col :span="2" style="text-align: left;">{{item.wx_name}}</el-col>
+      <el-col :span="2" style="text-align: left;">{{ item.wx_name }}</el-col>
     </el-row>
     ---------------------
-    <el-row v-for="(item,i) in sortArr" :key="i+'_'">
-      <el-col :span="2">首字母：{{item.title}}</el-col>
+    <el-row v-for="(item, i) in sortArr" :key="i + '_'">
+      <el-col :span="2">首字母：{{ item.title }}</el-col>
       <el-col :span="2" style="text-align: left;">
-        <div v-for="(it,i) in item.datas" :key="i">
-          {{it.name}}
+        <div v-for="(it, i) in item.datas" :key="i">
+          {{ it.name }}
         </div>
       </el-col>
     </el-row>
-
   </div>
 </template>
 
 <script>
-import Pinyin from '@/utils/PinyinCode';
+import Pinyin from '@/utils/PinyinCode'
 export default {
   name: '',
-  components: {
-
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
     return {
       peo: [
-        { 'wx_name': '?e' },
-        { 'wx_name': '/123' },
-        { 'id': 186, 'uid': 112, 'wx_name': '往事如风.', 're_name': 'zzzz', 'wx_image': 'https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqKnDS6kHQgN9qFURLudRrNS8H7EVOdF9PLdz6iaoMVCdSlzgyMX3V2D1AVERSrjZnibTIibdy3PjeOA/132', 'type': 0, 'content': '微信沟通', 'turnover': 1, 'zc_create_time': 1607999219, 'zf_create_time': 1609920523, 'date': '2021-01-06', 'describe': '01-06 16:08跟进客户' },
-        { 'id': 195, 'uid': 117, 'wx_name': '懒猫', 're_name': '', 'wx_image': 'https://thirdwx.qlogo.cn/mmopen/vi_32/ztkCor3EsLNslctkm8pQoJTlYZDoEGC4YXyfGkfN8hvI5ET9RRQq1GLklibkgQooPqeLdFpEgiamZqUwORqlnX6A/132', 'type': null, 'content': null, 'turnover': 1, 'zc_create_time': 1608170432, 'zf_create_time': null, 'date': '', 'describe': '从未跟进客户' },
-        { 'id': 188, 'uid': 97, 'wx_name': 'LOLO', 're_name': '', 'wx_image': 'https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epfuw3dJ8nftX06olnV6HQACiaLzgw8EsrsULQuQz1y4DC0Fqndoric74ZOiambZktGekZ6cibLTLQATw/132', 'type': null, 'content': null, 'turnover': 1, 'zc_create_time': 1608010130, 'zf_create_time': null, 'date': '', 'describe': '从未跟进客户' },
-        { 'id': 228, 'uid': 72, 'wx_name': '余溫', 're_name': '', 'wx_image': 'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJXo3VsMzMCbaqWrO7icb32l4ndSAoibwsThBs03qh6asnZ9bqZ1sIDOamcibKlfypyiaBliaIOMZcvKMg/132', 'type': null, 'content': null, 'turnover': 1, 'zc_create_time': 1611121086, 'zf_create_time': null, 'date': '', 'describe': '从未跟进客户' },
-        { 'id': 94, 'uid': 57, 'wx_name': '往事如风.', 're_name': '', 'wx_image': 'https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epOteLONqVDicQQMicCbZEiaqRp03VjIYHibqzZ64IKn24nmWZadlMZIhc7onBS0yeGJ4uibscME4GmYSg/132', 'type': null, 'content': null, 'turnover': 1, 'zc_create_time': 1604405070, 'zf_create_time': null, 'date': '', 'describe': '从未跟进客户' },
-        { 'id': 93, 'uid': 43, 'wx_name': '狂奔的小猴', 're_name': '', 'wx_image': '/static/default.jpg', 'type': null, 'content': null, 'turnover': 1, 'zc_create_time': 1604404800, 'zf_create_time': null, 'date': '', 'describe': '从未跟进客户' },
-        { 'id': 152, 'uid': 1, 'wx_name': '母笑阳', 're_name': '', 'wx_image': 'https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEJCU8g4J5CKpLNE2sz1d0QLibqcFkRVRmdX0uRJca9U2lz5ibBBiaRWtemKP8uLYeb1prCSxWt6r56nw/132', 'type': null, 'content': null, 'turnover': 1, 'zc_create_time': 1606208282, 'zf_create_time': null, 'date': '', 'describe': '从未跟进客户' }
+        { wx_name: '?e' },
+        { wx_name: '/123' },
+        {
+          id: 186,
+          uid: 112,
+          wx_name: '往事如风.',
+          re_name: 'zzzz',
+          wx_image: 'https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqKnDS6kHQgN9qFURLudRrNS8H7EVOdF9PLdz6iaoMVCdSlzgyMX3V2D1AVERSrjZnibTIibdy3PjeOA/132',
+          type: 0,
+          content: '微信沟通',
+          turnover: 1,
+          zc_create_time: 1607999219,
+          zf_create_time: 1609920523,
+          date: '2021-01-06',
+          describe: '01-06 16:08跟进客户',
+        },
+        {
+          id: 195,
+          uid: 117,
+          wx_name: '懒猫',
+          re_name: '',
+          wx_image: 'https://thirdwx.qlogo.cn/mmopen/vi_32/ztkCor3EsLNslctkm8pQoJTlYZDoEGC4YXyfGkfN8hvI5ET9RRQq1GLklibkgQooPqeLdFpEgiamZqUwORqlnX6A/132',
+          type: null,
+          content: null,
+          turnover: 1,
+          zc_create_time: 1608170432,
+          zf_create_time: null,
+          date: '',
+          describe: '从未跟进客户',
+        },
+        {
+          id: 188,
+          uid: 97,
+          wx_name: 'LOLO',
+          re_name: '',
+          wx_image: 'https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epfuw3dJ8nftX06olnV6HQACiaLzgw8EsrsULQuQz1y4DC0Fqndoric74ZOiambZktGekZ6cibLTLQATw/132',
+          type: null,
+          content: null,
+          turnover: 1,
+          zc_create_time: 1608010130,
+          zf_create_time: null,
+          date: '',
+          describe: '从未跟进客户',
+        },
+        {
+          id: 228,
+          uid: 72,
+          wx_name: '余溫',
+          re_name: '',
+          wx_image: 'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJXo3VsMzMCbaqWrO7icb32l4ndSAoibwsThBs03qh6asnZ9bqZ1sIDOamcibKlfypyiaBliaIOMZcvKMg/132',
+          type: null,
+          content: null,
+          turnover: 1,
+          zc_create_time: 1611121086,
+          zf_create_time: null,
+          date: '',
+          describe: '从未跟进客户',
+        },
+        {
+          id: 94,
+          uid: 57,
+          wx_name: '往事如风.',
+          re_name: '',
+          wx_image: 'https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epOteLONqVDicQQMicCbZEiaqRp03VjIYHibqzZ64IKn24nmWZadlMZIhc7onBS0yeGJ4uibscME4GmYSg/132',
+          type: null,
+          content: null,
+          turnover: 1,
+          zc_create_time: 1604405070,
+          zf_create_time: null,
+          date: '',
+          describe: '从未跟进客户',
+        },
+        {
+          id: 93,
+          uid: 43,
+          wx_name: '狂奔的小猴',
+          re_name: '',
+          wx_image: '/static/default.jpg',
+          type: null,
+          content: null,
+          turnover: 1,
+          zc_create_time: 1604404800,
+          zf_create_time: null,
+          date: '',
+          describe: '从未跟进客户',
+        },
+        {
+          id: 152,
+          uid: 1,
+          wx_name: '母笑阳',
+          re_name: '',
+          wx_image: 'https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEJCU8g4J5CKpLNE2sz1d0QLibqcFkRVRmdX0uRJca9U2lz5ibBBiaRWtemKP8uLYeb1prCSxWt6r56nw/132',
+          type: null,
+          content: null,
+          turnover: 1,
+          zc_create_time: 1606208282,
+          zf_create_time: null,
+          date: '',
+          describe: '从未跟进客户',
+        },
       ],
       sortArr: [],
       waiting: false,
-    };
+    }
   },
   mounted() {
     console.log(this.$route.params)
-    this._sort();
+    this._sort()
     // this.waiting = true;
     // setTimeout(()=>{
     //   this.waiting = false;
@@ -56,69 +142,68 @@ export default {
   methods: {
     pinyinSort(name) {
       // 提取拼音
-      let pinyinArray = new Array();
+      let pinyinArray = new Array()
       for (let bukn = 0; bukn < name.length; bukn++) {
-        let o = new Object();
-        let ken = Pinyin.getSpell(name[bukn], function (charactor, spell) {
-          console.log(charactor, spell);
-          return spell[1];
-        });
-        o.name = name[bukn];
-        o.pinyin = ken.split(',').join('');
-        pinyinArray.push(o);
+        let o = new Object()
+        let ken = Pinyin.getSpell(name[bukn], function(charactor, spell) {
+          console.log(charactor, spell)
+          return spell[1]
+        })
+        o.name = name[bukn]
+        o.pinyin = ken.split(',').join('')
+        pinyinArray.push(o)
       }
 
       // 整理出首字母
-      let map = {};
+      let map = {}
       pinyinArray.forEach((item, index) => {
         if (!map[item.pinyin[0].toUpperCase()]) {
           map[item.pinyin[0].toUpperCase()] = {
             title: item.pinyin[0].toUpperCase(),
-            datas: []
-          };
+            datas: [],
+          }
         }
         map[item.pinyin[0].toUpperCase()].datas.push({
           name: item.name,
-          pinyin: item.pinyin
-        });
-      });
-
+          pinyin: item.pinyin,
+        })
+      })
 
       // 排序:
-      let turn = new Array();
-      let letters = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ'.split('');
+      let turn = new Array()
+      let letters = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ'.split('')
       for (let i = 0; i < letters.length; i++) {
         if (map[letters[i]]) {
-          let obj = new Object();
+          let obj = new Object()
           // 自己改改命名改成自己需要的
-          obj.title = letters[i];
-          obj.datas = map[letters[i]].datas;
-          turn.push(obj);
+          obj.title = letters[i]
+          obj.datas = map[letters[i]].datas
+          turn.push(obj)
         }
       }
 
       // 不是字母的归类
-      let other = { title: '#', datas: [] };
-      let keyArr = Object.keys(map);
-      let zz = /[a-z]/i;
+      let other = { title: '#', datas: [] }
+      let keyArr = Object.keys(map)
+      let zz = /[a-z]/i
       keyArr.forEach(e => {
         if (!zz.test(e)) {
-          other.datas = other.datas.concat(map[e].datas);
+          other.datas = other.datas.concat(map[e].datas)
         }
-      });
+      })
 
-      turn.push(other);
-      return turn;
+      turn.push(other)
+      return turn
     },
 
     _sort() {
-      let name = this.peo.map(e => e.wx_name);
-      let arr = this.pinyinSort(name);
-      this.sortArr = arr;
-      console.log(arr);
-    }
-  }
-};
+      let name = this.peo.map(e => e.wx_name)
+      let arr = this.pinyinSort(name)
+      this.sortArr = arr
+      console.log(arr)
+    },
+  },
+}
 </script>
 <style lang="less">
 .el-loading-spinner .circular {
@@ -131,7 +216,7 @@ export default {
 
 .el-loading-spinner::before,
 .el-loading-spinner::after {
-  content: "";
+  content: '';
   box-sizing: border-box;
   position: absolute;
 }
@@ -211,7 +296,7 @@ export default {
 
 .loader::before,
 .loader::after {
-  content: "";
+  content: '';
   box-sizing: border-box;
   position: absolute;
 }

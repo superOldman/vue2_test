@@ -1,6 +1,5 @@
 <template>
-  <div ref="container">
-  </div>
+  <div ref="container"></div>
 </template>
 
 <script>
@@ -9,25 +8,16 @@ import data from './data.json'
 import D3Tree from '@/pages/D3/D3tree'
 export default {
   name: 'd3_collapsibleTree_test',
-  components: {
-
-  },
-  props: {
-
-  },
+  components: {},
+  props: {},
   data() {
-    return {
-
-    }
+    return {}
   },
   mounted() {
     new D3Tree(data, this.$refs.container)
   },
-  methods: {
-
-  }
+  methods: {},
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

@@ -1,28 +1,21 @@
 <template>
   <div class="changebtns">
-    <div class="box1" :class="selected?'top':'bot'" @click="selected=true"></div>
-    <div class="box2" :class="!selected?'top':'bot'" @click="selected=false"></div>
+    <div class="box1" :class="selected ? 'top' : 'bot'" @click="selected = true"></div>
+    <div class="box2" :class="!selected ? 'top' : 'bot'" @click="selected = false"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: '',
-  props: {
-
-  },
+  props: {},
   data() {
     return {
       selected: true,
     }
   },
-  computed: {
-
-  },
-  methods: {
-
-
-  }
+  computed: {},
+  methods: {},
 }
 </script>
 

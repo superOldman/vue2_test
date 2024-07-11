@@ -24,24 +24,23 @@
 
     <el-input v-model="text2" type="textarea" :rows="6" autocomplete="off" :title="text" />
 
-    <el-button @click="text='dsafa'">少字</el-button>
-    <el-button @click="text=aaa">多字</el-button>
-    <el-button @click="text=aaa2">多字少于三行</el-button>
-    <el-button @click="text=good">==</el-button>
-    <el-button @click="text=more1">多1</el-button>
+    <el-button @click="text = 'dsafa'">少字</el-button>
+    <el-button @click="text = aaa">多字</el-button>
+    <el-button @click="text = aaa2">多字少于三行</el-button>
+    <el-button @click="text = good">==</el-button>
+    <el-button @click="text = more1">多1</el-button>
 
     <div class="textBox" id="box">
-      <text-overflow lines="1">{{text}}</text-overflow>
+      <text-overflow lines="1">{{ text }}</text-overflow>
     </div>
     <!-- <el-tooltip :disabled='true' content="3" placement="top" effect="light">
       <span ref="span" class="textOverflow">{{3}}</span>
     </el-tooltip> -->
-
   </div>
 </template>
 
 <script>
-import textOverflow from '@/components/textOverflow.vue';
+import textOverflow from '@/components/textOverflow.vue'
 export default {
   components: { textOverflow },
   data() {
@@ -62,31 +61,30 @@ export default {
       `,
       aaa2: '毒贩夫妇付付付付付付付付付付付付付付付付付付付付付付',
       good: '毒贩夫妇付付付付付付付付付付付付付付付付付付付付付1付1',
-      more1: '毒贩夫妇付付付付付付付付付付付付付付付付付付付付付1付11'
-    };
+      more1: '毒贩夫妇付付付付付付付付付付付付付付付付付付付付付1付11',
+    }
   },
 
-  created() { },
+  created() {},
   watch: {},
   // 局部自定义指令指令
   directives: {
     focus2: {
       // 指令的定义
-      inserted: function (el) {
-        el.focus();
-      }
+      inserted: function(el) {
+        el.focus()
+      },
     },
     demo: {
-      bind: function (el, binding, vnode) {
+      bind: function(el, binding, vnode) {
         el.innerHtml = `name: ${binding.name}
         ${vnode}
-        `;
-      }
-    }
-
+        `
+      },
+    },
   },
   mounted() {
-    this.computedWidth();
+    this.computedWidth()
   },
   methods: {
     //     // 判断是否text-overflow, 如果是就显示tooltip
@@ -113,19 +111,19 @@ export default {
     //   this.activateTooltip(tooltip);
     // }
     computedWidth() {
-      const dom = document.querySelector('#box');
-      const range = document.createRange();
-      range.setStart(dom, 0);
-      range.setEnd(dom, dom.childNodes.length);
-      const rangeWidth = range.getBoundingClientRect().width;
+      const dom = document.querySelector('#box')
+      const range = document.createRange()
+      range.setStart(dom, 0)
+      range.setEnd(dom, dom.childNodes.length)
+      const rangeWidth = range.getBoundingClientRect().width
       // const domWidth = dom.getBoundingClientRect().width
       // if (domWidth < rangeWidth) {
 
       // }
       // console.log(rangeWidth, rangeWidth2)
-    }
-  }
-};
+    },
+  },
+}
 </script>
 
 <style>

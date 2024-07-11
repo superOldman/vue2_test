@@ -2,7 +2,7 @@
   <el-dropdown ref="elDropdown" trigger="click" :hide-on-click="false" placement="bottom-start" @visible-change="visibleChange">
     <slot v-if="$slots.dropBtn" name="dropBtn" />
     <div v-else class="control fx-none fx-p-center">
-      <div :class="['packUp',{'is-opened':isOpen}]">
+      <div :class="['packUp', { 'is-opened': isOpen }]">
         <i class="el-select__caret el-input__icon el-icon-arrow-down"></i>
       </div>
     </div>
@@ -14,7 +14,7 @@
         </div>
         <el-scrollbar ref="scrollbar" wrap-class="scrollbar-wrapper scrollbar-wrapper-maxheight">
           <ul>
-            <li v-for="(item,i) in realList" :key="i" class="select-item">
+            <li v-for="(item, i) in realList" :key="i" class="select-item">
               <div>
                 <el-checkbox v-model="item.selected" style="margin-right: 8px;"></el-checkbox>
                 <ImgAndName class="fx-full" :text="item.name" :textScond="item.text" />
@@ -23,10 +23,9 @@
           </ul>
         </el-scrollbar>
         <div class="fx select-item" style="border-top:1px solid #f2f2f2;">
-
           <div class="fx fx-full">
             <div>已选：</div>
-            <div>{{selectedList.length}}个</div>
+            <div>{{ selectedList.length }}个</div>
           </div>
           <el-button type="primary" size="mini" :disabled="!selectedList.length" @click="clickHandle">确定</el-button>
         </div>
@@ -42,7 +41,7 @@ import { cloneDeep } from 'lodash'
 export default {
   name: 'SelectDropdown',
   components: {
-    ImgAndName
+    ImgAndName,
   },
   mixins: [],
   // model: {
@@ -52,50 +51,50 @@ export default {
   props: {
     showCheckbox: {
       type: Boolean,
-      default: false
+      default: false,
     },
     checkStrictly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     data: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     defaultProps: {
       type: Object,
       default: () => ({
         children: 'children',
-        label: 'label'
-      })
+        label: 'label',
+      }),
     },
     multiple: {
       type: Boolean,
-      default: false
+      default: false,
     },
     collapseTags: {
       type: Boolean,
-      default: false
+      default: false,
     },
     nodeKey: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   watch: {
     data: {
       deep: true,
       immediate: true,
-      handler: function (val) {
+      handler: function(val) {
         this.list = cloneDeep(val).map(e => ({ ...e, selected: false }))
-      }
+      },
     },
   },
   data() {
     return {
       isOpen: false,
       value: '',
-      list: []
+      list: [],
       // selectedList: []
     }
   },
@@ -106,7 +105,7 @@ export default {
     realList() {
       if (!this.value) return this.list
       return this.list.filter(e => e.name.indexOf(this.value) !== -1)
-    }
+    },
   },
   mounted() {
     // const self = this.$refs.elDropdown
@@ -127,8 +126,8 @@ export default {
     clickHandle() {
       this.$emit('change', this.selectedList)
       this.$refs.elDropdown.hide()
-    }
-  }
+    },
+  },
 }
 </script>
 

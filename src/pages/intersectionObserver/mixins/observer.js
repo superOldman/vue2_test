@@ -6,8 +6,7 @@ export default {
       observeAttr: 'observeAttr',
     }
   },
-  mounted() {
-  },
+  mounted() {},
   beforeDestroy() {
     this.cancelObserve()
   },
@@ -47,6 +46,6 @@ export default {
         })
       })
       this.handleObserve()
-    }
-  }
+    },
+  },
 }
