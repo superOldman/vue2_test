@@ -40,3 +40,4 @@ package.lock.json
 *.md
 
 格式化代码参考文章： https://www.cnblogs.com/fitzlovecode/p/code_formater.html
+中文官网： https://prettier.nodejs.cn/docs/en/install.html

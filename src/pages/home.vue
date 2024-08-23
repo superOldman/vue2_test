@@ -22,6 +22,9 @@
   </div>
 </template>
 <script>
+// const checkCode = require('../../checkCode.js')
+
+
 import axios from 'axios'
 import { getTest } from '@/services/request'
 const block = () => import('../components/block.vue')
@@ -128,6 +131,8 @@ export default {
     // var a= this.getBlobURL('http://p.qlogo.cn/bizmail/Ilfia76w7KibHkXKx3YtCMHm5rte0zxHk4fs9FQtTDaq9LzzjPsjYx9A/0');
     var a = this.getBlobURL('/logo.png')
     console.log(a)
+
+    console.log('checkCode',checkCode)
   },
   created() {
     // 创建全局方法

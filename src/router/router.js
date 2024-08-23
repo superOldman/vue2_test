@@ -18,6 +18,11 @@ const router = [
         component: home,
       },
       {
+        path: 'inputInsert',
+        name: 'inputInsert',
+        component: () => import('@/pages/inputInsert'),
+      },
+      {
         path: 'observeTest',
         name: 'observeTest',
         component: () => import('@/pages/intersectionObserver'),
